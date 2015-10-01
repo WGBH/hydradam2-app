@@ -126,6 +126,7 @@ GEM
       json
     bcp47 (0.3.3)
       i18n
+    bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
     blacklight (5.15.0)
@@ -160,6 +161,15 @@ GEM
     debug_inspector (0.0.2)
     deprecation (0.2.2)
       activesupport
+    devise (3.5.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise-guests (0.3.3)
+      devise
     diff-lcs (1.2.5)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
@@ -286,6 +296,7 @@ GEM
       activesupport
       nokogiri (>= 1.4.2)
       solrizer (~> 3.3)
+    orm_adapter (0.5.0)
     parslet (1.7.1)
       blankslate (>= 2.0, <= 4.0)
     pry (0.10.1)
@@ -384,6 +395,8 @@ GEM
       redis (~> 3.0, >= 3.0.4)
     redlock (0.1.2)
       redis (~> 3, >= 3.0.5)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
     resque (1.25.2)
       mono_logger (~> 1.0)
       multi_json (~> 1.0)
@@ -411,6 +424,14 @@ GEM
       rspec-support (~> 3.3.0)
     rspec-mocks (3.3.2)
       diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-rails (3.3.3)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
       rspec-support (~> 3.3.0)
     rspec-support (3.3.0)
     rubyzip (1.1.7)
@@ -475,6 +496,8 @@ GEM
     unf_ext (0.0.7.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     web-console (2.2.1)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -489,14 +512,19 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   curation_concerns!
+  devise
+  devise-guests (~> 0.3)
   hydra-derivatives!
   hydra-pcdm!
   hydra-works!
   jbuilder (~> 2.0)
+  jettywrapper
   jquery-rails
   pry
   rails (= 4.2.4)
+  rsolr (~> 1.0.6)
   rspec
+  rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
