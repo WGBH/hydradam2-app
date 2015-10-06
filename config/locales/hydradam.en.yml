@@ -1,0 +1,7 @@
+en:
+  curation_concerns:
+    product_name: "HydraDAM"
+    search:
+      form:
+        q:
+          label: "Search HydraDAM"
