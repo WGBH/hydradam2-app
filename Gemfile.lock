@@ -303,6 +303,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     qa (0.5.0)
       activerecord-import
       deprecation
@@ -520,7 +522,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jettywrapper
   jquery-rails
-  pry
+  pry-rails
   rails (= 4.2.4)
   rsolr (~> 1.0.6)
   rspec
