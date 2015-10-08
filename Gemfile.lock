@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/projecthydra-labs/curation_concerns.git
-  revision: 580f9b300ae75b31f91b6e4cc79549722dae826a
+  revision: d622ba4c07ab5074522068b9079177fcb72ca9e7
   specs:
     curation_concerns (0.1.0)
       blacklight_advanced_search (>= 5.1.4, < 6.0)
@@ -15,7 +15,7 @@ GIT
       active_attr
       active_fedora-noid (~> 1.0)
       hydra-collections (~> 6.0.0.rc1)
-      hydra-head (~> 9.2)
+      hydra-head (~> 9.3)
       hydra-works (~> 0.2)
       qa (~> 0.5)
       redlock (~> 0.1.2)
@@ -33,20 +33,20 @@ GIT
 
 GIT
   remote: git://github.com/projecthydra-labs/hydra-works.git
-  revision: d1f7cf285f0c75126e1034d658581f5595ba1517
+  revision: 8715f129c06a3daeac73490519f78e00144c80b0
   specs:
     hydra-works (0.2.0)
       active-fedora (>= 9.4.1)
       activefedora-aggregation (~> 0.4)
-      hydra-derivatives (~> 3.0.0.alpha)
+      hydra-derivatives (~> 3.0)
       hydra-file_characterization (~> 0.3)
       hydra-pcdm (~> 0.2)
 
 GIT
   remote: git://github.com/projecthydra/hydra-derivatives.git
-  revision: cf8b507ccf0862db161a40fd31d379a20e549206
+  revision: 027d27bdca1151733616158b1e852328e072ca40
   specs:
-    hydra-derivatives (3.0.0.alpha)
+    hydra-derivatives (3.0.0)
       active-fedora (~> 9.0)
       activesupport (~> 4.0)
       deprecation
@@ -146,7 +146,7 @@ GEM
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     byebug (6.0.2)
-    cancancan (1.12.0)
+    cancancan (1.13.0)
     childprocess (0.5.6)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
@@ -191,7 +191,7 @@ GEM
     http-cookie (1.0.2)
       domain_name (~> 0.5)
     http_logger (0.5.1)
-    hydra-access-controls (9.2.2)
+    hydra-access-controls (9.3.0)
       active-fedora (~> 9.0)
       activesupport (~> 4.0)
       blacklight (~> 5.10)
@@ -203,9 +203,9 @@ GEM
       deprecation (~> 0.1)
       hydra-head (~> 9.1)
       hydra-works (~> 0.2)
-    hydra-core (9.2.2)
+    hydra-core (9.3.0)
       active-fedora (~> 9.1)
-      hydra-access-controls (= 9.2.2)
+      hydra-access-controls (= 9.3.0)
       jettywrapper (>= 2.0.0)
       rails (~> 4.0)
     hydra-editor (1.0.4)
@@ -215,9 +215,9 @@ GEM
       simple_form (~> 3.1.0)
     hydra-file_characterization (0.3.2)
       activesupport (>= 3.0.0)
-    hydra-head (9.2.2)
-      hydra-access-controls (= 9.2.2)
-      hydra-core (= 9.2.2)
+    hydra-head (9.3.0)
+      hydra-access-controls (= 9.3.0)
+      hydra-core (= 9.3.0)
       rails (>= 3.2.6)
     i18n (0.7.0)
     jbuilder (2.3.2)
