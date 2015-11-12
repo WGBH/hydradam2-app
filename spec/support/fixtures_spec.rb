@@ -2,10 +2,22 @@ require_relative 'fixtures'
 
 RSpec.configure do |config|
   config.include Fixtures
-  Fixtures.path = File.expand_path('fixtures_for_testing_fixtures', File.dirname(__FILE__))
 end
 
 describe Fixtures do
+
+  before(:all) do
+    @tmp_dir = File.join(File.dirname(__FILE__), 'fixtures_tmp')
+    FileUtils.mkdir_p(@tmp_dir)
+    # Write a sample fixture
+    File.open(File.join(@tmp_dir, 'foo.txt'), 'w') { |f| f.write("bar") }
+    Fixtures.path = @tmp_dir
+  end
+
+  after(:all) do
+    FileUtils.remove_entry_secure(@tmp_dir)
+    Fixures.path = nil
+  end
 
   describe '#fixture' do
     it 'loads a fixture' do
