@@ -1,9 +1,5 @@
 require_relative 'fixtures'
 
-RSpec.configure do |config|
-  config.include Fixtures
-end
-
 describe Fixtures do
 
   before(:all) do
@@ -11,21 +7,31 @@ describe Fixtures do
     FileUtils.mkdir_p(@tmp_dir)
     # Write a sample fixture
     File.open(File.join(@tmp_dir, 'foo.txt'), 'w') { |f| f.write("bar") }
-    Fixtures.path = @tmp_dir
+    Fixtures.base_path = @tmp_dir
   end
 
   after(:all) do
     FileUtils.remove_entry_secure(@tmp_dir)
-    Fixures.path = nil
+    Fixtures.base_path = nil
   end
 
-  describe '#fixture' do
-    it 'loads a fixture' do
-      expect(fixture('foo.txt')).to eq 'bar'
+  describe '.read' do
+    it 'returns the contents of a fixture file' do
+      expect(Fixtures.read('foo.txt')).to eq 'bar'
+    end
+  end
+
+  describe '.open' do
+
+    subject { Fixtures.open('foo.txt') }
+
+    it 'returns a File object for the fixture file' do
+      expect(subject).to be_a File
+      expect(File.basename(subject.path)).to eq 'foo.txt'
     end
 
-    it 'raises an error if the fixture does not exist' do
-      expect { fixture('bogux') }.to raise_error Fixtures::NotFound
+    it 'raises an error if the fixture file does not exist' do
+      expect { Fixtures.open('bogus') }.to raise_error Fixtures::NotFound
     end
   end
 
