@@ -13,10 +13,10 @@ module Fixtures
     File.join(Fixtures.base_path, relative_path)
   end
 
-  def self.open(relative_path, opts={})
+  def self.open(relative_path, mode='r', opts={})
     filename = full_path(relative_path)
     raise NotFound, "Fixture file #{filename} does not exist" unless File.exists?(filename)
-    File.open(filename, 'r')
+    File.open(filename, mode, opts)
   end
 
   def self.read(relative_path)
