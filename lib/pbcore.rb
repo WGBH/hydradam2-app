@@ -1,8 +1,16 @@
-require 'nokogiri'
-require_relative 'pbcore/schema'
+require 'xml_validator'
+require 'pry'
+
 
 module PBCore
+
+  XSD_PATH = File.expand_path('../pbcore/pbcore_2.1.xsd', __FILE__)
+
   def self.valid?(xml)
-    Schema.valid?(xml)
+    XMLValidator.new(xml: xml, xsd: xsd).valid?
+  end
+
+  def self.xsd
+    @xsd ||= File.read(XSD_PATH)
   end
 end
