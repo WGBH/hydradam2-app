@@ -8,6 +8,8 @@ module PBCore
 
   def self.valid?(xml)
     XMLValidator.new(xml: xml, xsd: xsd).valid?
+  rescue XMLValidator::XMLValidatorError => e
+    false
   end
 
   def self.xsd

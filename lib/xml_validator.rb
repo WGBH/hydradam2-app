@@ -10,12 +10,10 @@ class XMLValidator
   end
 
   def xml?
-    # binding.pry
     !!(noko_xml rescue nil)
   end
 
   def xsd?
-    # binding.pry
     !!(noko_xsd rescue nil)
   end
 
@@ -43,6 +41,7 @@ class XMLValidator
     raise CannotParseXSD
   end
 
-  class CannotParseXML < StandardError; end
-  class CannotParseXSD < StandardError; end
+  class XMLValidatorError < StandardError; end
+  class CannotParseXML < XMLValidatorError; end
+  class CannotParseXSD < XMLValidatorError; end
 end
