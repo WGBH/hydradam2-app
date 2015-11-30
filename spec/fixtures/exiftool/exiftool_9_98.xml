@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+
+<rdf:Description rdf:about='/Volumes/barcode339743_drive/AAPB02L6/cpb-aacip-15-10jsxtk3.mp3'
+  xmlns:et='http://ns.exiftool.ca/1.0/' et:toolkit='Image::ExifTool 9.98'
+  xmlns:ExifTool='http://ns.exiftool.ca/ExifTool/1.0/'
+  xmlns:System='http://ns.exiftool.ca/File/System/1.0/'
+  xmlns:File='http://ns.exiftool.ca/File/1.0/'
+  xmlns:MPEG='http://ns.exiftool.ca/MPEG/MPEG/1.0/'
+  xmlns:ID3v2_3='http://ns.exiftool.ca/ID3/ID3v2_3/1.0/'
+  xmlns:Composite='http://ns.exiftool.ca/Composite/1.0/'>
+ <ExifTool:ExifToolVersion>9.98</ExifTool:ExifToolVersion>
+ <System:md5checksum>00296aba97b795a1cb769f455de35dd9</System:md5checksum><System:FileName>cpb-aacip-15-10jsxtk3.mp3</System:FileName>
+ <System:Directory>/Volumes/barcode339743_drive/AAPB02L6</System:Directory>
+ <System:FileSize>49 MB</System:FileSize>
+ <System:FileModifyDate>2014:05:07 10:43:54-04:00</System:FileModifyDate>
+ <System:FileAccessDate>2015:07:16 10:16:46-04:00</System:FileAccessDate>
+ <System:FileInodeChangeDate>2015:07:15 15:30:51-04:00</System:FileInodeChangeDate>
+ <System:FilePermissions>rwxrwxrwx</System:FilePermissions>
+ <File:FileType>MP3</File:FileType>
+ <File:FileTypeExtension>mp3</File:FileTypeExtension>
+ <File:MIMEType>audio/mpeg</File:MIMEType>
+ <File:ID3Size>88</File:ID3Size>
+ <MPEG:MPEGAudioVersion>1</MPEG:MPEGAudioVersion>
+ <MPEG:AudioLayer>3</MPEG:AudioLayer>
+ <MPEG:AudioBitrate>128 kbps</MPEG:AudioBitrate>
+ <MPEG:SampleRate>44100</MPEG:SampleRate>
+ <MPEG:ChannelMode>Joint Stereo</MPEG:ChannelMode>
+ <MPEG:MSStereo>Off</MPEG:MSStereo>
+ <MPEG:IntensityStereo>Off</MPEG:IntensityStereo>
+ <MPEG:CopyrightFlag>False</MPEG:CopyrightFlag>
+ <MPEG:OriginalMedia>False</MPEG:OriginalMedia>
+ <MPEG:Emphasis>None</MPEG:Emphasis>
+ <ID3v2_3:Track>0</ID3v2_3:Track>
+ <ID3v2_3:Year>0</ID3v2_3:Year>
+ <ID3v2_3:EncodedBy>Fraunhofer IIS MP3 v04.01.02 (high quality)</ID3v2_3:EncodedBy>
+ <Composite:Duration>0:53:36 (approx)</Composite:Duration>
+</rdf:Description>
+</rdf:RDF>

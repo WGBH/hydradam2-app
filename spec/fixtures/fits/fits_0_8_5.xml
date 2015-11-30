@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fits xmlns="http://hul.harvard.edu/ois/xml/ns/fits/fits_output" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://hul.harvard.edu/ois/xml/ns/fits/fits_output http://hul.harvard.edu/ois/xml/xsd/fits/fits_output.xsd" version="0.8.5" timestamp="6/30/15 6:05 AM">
+  <identification status="CONFLICT">
+    <identity format="ISO Media, Apple QuickTime movie" mimetype="video/quicktime" toolname="FITS" toolversion="0.8.5">
+      <tool toolname="file utility" toolversion="5.04" />
+    </identity>
+    <identity format="MOV" mimetype="video/quicktime" toolname="FITS" toolversion="0.8.5">
+      <tool toolname="Exiftool" toolversion="9.13" />
+    </identity>
+  </identification>
+  <fileinfo>
+    <lastmodified toolname="Exiftool" toolversion="9.13" status="SINGLE_RESULT">2012:01:25 13:34:21-05:00</lastmodified>
+    <filepath toolname="OIS File Information" toolversion="0.2" status="SINGLE_RESULT">/Volumes/NOYCE 1/AMEX Noyce Media/AMEX Noyce DNxHD 1080 23.976p Media/001Noyce DNx Interview Intel 01/001/001NOYCE_001.mov</filepath>
+    <filename toolname="OIS File Information" toolversion="0.2" status="SINGLE_RESULT">001NOYCE_001.mov</filename>
+    <size toolname="OIS File Information" toolversion="0.2" status="SINGLE_RESULT">797563248</size>
+    <md5checksum toolname="OIS File Information" toolversion="0.2" status="SINGLE_RESULT">509bf97e3c9926f9cde5ef09ca5d9f65</md5checksum>
+    <fslastmodified toolname="OIS File Information" toolversion="0.2" status="SINGLE_RESULT">1327516461000</fslastmodified>
+  </fileinfo>
+  <filestatus />
+  <metadata />
+  <statistics fitsExecutionTime="7004">
+    <tool toolname="OIS Audio Information" toolversion="0.1" status="did not run" />
+    <tool toolname="ADL Tool" toolversion="0.1" status="did not run" />
+    <tool toolname="Jhove" toolversion="1.5" executionTime="6099" />
+    <tool toolname="file utility" toolversion="5.04" executionTime="89" />
+    <tool toolname="Exiftool" toolversion="9.13" executionTime="594" />
+    <tool toolname="Droid" toolversion="6.1.3" executionTime="37" />
+    <tool toolname="NLNZ Metadata Extractor" toolversion="3.4GA" executionTime="26" />
+    <tool toolname="OIS File Information" toolversion="0.2" executionTime="5647" />
+    <tool toolname="OIS XML Metadata" toolversion="0.2" status="did not run" />
+    <tool toolname="ffident" toolversion="0.2" executionTime="25" />
+    <tool toolname="Tika" toolversion="1.3" executionTime="6987" />
+  </statistics>
+</fits>
+

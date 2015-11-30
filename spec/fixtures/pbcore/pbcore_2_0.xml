@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pbcoreDescriptionDocument xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html http://pbcore.org/xsd/pbcore-2.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+<!-- Generated at 2015-02-04T00:01:22Z by MediaInfoLib - v0.7.72 -->
+	<pbcoreAssetType>Digital file</pbcoreAssetType>
+   <pbcoreIdentifier source="ITEM_IDENTIFIER">BTL07_vid_abiyoyo</pbcoreIdentifier>
+   <pbcoreIdentifier source="UOI_ID" version="1">1239bc73be2a2d4b6e9e81092e0793d8608899ef</pbcoreIdentifier>
+   <pbcoreIdentifier source="IMPORT_ID" version="1" annotation="Session shared by items brought into ArtesiaDAM together.">163660</pbcoreIdentifier>
+   <pbcoreTitle titleType="Item2">Abiyoyo</pbcoreTitle>
+   <pbcoreTitle titleType="Series">Teachers' Domain</pbcoreTitle>
+   <pbcoreTitle titleType="Program">Between the Lions</pbcoreTitle>
+   <pbcoreSubject subjectType="Subject Heading" annotation="Discipline">English Language Arts</pbcoreSubject>
+   <pbcoreSubject subjectType="Topical" annotation="Sub Topic">Folktales</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">NCTE-01</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">NCTE-03</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">early lit :: fluency :: guided reading</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">early lit :: text comprehension :: active reading</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">early lit :: listening :: listens to stories</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">Listening :: Develop Listening Strategies</pbcoreSubject>
+   <pbcoreSubject subjectType="Keyword" annotation="LexiconTerm">Listening :: Comprehension :: Texts</pbcoreSubject>
+   <pbcoreSubject subjectType="Topical" annotation="Sub Topic">Book and Print Awareness</pbcoreSubject>
+   <pbcoreSubject subjectType="Topical" annotation="Sub Topic">Vocabulary</pbcoreSubject>
+   <pbcoreSubject subjectType="Topical" annotation="Sub Topic">Text Comprehension</pbcoreSubject>
+   <pbcoreDescription descriptionType="Description">This video segment from Between the Lions stars Theo the Lion reading aloud the story of Abiyoyo, a South African tale packed with suspense, heroic characters, and new words.</pbcoreDescription>
+   <pbcoreDescription annotation="Backgrounder" descriptionType="Other (see note)">See related asset "BTL07_vid_abiyoyo_Backgrounder.xml"</pbcoreDescription>
+   <pbcoreDescription descriptionType="Annotation2"> This video segment from Between the Lions stars Theo the Lion reading aloud the story of Abiyoyo, a South African tale packed with suspense, heroic characters, and new words. _-_                          </pbcoreDescription>
+   <pbcoreDescription descriptionType="Synopsis">In this video segment from Between the Lions, Theo reads aloud Abiyoyo, a story about a father and son who are ostracized from their town, but end up as heroes after they confront a monster. Theoís reading illustrates how read-alouds can tell exciting and inspiring stories about other people and places. _-_                          </pbcoreDescription>
+   <pbcoreDescription annotation="Teaching Tips" descriptionType="Other (see note)">Pause the video segment at the point where it shows the cover of the book, and ask students to talk about what they see on screen. Who are the people on the cover? What are they doing? Look at the instrument propped up next to the boy. Do you remember what that instrument is called? Provide the word "ukulele" and explain what it is. You may want to review some of the other vocabulary in the story: "magician," "wand," "disappear," "giant," ìstaggered." Ask children to talk about what they like (or donít like) about this story. What is their favorite part? Invite volunteers to play the roles of father, son, and Abiyoyo as you retell the story with your studentsí help. Be sure to supply a magic wand! Some listeners become fascinated by the word "zoop"óthe magic word used as the father waves his wand. This word can be the springboard for exercises in phonological awareness, spotlighting the /z/ sound and recalling other words that contain it. If we take the word "zoop" further and ask children to manipulate its three sounds: zzz. . . ooo. . . p, stretching them out, and deleting the /p/ at the end or the /z/ at the beginning, we help them develop a more advanced awareness of the separate sounds in words, called phonemes. Phonemic awareness is also a strong predictor of childrenís success in learning to read and spell.</pbcoreDescription>
+   <pbcoreRelation>
+      <pbcoreRelationType source="SOURCE">Source</pbcoreRelationType>
+      <pbcoreRelationIdentifier annotation="ExternalAttribution">This resource was adapted from the Between the Lions show "Abiyoyo." (http://pbskids.org/lions/)</pbcoreRelationIdentifier>
+   </pbcoreRelation>
+   <pbcoreRelation>
+      <pbcoreRelationType source="SOURCE">Source</pbcoreRelationType>
+      <pbcoreRelationIdentifier annotation="Brand">WGBH: Between the Lions</pbcoreRelationIdentifier>
+   </pbcoreRelation>
+   <pbcoreRelation>
+      <pbcoreRelationType source="SOURCE">Source</pbcoreRelationType>
+      <pbcoreRelationIdentifier annotation="SourceText">Between the Lions: "Abiyoyo"</pbcoreRelationIdentifier>
+   </pbcoreRelation>
+   <pbcoreRelation>
+      <pbcoreRelationType source="SOURCE">Tracking Number</pbcoreRelationType>
+      <pbcoreRelationIdentifier>312101</pbcoreRelationIdentifier>
+   </pbcoreRelation>
+   <pbcoreRelation>
+      <pbcoreRelationType source="SOURCE">File</pbcoreRelationType>
+      <pbcoreRelationIdentifier annotation="TD DV Stream"/>
+   </pbcoreRelation>
+   <pbcoreRelation>
+      <pbcoreRelationType source="LINK_TYPE" annotation="Describes the relationship of this item to another.">PARENT</pbcoreRelationType>
+      <pbcoreRelationIdentifier source="UOI_ID" annotation="Identifies the predicate item.">0654d1020e350e7ff6c6ae015c9794f2f96e85b3</pbcoreRelationIdentifier>
+   </pbcoreRelation>
+   <pbcoreAudienceLevel annotation="(WGBH_AUDIENCE.UOI_ID::AUDIENCE=All)">Pre-school (Kindergarten)</pbcoreAudienceLevel>
+   <pbcoreAudienceLevel annotation="(WGBH_AUDIENCE.UOI_ID::AUDIENCE=All)">Kindergarten</pbcoreAudienceLevel>
+   <pbcoreAudienceLevel annotation="(WGBH_AUDIENCE.UOI_ID::AUDIENCE=All)">1</pbcoreAudienceLevel>
+   <pbcoreCreator>
+      <creator/>
+   </pbcoreCreator>
+   <pbcoreContributor>
+      <contributor/>
+   </pbcoreContributor>
+   <pbcorePublisher>
+      <publisher>Teachers' Domain</publisher>
+      <publisherRole>Publisher</publisherRole>
+   </pbcorePublisher>
+   <pbcoreRightsSummary>
+      <rightsEmbedded>
+         <WGBH_RIGHTS RIGHTS_CREDIT="06/25/2010" RIGHTS_TYPE="All" RIGHTS_HOLDER="WGBH Educational Foundation" RIGHTS="(null)" RIGHTS_COVERAGE="06/25/2010" RIGHTS_NOTE="Streaming only"/>
+      </rightsEmbedded>
+   </pbcoreRightsSummary>
+   <pbcoreRightsSummary>
+      <rightsEmbedded>
+         <WGBH_RIGHTS RIGHTS_CREDIT="06/25/2010" RIGHTS_TYPE="All" RIGHTS_HOLDER="WGBH Educational Foundation" RIGHTS="(null)" RIGHTS_COVERAGE="06/25/2010" RIGHTS_NOTE="Streaming only"/>
+      </rightsEmbedded>
+   </pbcoreRightsSummary>
+  <pbcoreInstantiation>
+<instantiationIdentifier source="AAPB GUID">cpb-aacip/15-ng4gm8202t</instantiationIdentifier>
+	<instantiationDate dateType="file modification">2014-02-11T23:52:17Z</instantiationDate>
+	<instantiationDigital>video/DV</instantiationDigital>
+	<instantiationLocation>barcode339795/aapb_001b63a401f3_20140131172021/1239bc73be2a2d4b6e9e81092e0793d8608899ef/BTL07_vid_abiyoyo.dv</instantiationLocation>
+	<instantiationMediaType>Moving Image</instantiationMediaType>
+	<instantiationFileSize unitsOfMeasure="bytes">1141680000</instantiationFileSize>
+	<instantiationTimeStart>00:00:00.000</instantiationTimeStart>
+	<instantiationDuration>00:05:17.450</instantiationDuration>
+	<instantiationDataRate unitsOfMeasure="bits/second" annotation="CBR">28771229</instantiationDataRate>
+	<instantiationTracks>3</instantiationTracks>
+	<instantiationGenerations source="PBCore Controlled Vocabulary">Master: preservation</instantiationGenerations>
+	<instantiationEssenceTrack>
+		<essenceTrackType>Video</essenceTrackType>
+		<essenceTrackIdentifier source="StreamKindID (Mediainfo)">0</essenceTrackIdentifier>
+		<essenceTrackStandard>NTSC</essenceTrackStandard>
+		<essenceTrackEncoding>DV</essenceTrackEncoding>
+		<essenceTrackDataRate unitsOfMeasure="bits/second" annotation="CBR">24417183</essenceTrackDataRate>
+		<essenceTrackFrameRate annotation="CFR">29.970</essenceTrackFrameRate>
+		<essenceTrackBitDepth>8</essenceTrackBitDepth>
+		<essenceTrackFrameSize>720x480</essenceTrackFrameSize>
+		<essenceTrackAspectRatio>1.333</essenceTrackAspectRatio>
+		<essenceTrackDuration>00:05:17.451</essenceTrackDuration>
+		<essenceTrackAnnotation annotationType="PixelAspectRatio">0.889</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="FrameCount">9514</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="ChromaSubsampling">4:1:1</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="ScanType">Interlaced</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="ScanOrder">BFF</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Interlacement">Interlaced</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Compression_Mode">Lossy</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay_DropFrame">Yes</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay_Source">Stream</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="TimeCode_FirstFrame">00:00:00;00</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="TimeCode_Source">Subcode time code</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="StreamSize">968907395</essenceTrackAnnotation>
+	</instantiationEssenceTrack>
+	<instantiationEssenceTrack>
+		<essenceTrackType>Audio</essenceTrackType>
+		<essenceTrackIdentifier source="ID (Mediainfo)">0</essenceTrackIdentifier>
+		<essenceTrackIdentifier source="StreamKindID (Mediainfo)">0</essenceTrackIdentifier>
+		<essenceTrackEncoding>PCM</essenceTrackEncoding>
+		<essenceTrackDataRate unitsOfMeasure="bits/second" annotation="CBR">768000</essenceTrackDataRate>
+		<essenceTrackSamplingRate unitsOfMeasure="Hz">32000</essenceTrackSamplingRate>
+		<essenceTrackBitDepth>12</essenceTrackBitDepth>
+		<essenceTrackDuration>00:05:17.450</essenceTrackDuration>
+		<essenceTrackAnnotation annotationType="BitRate_Encoded">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Channel(s)">2</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="SamplingCount">10158400</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay_Source">Stream</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Video_Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Video0_Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="StreamSize">30475200</essenceTrackAnnotation>
+	</instantiationEssenceTrack>
+	<instantiationEssenceTrack>
+		<essenceTrackType>Audio</essenceTrackType>
+		<essenceTrackIdentifier source="ID (Mediainfo)">1</essenceTrackIdentifier>
+		<essenceTrackIdentifier source="StreamKindID (Mediainfo)">1</essenceTrackIdentifier>
+		<essenceTrackEncoding>PCM</essenceTrackEncoding>
+		<essenceTrackDataRate unitsOfMeasure="bits/second" annotation="CBR">768000</essenceTrackDataRate>
+		<essenceTrackSamplingRate unitsOfMeasure="Hz">32000</essenceTrackSamplingRate>
+		<essenceTrackBitDepth>12</essenceTrackBitDepth>
+		<essenceTrackDuration>00:05:17.450</essenceTrackDuration>
+		<essenceTrackAnnotation annotationType="BitRate_Encoded">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Channel(s)">2</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="SamplingCount">10158400</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Delay_Source">Stream</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Video_Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="Video0_Delay">0</essenceTrackAnnotation>
+		<essenceTrackAnnotation annotationType="StreamSize">30475200</essenceTrackAnnotation>
+	</instantiationEssenceTrack>
+	<instantiationAnnotation annotationType="Format">DV</instantiationAnnotation>
+	<instantiationAnnotation annotationType="FrameRate">29.970</instantiationAnnotation>
+	<instantiationAnnotation annotationType="FrameCount">9514</instantiationAnnotation>
+	<instantiationAnnotation annotationType="Drive">Preservation copy on hard drive aapb_001b63a401f3_20140131172021, barcode363958</instantiationAnnotation>
+	<instantiationAnnotation annotationType="File Name">BTL07_vid_abiyoyo.dv</instantiationAnnotation>
+	<instantiationAnnotation annotationType="Artesia GUID">1239bc73be2a2d4b6e9e81092e0793d8608899ef</instantiationAnnotation>
+	<instantiationAnnotation annotationType="MD5 Checksum">9038f836dc1b7345e9c5c658b809fb48</instantiationAnnotation></pbcoreInstantiation>
+<!--  ARTESIA DAM VERSION START -->
+<!-- 
+<pbcoreInstantiation>
+      <instantiationIdentifier source="ArtesiaDAM UOI_ID">1239bc73be2a2d4b6e9e81092e0793d8608899ef</instantiationIdentifier>
+      <instantiationIdentifier source="Original file name" annotation="ArtesiaDAM user ID:  imported 2009-12-15 13:40:52">BTL07_vid_abiyoyo.dv</instantiationIdentifier>
+      <instantiationDimensions unitsOfMeasure="missing value" annotation="horizontal x vertical">720 x 480</instantiationDimensions>
+      <instantiationPhysical>DV Stream</instantiationPhysical>
+      <instantiationDigital>video/x-dv</instantiationDigital>
+      <instantiationStandard>NTSC</instantiationStandard>
+      <instantiationLocation/>
+      <instantiationMediaType>Moving Image</instantiationMediaType>
+      <instantiationColors>Color</instantiationColors>
+      <instantiationLanguage>eng</instantiationLanguage>
+      <instantiationAlternativeModes>Described Video.  Closed Captioned.  </instantiationAlternativeModes>
+      <instantiationEssenceTrack>
+         <essenceTrackAspectRatio>4:3</essenceTrackAspectRatio>
+      </instantiationEssenceTrack>
+      <instantiationEssenceTrack>
+         <essenceTrackType>Audio</essenceTrackType>
+         <essenceTrackIdentifier>Audio Track 1</essenceTrackIdentifier>
+         <essenceTrackEncoding>vdva -</essenceTrackEncoding>
+         <essenceTrackSamplingRate unitsOfMeasure="samples per second">32000</essenceTrackSamplingRate>
+         <essenceTrackBitDepth>16</essenceTrackBitDepth>
+         <essenceTrackTimeStart>0.000 seconds</essenceTrackTimeStart>
+         <essenceTrackDuration>317.450 seconds</essenceTrackDuration>
+      </instantiationEssenceTrack>
+      <instantiationEssenceTrack>
+         <essenceTrackType>Video</essenceTrackType>
+         <essenceTrackIdentifier>Video Track 1</essenceTrackIdentifier>
+         <essenceTrackEncoding>dvc Apple DV/DVCPRO - NTSC</essenceTrackEncoding>
+         <essenceTrackPlaybackSpeed unitsOfMeasure="frames per second">29.97</essenceTrackPlaybackSpeed>
+         <essenceTrackBitDepth>24</essenceTrackBitDepth>
+         <essenceTrackFrameSize annotation="width x height">720 x 480</essenceTrackFrameSize>
+         <essenceTrackAspectRatio annotation="width:height">3:2</essenceTrackAspectRatio>
+         <essenceTrackTimeStart>0.000 seconds</essenceTrackTimeStart>
+         <essenceTrackDuration>317.451 seconds</essenceTrackDuration>
+      </instantiationEssenceTrack>
+  </pbcoreInstantiation>
+ -->
+<!-- ARTESIA DAM VERSION END -->
+   <pbcoreAnnotation annotationType="Audio Quality2">(Audio Track 1) start time : 0.000 seconds </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Audio Quality2">(Audio Track 1) duration : 317.450 seconds </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Audio Quality2">(Audio Track 1) compression format : vdva - </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Audio Quality2">(Audio Track 1) bits/channels : 16 / 2 </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Audio Quality2">(Audio Track 1) samples per second : 32000 </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Movie Quality">(Video Track 1) start time : 0.000 seconds </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Movie Quality">(Video Track 1) duration : 317.451 seconds </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Movie Quality">(Video Track 1) frames per second : 29.97 </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Movie Quality">(Video Track 1) compression format : dvc Apple DV/DVCPRO - NTSC</pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Movie Quality">(Video Track 1) width/height/depth : 720 / 480 / 24 </pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="Source">/Volumes/AAPP_3/BTL07/BTL07_vid_abiyoyo.dv</pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="SOURCE">ExternalAttribution</pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="SOURCE">Brand</pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="SOURCE">SourceText</pbcoreAnnotation>
+   <pbcoreAnnotation annotationType="SOURCE">TD DV Stream</pbcoreAnnotation>
+   <pbcoreExtension>
+      <extensionEmbedded annotation="Release date information">
+         <WGBH_DATE_RELEASE DATE_RELEASE="2007-07-09 00:00:00"/>
+      </extensionEmbedded>
+   </pbcoreExtension>
+</pbcoreDescriptionDocument>

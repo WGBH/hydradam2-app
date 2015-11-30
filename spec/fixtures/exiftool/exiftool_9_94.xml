@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rdf:RDF xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'>
+
+<rdf:Description rdf:about='/Volumes/CLASSICAL-2/CLASSICAL-2_2of2/KCC Archive/2012/KCC - OLD production/KCC16JAN2012/MUX/Feb21/2 Schuman_a.aiff'
+  xmlns:et='http://ns.exiftool.ca/1.0/' et:toolkit='Image::ExifTool 9.94'
+  xmlns:ExifTool='http://ns.exiftool.ca/ExifTool/1.0/'
+  xmlns:System='http://ns.exiftool.ca/File/System/1.0/'
+  xmlns:File='http://ns.exiftool.ca/File/1.0/'
+  xmlns:AIFF='http://ns.exiftool.ca/AIFF/AIFF/1.0/'
+  xmlns:Composite='http://ns.exiftool.ca/Composite/1.0/'>
+ <ExifTool:ExifToolVersion>9.94</ExifTool:ExifToolVersion>
+ <System:md5checksum>00045157d5b641867d189dc67ddcc617</System:md5checksum><System:FileName>2 Schuman_a.aiff</System:FileName>
+ <System:Directory>/Volumes/CLASSICAL-2/CLASSICAL-2_2of2/KCC Archive/2012/KCC - OLD production/KCC16JAN2012/MUX/Feb21</System:Directory>
+ <System:FileSize>56 MB</System:FileSize>
+ <System:FileModifyDate>2012:01:16 08:28:57-05:00</System:FileModifyDate>
+ <System:FileAccessDate>2015:05:11 15:41:44-04:00</System:FileAccessDate>
+ <System:FileInodeChangeDate>2014:09:10 18:23:11-04:00</System:FileInodeChangeDate>
+ <System:FilePermissions>rwx------</System:FilePermissions>
+ <File:FileType>AIFC</File:FileType>
+ <File:FileTypeExtension>aifc</File:FileTypeExtension>
+ <File:MIMEType>audio/x-aiff</File:MIMEType>
+ <AIFF:FormatVersionTime>1990:05:23 14:40:00</AIFF:FormatVersionTime>
+ <AIFF:NumChannels>2</AIFF:NumChannels>
+ <AIFF:NumSampleFrames>14685300</AIFF:NumSampleFrames>
+ <AIFF:SampleSize>16</AIFF:SampleSize>
+ <AIFF:SampleRate>44100</AIFF:SampleRate>
+ <AIFF:CompressionType>Little-endian, no compression</AIFF:CompressionType>
+ <AIFF:CompressorName></AIFF:CompressorName>
+ <Composite:Duration>0:05:33</Composite:Duration>
+</rdf:Description>
+</rdf:RDF>
