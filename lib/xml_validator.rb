@@ -21,11 +21,11 @@ class XMLValidator
     validate.empty?
   end
 
-  private
-
   def validate
     noko_xsd.validate(noko_xml)
   end
+
+  private
 
   def noko_xml
     @noko_xml ||= Nokogiri::XML(xml) do |config|
