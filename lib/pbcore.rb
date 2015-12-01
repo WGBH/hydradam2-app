@@ -15,4 +15,8 @@ module PBCore
   def self.xsd
     @xsd ||= File.read(XSD_PATH)
   end
+
+  def self.validate(xml)
+    XMLValidator.new(xml: xml, xsd: xsd).validate
+  end
 end
