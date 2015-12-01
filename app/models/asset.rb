@@ -15,7 +15,6 @@ class Asset < ActiveFedora::Base
     raise InvalidPBCore unless PBCore.valid?(pbcore.content)
     pbcore.noko.remove_namespaces!
     self.title = pbcore.noko.xpath("//pbcoreTitle/text()").map(&:to_s)
-    self.title << "other junk"
   end
 
   class AssetError < StandardError; end
