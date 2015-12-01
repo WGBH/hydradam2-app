@@ -78,12 +78,12 @@
 	<instantiationDigital>video/DV</instantiationDigital>
 	<instantiationLocation>barcode339795/aapb_001b63a401f3_20140131172021/1239bc73be2a2d4b6e9e81092e0793d8608899ef/BTL07_vid_abiyoyo.dv</instantiationLocation>
 	<instantiationMediaType>Moving Image</instantiationMediaType>
+  <instantiationGenerations source="PBCore Controlled Vocabulary">Master: preservation</instantiationGenerations>
 	<instantiationFileSize unitsOfMeasure="bytes">1141680000</instantiationFileSize>
 	<instantiationTimeStart>00:00:00.000</instantiationTimeStart>
 	<instantiationDuration>00:05:17.450</instantiationDuration>
 	<instantiationDataRate unitsOfMeasure="bits/second" annotation="CBR">28771229</instantiationDataRate>
 	<instantiationTracks>3</instantiationTracks>
-	<instantiationGenerations source="PBCore Controlled Vocabulary">Master: preservation</instantiationGenerations>
 	<instantiationEssenceTrack>
 		<essenceTrackType>Video</essenceTrackType>
 		<essenceTrackIdentifier source="StreamKindID (Mediainfo)">0</essenceTrackIdentifier>
