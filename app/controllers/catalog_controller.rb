@@ -1,5 +1,17 @@
 class CatalogController < ApplicationController
   include CurationConcerns::CatalogController
+
+  def self.search_config
+    super.merge({'qf' => [  solr_name('title', :stored_searchable),
+                            solr_name('description', :stored_searchable),
+                            solr_name('filename', :stored_searchable),
+                            solr_name('lto_path', :stored_searchable),
+                            solr_name('artesia_uoi_id', :stored_searchable),
+                            solr_name('creator', :stored_searchable)
+                          ]
+                })
+  end
+
   configure_blacklight do |config|
     config.search_builder_class = CurationConcerns::SearchBuilder
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params

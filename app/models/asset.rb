@@ -7,13 +7,34 @@ class Asset < ActiveFedora::Base
   contains :pbcore, class_name: "XMLFile"
 
   # TODO: Review these predicates to see if we're using them appropriately.
-  property :department, predicate: ::RDF::Vocab::EBUCore.hasDepartment
-  property :artesia_uoi_id, predicate: 'http://wgbh-mla.org/schema#hasArtesiaUOI_ID' # does not exist yet
-  property :file_size, predicate: ::RDF::Vocab::EBUCore.fileSize
-  property :lto_path, predicate: ::RDF::Vocab::PREMIS.hasOriginalName
-  property :filename, predicate: ::RDF::Vocab::EBUCore.filename
-  property :dimension_annotation, predicate: 'http://wgbh-mla.org/schema#hasDimensionAnnotation'
-  property :description, predicate: ::RDF::Vocab::DC11.description
+  # TODO: wgbh-mla.org doesn't exist yet.
+  property :department, predicate: ::RDF::Vocab::EBUCore.hasDepartment do |index|
+    index.as :stored_searchable
+  end
+
+  property :artesia_uoi_id, predicate: 'http://wgbh-mla.org/schema#hasArtesiaUOI_ID' do |index|
+    index.as :stored_searchable
+  end
+
+  property :file_size, predicate: ::RDF::Vocab::EBUCore.fileSize do |index|
+    index.as :stored_searchable
+  end
+
+  property :lto_path, predicate: ::RDF::Vocab::PREMIS.hasOriginalName do |index|
+    index.as :stored_searchable
+  end
+
+  property :filename, predicate: ::RDF::Vocab::EBUCore.filename do |index|
+    index.as :stored_searchable
+  end
+
+  property :dimension_annotation, predicate: 'http://wgbh-mla.org/schema#hasDimensionAnnotation' do |index|
+    index.as :stored_searchable
+  end
+
+  property :description, predicate: ::RDF::Vocab::DC11.description do |index|
+    index.as :stored_searchable
+  end
 
   # validation rules
   validates :title, presence: { message: 'Your work must have a title.' }
