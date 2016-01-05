@@ -48,10 +48,7 @@ group :development do
   gem 'spring'
 end
 
-gem 'curation_concerns', github: 'projecthydra-labs/curation_concerns'
-gem 'hydra-pcdm', github: 'projecthydra-labs/hydra-pcdm'
-gem 'hydra-works', github: 'projecthydra-labs/hydra-works'
-gem 'hydra-derivatives', github: 'projecthydra/hydra-derivatives'
+gem 'curation_concerns', '~> 0.5.0'
 gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
