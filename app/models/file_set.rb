@@ -2,5 +2,6 @@
 class FileSet < ActiveFedora::Base
   include ::CurationConcerns::FileSetBehavior
 
-  directly_contains_one :fits, through: :files, type: ::RDF::URI('http://example.org/TODO-replace-with-actual-predicate'), class_name: 'XMLFile'
+  # TODO: replace bogus predicate with legit one.
+  directly_contains_one :technical_metadata, through: :files, type: ::RDF::URI('http://example.org/TODO-replace-with-actual-predicate'), class_name: 'XMLFile'
 end
