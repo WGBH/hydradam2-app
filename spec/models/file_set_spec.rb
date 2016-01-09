@@ -7,9 +7,9 @@ describe FileSet, :requires_fedora do
     subject.save!
   end
 
-  describe '#fits=' do
+  describe '#technical_metadata=' do
     it 'accepts a class of type XMLFile' do
-      expect{ subject.fits = XMLFile.new }.to_not raise_error
+      expect{ subject.technical_metadata = XMLFile.new }.to_not raise_error
     end
   end
 end
