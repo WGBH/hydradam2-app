@@ -1,4 +1,3 @@
-# Overriding default from curation_concerns gem
 class CurationConcerns::SearchBuilder < Hydra::SearchBuilder
   include BlacklightAdvancedSearch::AdvancedSearchBuilder
   include Hydra::Collections::SearchBehaviors
@@ -27,7 +26,7 @@ class CurationConcerns::SearchBuilder < Hydra::SearchBuilder
   # This is included as part of blacklight search solr params logic
   def filter_models(solr_parameters)
     solr_parameters[:fq] ||= []
-    solr_parameters[:fq] << '(' + (work_clauses + collection_clauses).join(' OR ') + ')'
+    solr_parameters[:fq] << '(' + (work_clauses + collection_clauses + file_set_clauses).join(' OR ') + ')'
   end
 
   def work_clauses
@@ -40,5 +39,9 @@ class CurationConcerns::SearchBuilder < Hydra::SearchBuilder
   def collection_clauses
     return [] if blacklight_params.key?(:f) && Array(blacklight_params[:f][:generic_type_sim]).include?('Work')
     [ActiveFedora::SolrQueryBuilder.construct_query_for_rel(has_model: ::Collection.to_class_uri)]
+  end
+
+  def file_set_clauses
+    [ActiveFedora::SolrQueryBuilder.construct_query_for_rel(has_model: ::FileSet.to_class_uri)]
   end
 end
