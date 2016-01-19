@@ -70,3 +70,5 @@ A Hydra app that focuses on Digital Asset Management functions.
   ```bash
   rake rails s
   ```
+
+1. Verify Rails is working by opening http://localhost:3000 in your browser.
