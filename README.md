@@ -3,6 +3,14 @@
 A Hydra app that focuses on Digital Asset Management functions.
 
 
+## Dependencies
+
+HydraDAM has the following dependencies that you must install yourself.
+
+1. Ruby >= 2.2.0
+1. Java 1.8
+1. Redis server
+
 ## Development Setup
 
 > NOTE: All commands after Step 1 should be run from where ever your code is located.
