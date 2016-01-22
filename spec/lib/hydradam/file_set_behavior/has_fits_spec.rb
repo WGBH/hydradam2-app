@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'hydradam/file_set_behavior/has_fits'
-require 'pry'
 
 describe HydraDAM::FileSetBehavior::HasFITS, :requires_fedora do
 
@@ -29,6 +28,21 @@ describe HydraDAM::FileSetBehavior::HasFITS, :requires_fedora do
     it 'accepts a XMLFile' do
       subject.save! # the parent object must be saved before attaching files.
       expect{ subject.fits = XMLFile.new }.to_not raise_error
+    end
+  end
+
+
+  describe '#assign_properties_from_fits' do
+
+    let(:fits_file) { File.open('./spec/fixtures/fits/fits_0_8_10.xml') }
+
+    before do
+      Hydra::Works::AddFileToFileSet.call(subject, fits_file, :fits)
+      subject.assign_properties_from_fits
+    end
+
+    it 'assigns values from FITS XML file to RDF properties on the object' do
+      expect(subject.filename).to eq "SANY0473.MP4"
     end
   end
 
