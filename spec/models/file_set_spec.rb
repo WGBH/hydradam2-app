@@ -12,10 +12,4 @@ describe FileSet, :requires_fedora do
       expect{ subject.fits = XMLFile.new }.to_not raise_error
     end
   end
-
-  describe '#ffprobe=' do
-    it 'accepts a class of type XMLFile' do
-      expect{ subject.ffprobe = XMLFile.new }.to_not raise_error
-    end
-  end
 end
