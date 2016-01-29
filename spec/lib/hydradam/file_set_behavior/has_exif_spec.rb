@@ -42,7 +42,7 @@ describe HydraDAM::FileSetBehavior::HasEXIF, :requires_fedora do
     end
 
     it 'assigns values from EXIF XML file to RDF properties on the object' do
-      expect(subject.filename).to eq "SANY0473.MP4"
+      expect(subject.filename).to eq "2 Schuman_a.aiff"
     end
   end
 
