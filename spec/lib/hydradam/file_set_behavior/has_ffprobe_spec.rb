@@ -34,7 +34,7 @@ require 'rails_helper'
  
    describe '#assign_properties_from_ffprobe' do
  
-     let(:ffprobe_file) { File.open('') }
+     let(:ffprobe_file) { File.open('./spec/fixtures/ffprobe/MDPI_49000000003411_01_pres_ffprobe.xml') }
  
      before do
        Hydra::Works::AddFileToFileSet.call(subject, ffprobe_file, :ffprobe)
@@ -42,7 +42,7 @@ require 'rails_helper'
       end
   
       it 'assigns values from ffprobe XML file to RDF properties on the object' do
- -      expect(subject.filename).to eq "SANY0473.MP4"
+ -      
  +      expect(subject.filename).to eq "2 Schuman_a.aiff"
       end
     end
