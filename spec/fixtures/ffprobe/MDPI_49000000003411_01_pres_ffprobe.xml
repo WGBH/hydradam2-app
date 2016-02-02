@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ffprobe>
+    <streams>
+        <stream index="0" codec_name="pcm_s24le" codec_long_name="PCM signed 24-bit little-endian"
+            codec_type="audio" codec_time_base="1/96000" codec_tag_string="[1][0][0][0]"
+            codec_tag="0x0001" sample_fmt="s32" sample_rate="96000" channels="2"
+            channel_layout="stereo" bits_per_sample="24" r_frame_rate="0/0" avg_frame_rate="0/0"
+            time_base="1/96000" duration_ts="131953058" duration="1374.511021" bit_rate="4608000"
+            bits_per_raw_sample="24">
+            <disposition default="0" dub="0" original="0" comment="0" lyrics="0" karaoke="0"
+                forced="0" hearing_impaired="0" visual_impaired="0" clean_effects="0"
+                attached_pic="0"/>
+        </stream>
+    </streams>
+
+    <format
+        filename="/srv/scratch/transcoder_workspace_xcode-02/MDPI_49000000003411.downloading/data/MDPI_49000000003411_01_pres.wav"
+        nb_streams="1" nb_programs="0" format_name="wav"
+        format_long_name="WAV / WAVE (Waveform Audio)" duration="1374.511021" size="791718490"
+        bit_rate="4608000" probe_score="99">
+        <tag key="artist" value="Genesis"/>
+        <tag key="title" value="Supper&apos;s Ready"/>
+        <tag key="encoder" value="Lavf56.4.101"/>
+    </format>
+</ffprobe>
