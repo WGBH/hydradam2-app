@@ -42,8 +42,8 @@ require 'rails_helper'
       end
   
       it 'assigns values from ffprobe XML file to RDF properties on the object' do
- -      
- +      expect(subject.filename).to eq "2 Schuman_a.aiff"
+      
+      expect(subject.filename).to eq "2 Schuman_a.aiff"
       end
     end
   
