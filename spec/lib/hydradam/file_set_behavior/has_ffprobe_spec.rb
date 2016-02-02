@@ -43,7 +43,7 @@ require 'rails_helper'
   
       it 'assigns values from ffprobe XML file to RDF properties on the object' do
       
-      expect(subject.filename).to eq "2 Schuman_a.aiff"
+      expect(subject.filename).to eq "/srv/scratch/transcoder_workspace_xcode-02/MDPI_49000000003411.downloading/data/MDPI_49000000003411_01_pres.wav"
       end
     end
   

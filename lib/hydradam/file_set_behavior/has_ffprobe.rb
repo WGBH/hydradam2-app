@@ -23,7 +23,7 @@
       def assign_properties_from_ffprobe
          noko = ffprobe.noko.dup
          noko.remove_namespaces!
-         self.filename = noko.xpath('//FileName').text
+         self.filename = noko.xpath('//ffprobe/format/@filename').text
        end
      end
   end
