@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 
--<IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
--<Carrier type="OpenReel">
+<Carrier type="OpenReel">
 
 <Identifier>9858</Identifier>
 
 <Barcode>40000000523896X</Barcode>
 
 
--<Configuration>
+<Configuration>
 
 <Track>Full track</Track>
 
@@ -27,7 +27,7 @@
 <DirectionsRecorded>1</DirectionsRecorded>
 
 
--<PhysicalCondition>
+<PhysicalCondition>
 
 <Damage>Minor</Damage>
 
@@ -38,36 +38,36 @@
 <Repaired>No</Repaired>
 
 
--<Preview>
+<Preview>
 
 <Comments/>
 
 </Preview>
 
 
--<Cleaning>
+<Cleaning>
 
 <Date xsi:nil="true"/>
 
 </Cleaning>
 
 
--<Baking>
+<Baking>
 
 <Date xsi:nil="true"/>
 
 </Baking>
 
 
--<Parts>
+<Parts>
 
 <DigitizingEntity>Memnon Archiving Services Inc</DigitizingEntity>
 
 
--<Part Side="1">
+<Part Side="1">
 
 
--<Ingest>
+<Ingest>
 
 <Date>2015-04-28</Date>
 
@@ -96,10 +96,10 @@
 <ManualCheck>No</ManualCheck>
 
 
--<Files>
+<Files>
 
 
--<File>
+<File>
 
 <FileName>MDPI_40000000523896X_01_pres.wav</FileName>
 
@@ -108,7 +108,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_40000000523896X_01_prod.wav</FileName>
 
@@ -117,7 +117,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_40000000523896X_01_access.mp4</FileName>
 
