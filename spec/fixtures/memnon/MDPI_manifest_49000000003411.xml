@@ -1,27 +1,26 @@
 <?xml version="1.0"?>
 
--<IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
 
 
--<Carrier type="Open Reel Audio Tape">
+<Carrier type="Open Reel Audio Tape">
 
 <Barcode>49000000003411</Barcode>
 
-
--<Parts>
+<Parts>
 
 <DigitizingEntity>QC Generated Data</DigitizingEntity>
 
 
--<Part Side="1">
+<Part Side="1">
 
 <ManualCheck>No</ManualCheck>
 
 
--<Files>
+<Files>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_01_access.mp4</FileName>
 
@@ -30,7 +29,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_01_pres.wav</FileName>
 
@@ -39,7 +38,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_01_prod.wav</FileName>
 
@@ -52,15 +51,15 @@
 </Part>
 
 
--<Part Side="2">
+<Part Side="2">
 
 <ManualCheck>No</ManualCheck>
 
 
--<Files>
+<Files>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_02_access.mp4</FileName>
 
@@ -69,7 +68,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_02_pres.wav</FileName>
 
@@ -78,7 +77,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_02_prod.wav</FileName>
 
@@ -91,15 +90,15 @@
 </Part>
 
 
--<Part Side="3">
+<Part Side="3">
 
 <ManualCheck>No</ManualCheck>
 
 
--<Files>
+<Files>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_03_access.mp4</FileName>
 
@@ -108,7 +107,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_03_pres.wav</FileName>
 
@@ -117,7 +116,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_03_prod.wav</FileName>
 
@@ -130,15 +129,15 @@
 </Part>
 
 
--<Part Side="4">
+<Part Side="4">
 
 <ManualCheck>No</ManualCheck>
 
 
--<Files>
+<Files>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_04_access.mp4</FileName>
 
@@ -147,7 +146,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_04_pres.wav</FileName>
 
@@ -156,7 +155,7 @@
 </File>
 
 
--<File>
+<File>
 
 <FileName>MDPI_49000000003411_04_prod.wav</FileName>
 
