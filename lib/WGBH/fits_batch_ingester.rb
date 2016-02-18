@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'hydra/works'
 require 'has_logger'
 
 module WGBH
@@ -22,19 +22,20 @@ module WGBH
         file = File.open(filename)
         Hydra::Works::AddFileToFileSet.call(file_set, file, :fits)
         file.close
+        file_set.assign_properties_from_fits
         @ingested_objects << file_set
       end
     end
 
-    private
-
     def filenames
-      filenames = Dir["#{path}/*"]
-      # Exclude files that begin with dot.
-      # TODO: exclude more files?
-      filenames.reject! { |filename| filename =~ /^\.\.?/ }
-      # Use absolute paths
-      filenames.map! { |filename| File.expand_path(filename) }
+      @filenames ||= begin
+        files = Dir["#{path}/*"]
+        # Exclude files that begin with dot.
+        # TODO: exclude more files?
+        files.reject! { |filename| filename =~ /^\.\.?/ }
+        # Use absolute paths
+        files.map! { |filename| File.expand_path(filename) }
+      end
     end
   end
 end

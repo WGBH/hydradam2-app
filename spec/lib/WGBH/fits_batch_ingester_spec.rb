@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 require 'wgbh/fits_batch_ingester'
 
 describe WGBH::FITSBatchIngester do
@@ -59,6 +59,22 @@ describe WGBH::FITSBatchIngester do
 
       it 'returns a list of saved objects' do
         expect(each_has_been_persisted?(@ingester.ingested_objects)).to eq true
+      end
+
+      it 'returns object that have metadata from the FITS xml files' do
+
+        # Create a hash of fixture data, keyed by filename.
+        # This is checked against what was actually ingested.
+        fixture_data = [
+          {filename: "A060_C001_1114XW_001.R3D", checksum: "72b25107b04ea51ec827053810cc19a8"},
+          {filename: "A060_C001_1114XW_002.R3D", checksum: "69a9021868012e8cc8b4866c80decb54"}
+        ].to_set
+
+        ingested_data = @ingester.ingested_objects.map do |file_set|
+          {filename: file_set.filename, checksum: file_set.original_checksum.first}
+        end.to_set
+
+        expect(ingested_data).to eq fixture_data
       end
     end
   end
