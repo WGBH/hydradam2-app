@@ -35,7 +35,7 @@ module HydraDAM
         # TODO: blindly removing namespaces here is not ideal
         noko.remove_namespaces!
         self.filename = noko.xpath('//fits/fileinfo/filename').text
-        self.original_checksum << noko.xpath('//fits/fileinfo/md5checksum').text
+        self.original_checksum += [noko.xpath('//fits/fileinfo/md5checksum').text]
       end
 
 
