@@ -11,6 +11,14 @@ module HydraDAM
         include DependsOn
         depends_on(ActiveFedora::Base)
 
+        property :filename, predicate: RDF::Vocab::EBUCore.filename, multiple: false do |index|
+          index.as :stored_searchable
+        end
+
+        property :original_checksum, predicate: RDF::Vocab::NFO.hashValue do |index|
+          index.as :stored_searchable
+        end
+
         # Ensure module dependencies
         include Hydra::Works::FileSetBehavior
 

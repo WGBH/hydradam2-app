@@ -23,6 +23,7 @@ module WGBH
         Hydra::Works::AddFileToFileSet.call(file_set, file, :fits)
         file.close
         file_set.assign_properties_from_fits
+        file_set.save!
         @ingested_objects << file_set
       end
     end
