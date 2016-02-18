@@ -5,9 +5,11 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
-begin
-  require 'rspec/core/rake_task'
-  RSpec::Core::RakeTask.new(:spec)
-rescue LoadError
-  # no rspec available
+unless Rake::Task.task_defined? :spec
+  begin
+    require 'rspec/core/rake_task'
+    RSpec::Core::RakeTask.new(:spec)
+  rescue LoadError
+    # no rspec available
+  end
 end
