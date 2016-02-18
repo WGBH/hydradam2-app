@@ -38,6 +38,10 @@ describe WGBH::FITSBatchIngester do
         @ingester.run!
       end
 
+      after(:all) do
+        @ingester.ingested_objects.each{ |file_set| file_set.delete }
+      end
+
       # helper method - returns true if all of `objects' inherit from
       #   `class_or_module'
       def each_is_a?(objects, class_or_module)
@@ -62,18 +66,18 @@ describe WGBH::FITSBatchIngester do
       end
 
       it 'returns object that have metadata from the FITS xml files' do
-
-        # Create a hash of fixture data, keyed by filename.
-        # This is checked against what was actually ingested.
+        # Create a set of hashes from fixture data.
         fixture_data = [
           {filename: "A060_C001_1114XW_001.R3D", checksum: "72b25107b04ea51ec827053810cc19a8"},
           {filename: "A060_C001_1114XW_002.R3D", checksum: "69a9021868012e8cc8b4866c80decb54"}
         ].to_set
 
+        # Create a set of hashes from the ingested data.
         ingested_data = @ingester.ingested_objects.map do |file_set|
           {filename: file_set.filename, checksum: file_set.original_checksum.first}
         end.to_set
 
+        # The two sets should be the same. Order doesn't matter.
         expect(ingested_data).to eq fixture_data
       end
     end
