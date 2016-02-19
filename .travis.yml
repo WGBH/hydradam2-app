@@ -1,6 +1,6 @@
 language: ruby
 rvm:
   - 2.2.0
-script: bundle exec rake spec
-env:
-  - RSPEC_SKIP=requires_fedora
+script: bundle exec rake ci
+before_script:
+  - jdk_switcher use oraclejdk8
