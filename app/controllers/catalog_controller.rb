@@ -7,7 +7,8 @@ class CatalogController < ApplicationController
                             solr_name('filename', :stored_searchable),
                             solr_name('lto_path', :stored_searchable),
                             solr_name('artesia_uoi_id', :stored_searchable),
-                            solr_name('creator', :stored_searchable)
+                            solr_name('creator', :stored_searchable),
+                            solr_name('original_checksum', :stored_searchable)
                           ]
                 })
   end
