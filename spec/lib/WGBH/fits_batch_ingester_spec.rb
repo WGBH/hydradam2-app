@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'wgbh/fits_batch_ingester'
+require 'WGBH/fits_batch_ingester'
 
 describe WGBH::FITSBatchIngester do
 
