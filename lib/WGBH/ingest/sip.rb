@@ -2,32 +2,50 @@ module WGBH
   module Ingest
     class SIP
 
-      attr_accessor :fits_path
+      attr_accessor :fits_path, :depositor
 
-      attr_reader :errors
+      attr_reader :ingested_objects
 
-      # - allows setting of filepaths
-      # - creates Fedora objects from files
-      # Public api
-      #   - #ingest!
-      #   - #valid?
-      #   - #validate!
-
-      def validate!
-        raise Errors::InvalidSIP unless File.exists? fits_path.to_s
+      def initialize(opts={})
+        raise ArgumentError, "Option :depositor is required" unless opts.key? :depositor
+        @depositor = opts.delete(:depositor)
+        @ingested_objects = []
       end
 
-      def similar_objects
-        similar_objects = similarity_queries.map do |query|
+      def validate!
+        raise Error::InvalidSIP unless File.exists? fits_path.to_s
+      end
+
+      def duplicate_objects_found
+        equivalence_queries.map do |query|
           ActiveFedora::Base.where(query)
         end.flatten
       end
 
+      def ingest!
+
+        raise Error::DuplicateObjectFound unless duplicate_objects_found.empty?
+
+        # TODO: handle cases where we're not dealing with just a FITS file.
+        #  Other options include a PBCore file, and a EXIF file.
+        file_set = FileSet.new
+        file_set.apply_depositor_metadata depositor
+        file_set.save!
+        file = File.open(fits_path)
+        Hydra::Works::AddFileToFileSet.call(file_set, file, :fits)
+        file.close
+        file_set.assign_properties_from_fits
+        file_set.save!
+        @ingested_objects << file_set
+      end
+
       private
 
-      def similarity_queries
+      def equivalence_queries
         queries = []
-        queries << {original_checksum: fits_checksum}
+        # TODO: Avoid having to specify the dynamic suffix _tesim here.
+        # Dynamic suffixes are subject to change via how they are indexed.
+        queries << {original_checksum_tesim: fits_checksum}
       end
 
       def fits_checksum
@@ -43,24 +61,10 @@ module WGBH
 
     end
 
-    class SIPBatch
-      # Logic
-      #   - traverses a directory identifying files that belong in a SIP
-      #   - instantiates SIPs and assigns filepaths
-      #   - invokes SIP's ingest method
-      #   - writes to log
-      # Required class variables
-      #   - @sip_class
-      # Required instance variables
-      #   - @path
-      # Public API
-      #   - #ingest!
-    end
-
-
     # Custom errors
-    module Errors
+    module Error
       class InvalidSIP < StandardError; end
+      class DuplicateObjectFound < StandardError; end
     end
   end
 end
