@@ -3,21 +3,30 @@ module IU
   class SIPIngester
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     attr_reader :path, :depositor, :ingested_objects, :access_copy_file_set
                 :mezzanine_file_set
 =======
     attr_reader :path, :depositor, :ingested_objects
 >>>>>>> Adds parameter checking
+=======
+    attr_reader :path, :depositor, :ingested_objects, :access_copy_file_set
+                :mezzanine_file_set
+>>>>>>> Half finished IU ingest code.. work in progress.
     
     def initialize(opts={})
       raise ArgumentError, "Missing required option :path" unless opts.key? :path
       raise ArgumentError, "Missing required option :depositor" unless opts.key? :depositor
 
 <<<<<<< HEAD
+<<<<<<< HEAD
       @path = File.expand_path(opts.delete(:path))
 =======
       @path = File.expand_path(:path) if opts.key?(:path)
 >>>>>>> Adds parameter checking
+=======
+      @path = File.expand_path(opts.delete(:path))
+>>>>>>> Half finished IU ingest code.. work in progress.
       @depositor = opts.delete(:depositor)
       @ingested_objects = []
     end
