@@ -2,56 +2,61 @@ module IU
   
   class SIPIngester
 
-    attr_reader :path, :depositor, :ingested_objects
+    attr_reader :path, :depositor, :ingested_objects, :access_copy_file_set
+                :mezzanine_file_set
     
     def initialize(opts={})
       raise ArgumentError, "Missing required option :path" unless opts.key? :path
       raise ArgumentError, "Missing required option :depositor" unless opts.key? :depositor
 
-      @path = File.expand_path(:path) if opts.key?(:path)
+      @path = File.expand_path(opts.delete(:path))
       @depositor = opts.delete(:depositor)
       @ingested_objects = []
     end
 
     def run!
-      
       @ingested_objects << ffprobe_file_set
-       
     end
 
-    def ffprobe_path
-
-      filenames.select { |f| f =~ /.*ffprobe.*/ }.first
-
+    def access_copy_ffprobe_path
+      filenames.select { |f| f =~ /access_ffprobe.xml/ }.first
     end
 
-    def filenames
-      
-       require 'pry'
-       binding.pry
-	
-      @filenames = begin
-        files = Dir["#{path}/*"]
-       #files.reject! {|filename| filename =~ /^\.\.?$/}
-        files.map! {|filename| File.expand_path(filename)}
-      end
+    def mezzanine_ffprobe_path
+      filenames.select { |f| f =~ /mezz_ffprobe.xml$/ }.first
     end
 
-    def ffprobe_file_set
-
-      @ffprobe_file_set ||= begin
+    def access_copy_file_set!
+      @access_copy_file_set ||= begin
         file_set = FileSet.new()
         file_set.apply_depositor_metadata depositor
         file_set.save!
-        file = File.open(ffprobe_path)
-        Hydra::Works::AddFileToFilSet.call(file_set, file, :ffprobe)
+        file = File.open(access_copy_ffprobe_path)
+        Hydra::Works::AddFileToFileSet.call(file_set, file, :ffprobe)
         file.close
         file_set.assign_properties_from_ffprobe
         file_set.save!
       end
-	
     end
 
-  end
+    def mezzanine_file_set!
+      @mezzanine_file_set ||= begin
+        file_set = FileSet.new()
+        file_set.apply_depositor_metadata depositor
+        file_set.save!
+        file = File.open(mezzanine_ffprobe_path)
+        Hydra::Works::AddFileToFileSet.call(file_set, file, :ffprobe)
+        file.close
+        file_set.assign_properties_from_ffprobe
+        file_set.save!
+      end
+    end
 
+    def filenames
+      @filenames = begin
+        files = Dir["#{path}/*"]
+        files.map! {|filename| File.expand_path(filename)}
+      end
+    end
+  end
 end
