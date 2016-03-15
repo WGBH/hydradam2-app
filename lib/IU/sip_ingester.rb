@@ -2,15 +2,15 @@ module IU
   
   class SIPIngester
 
-    attr_accessor :path
-    attr_reader :ingested_objects, :depositor
+    attr_reader :path, :depositor, :ingested_objects
     
     def initialize(opts={})
+      raise ArgumentError, "Missing required option :path" unless opts.key? :path
+      raise ArgumentError, "Missing required option :depositor" unless opts.key? :depositor
 
-	@path = File.expand_path(:path) if opts.key?(:path)
-	@depositor = opts.delete(:depositor)
-	@ingested_objects = []
-	
+      @path = File.expand_path(:path) if opts.key?(:path)
+      @depositor = opts.delete(:depositor)
+      @ingested_objects = []
     end
 
     def run!
