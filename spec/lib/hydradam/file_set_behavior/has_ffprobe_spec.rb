@@ -32,7 +32,7 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
   end
 
   describe '#assign_properties_from_ffprobe' do
-    let(:ffprobe_file) { File.open('./spec/fixtures/ffprobe/MDPI_49000000003411_01_pres_ffprobe.xml') }
+    let(:ffprobe_file) { File.open('./spec/fixtures/ffprobe/ffprobe_1.xml') }
 
     before do
       Hydra::Works::AddFileToFileSet.call(subject, ffprobe_file, :ffprobe)
@@ -40,7 +40,7 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
     end
 
     it 'assigns values from ffprobe XML file to RDF properties on the object' do
-      expect(subject.filename).to eq "/srv/scratch/transcoder_workspace_xcode-02/MDPI_49000000003411.downloading/data/MDPI_49000000003411_01_pres.wav"
+      expect(subject.filename).to eq "/cookies/pizza.wav"
     end
   end
 
