@@ -1,13 +1,13 @@
 require 'rails_helper'
 require 'hydradam/file_set_behavior/has_ffprobe'
 
-describe HydraDAM::FileSetBehavior::Hasffprobe, :requires_fedora do
+describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
 
   subject do
     # An anonymous class that inherits from ActiveFedora::Base
-    # and includes the HydraDAM::FileSetBehavior::Hasffprobe module.
+    # and includes the HydraDAM::FileSetBehavior::HasFfprobe module.
     Class.new(ActiveFedora::Base) do
-      include HydraDAM::FileSetBehavior::Hasffprobe
+      include HydraDAM::FileSetBehavior::HasFfprobe
     end.new
   end
 
@@ -46,10 +46,10 @@ describe HydraDAM::FileSetBehavior::Hasffprobe, :requires_fedora do
 
   context 'when the including class does not inherit from ActiveFedora::Base' do
     let(:class_with_missing_dependency) do
-      # An anonymous class that includes the HydraDAM::FileSetBehavior::Hasffprobe
+      # An anonymous class that includes the HydraDAM::FileSetBehavior::HasFfprobe
       # module but does not inherity from ActiveFedora::Base like it should
       Class.new do
-        include HydraDAM::FileSetBehavior::Hasffprobe
+        include HydraDAM::FileSetBehavior::HasFfprobe
       end
     end
 

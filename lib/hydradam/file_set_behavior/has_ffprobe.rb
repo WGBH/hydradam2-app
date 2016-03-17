@@ -2,7 +2,7 @@ require 'depends_on'
  
 module HydraDAM
   module FileSetBehavior
-    module Hasffprobe
+    module HasFfprobe
       extend ActiveSupport::Concern
  
       included do
