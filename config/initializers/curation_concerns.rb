@@ -1,8 +1,4 @@
 CurationConcerns.configure do |config|
-  # Injected via `rails g curation_concerns:work Program`
-  config.register_curation_concern :program
-  # Injected via `rails g curation_concerns:work Asset`
-  config.register_curation_concern :asset
   config.fits_to_desc_mapping = {
     file_title: :title,
     file_author: :creator
