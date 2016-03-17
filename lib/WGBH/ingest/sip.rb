@@ -1,6 +1,10 @@
+require 'WGBH/models/file_set'
+
 module WGBH
   module Ingest
     class SIP
+      # This should be WGBH::Models::FileSet, or a descendent thereof.
+      FILE_SET_CLASS = WGBH::Models::FileSet
 
       attr_accessor :fits_path, :depositor
 
@@ -28,7 +32,7 @@ module WGBH
 
         # TODO: handle cases where we're not dealing with just a FITS file.
         #  Other options include a PBCore file, and a EXIF file.
-        file_set = FileSet.new
+        file_set = FILE_SET_CLASS.new
         file_set.apply_depositor_metadata depositor
         file_set.save!
         file = File.open(fits_path)
