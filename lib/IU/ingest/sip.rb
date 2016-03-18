@@ -1,6 +1,11 @@
+require 'IU/models/file_set'
+
 module IU
   module Ingest
     class SIP
+
+      # This should be WGBH::Models::FileSet, or a descendent thereof.
+      FILE_SET_CLASS = IU::Models::FileSet
 
       attr_reader :path, :depositor, :ingested_objects
 
@@ -37,7 +42,7 @@ module IU
 
         raise ArgumentError, "Invalid ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe])
 
-        file_set = FileSet.new
+        file_set = FILE_SET_CLASS.new
         file_set.apply_depositor_metadata depositor
         file_set.save!
         ffprobe_file = File.open(opts[:ffprobe])

@@ -14,7 +14,8 @@ module DependsOn
 
   class MissingDependencies < StandardError
     def initialize(obj, missing)
-      msg = "class #{obj.name} must inherit from the following classes and/or modules: #{missing.join(', ')}"
+
+      msg = "#{obj.class} #{obj.name} must inherit from the following classes and/or modules: #{missing.join(', ')}"
       super(msg)
     end
   end

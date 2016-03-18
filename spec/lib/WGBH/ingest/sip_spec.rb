@@ -69,7 +69,7 @@ describe WGBH::Ingest::SIP do
       end
 
       it 'returns a list of FileSet objects' do
-        expect(each_is_a?(sip_with_fits_only.ingested_objects, FileSet)).to eq true
+        expect(each_is_a?(sip_with_fits_only.ingested_objects, WGBH::Models::FileSet)).to eq true
       end
 
       it 'returns a list of saved objects' do
