@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Carrier xsi:type="VideoCarrier" type="Video">
+    <Identifier>Home Town LOC2</Identifier>
+    <Barcode>40000000788093</Barcode>
+    <PhysicalCondition>
+      <Damage>None</Damage>
+    </PhysicalCondition>
+    <Parts>
+      <DigitizingEntity>Memnon Archiving Services Inc</DigitizingEntity>
+      <Part Side="1">
+        <Ingest xsi:type="VideoIngest">
+          <Date>2016-01-04</Date>
+          <DigitStatus>OK</DigitStatus>
+          <Comments>Signal - Video Only/No Audio;</Comments>
+          <Created_by>pgdoyle</Created_by>
+          <Player_serial_number>11274</Player_serial_number>
+          <Player_manufacturer>SONY</Player_manufacturer>
+          <Player_model>DVW-M2000</Player_model>
+          <Extraction_workstation>MIS-008-1</Extraction_workstation>
+          <Encoder_serial_number>008</Encoder_serial_number>
+          <Encoder_manufacturer>MEMNON</Encoder_manufacturer>
+          <Encoder_model>MIS - Black Magic Decklink Duo</Encoder_model>
+        </Ingest>
+        <ManualCheck>Yes</ManualCheck>
+        <QCStatus>OK</QCStatus>
+        <Files>
+          <File>
+            <FileName>MDPI_40000000788093_01_pres.mkv</FileName>
+            <CheckSum>44C36424F7F905592E6CBDA86E71CE44</CheckSum>
+          </File>
+          <File>
+            <FileName>MDPI_40000000788093_01_access.mp4</FileName>
+            <CheckSum>94C1C97816F0CF0B4E2BC773F12F45FB</CheckSum>
+          </File>
+          <File>
+            <FileName>MDPI_40000000788093_01_mezz.mov</FileName>
+            <CheckSum>66527BCF556D11D70EA574D45DD1E5A2</CheckSum>
+          </File>
+          <File>
+            <FileName>MDPI_40000000788093_01_pres.mkv.qctools.xml.gz</FileName>
+            <CheckSum />
+          </File>
+        </Files>
+      </Part>
+    </Parts>
+    <RecordingStandard>NTSC</RecordingStandard>
+    <ImageFormat>4:3</ImageFormat>
+    <Definition>SD</Definition>
+    <Preview />
+    <Cleaning />
+    <Baking />
+  </Carrier>
+</IU>
