@@ -57,3 +57,5 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'jettywrapper'
 end
+
+gem 'archive-tar-minitar', '~> 0.5.2'

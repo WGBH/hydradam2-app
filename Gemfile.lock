@@ -66,6 +66,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.8)
+    archive-tar-minitar (0.5.2)
     arel (6.0.3)
     autoprefixer-rails (6.2.3)
       execjs
@@ -502,6 +503,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  archive-tar-minitar (~> 0.5.2)
   byebug
   coffee-rails (~> 4.1.0)
   curation_concerns (~> 0.5.0)
