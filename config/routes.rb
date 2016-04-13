@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   
   blacklight_for :catalog
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   mount Hydra::Collections::Engine => '/'
   mount CurationConcerns::Engine, at: '/'
   resources :welcome, only: 'index'

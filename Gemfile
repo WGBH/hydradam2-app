@@ -52,6 +52,7 @@ gem 'curation_concerns', '~> 0.5.0'
 gem 'rsolr', '~> 1.0.6'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
+gem 'omniauth-cas'
 group :development, :test do
   gem 'rspec-rails'
   gem 'jettywrapper'
