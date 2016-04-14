@@ -6,6 +6,8 @@ module IU
       module FileSetBehavior
         extend ActiveSupport::Concern
         include HydraDAM::FileSetBehavior::HasFfprobe
+
+        attr_accessor :quality_level
       end
     end
   end
