@@ -1,3 +1,3 @@
 class FileSet < ActiveFedora::Base
-  include CurationConcerns::FileSetBehavior
+  include ::CurationConcerns::FileSetBehavior
 end

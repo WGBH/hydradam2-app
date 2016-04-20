@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.6'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -48,14 +48,19 @@ group :development do
   gem 'spring'
 end
 
-gem 'curation_concerns', '~> 0.5.0'
-gem 'rsolr', '~> 1.0.6'
+gem 'curation_concerns'
+group :development, :test do
+  gem 'solr_wrapper', '>= 0.3'
+end
+
+gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'omniauth-cas'
 group :development, :test do
+  gem 'fcrepo_wrapper'
   gem 'rspec-rails'
-  gem 'jettywrapper'
+  gem 'capybara'
 end
 
 gem 'archive-tar-minitar', '~> 0.5.2'
