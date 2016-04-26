@@ -47,7 +47,7 @@ module IU
 
       # Returns the Work object
       def work
-        @work ||= IU::Models::Work.new.tap do |work|
+        @work ||= Work.new.tap do |work|
           work.apply_depositor_metadata depositor
         end
       end
