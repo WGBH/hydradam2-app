@@ -5,6 +5,8 @@ require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
 
+require 'solr_wrapper/rake_task'
+
 unless Rake::Task.task_defined? :spec
   begin
     require 'rspec/core/rake_task'

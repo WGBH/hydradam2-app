@@ -11,15 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317204617) do
+ActiveRecord::Schema.define(version: 20160422180738) do
 
   create_table "bookmarks", force: :cascade do |t|
     t.integer  "user_id",       null: false
     t.string   "user_type"
     t.string   "document_id"
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "document_type"
   end
 
@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 20160317204617) do
     t.datetime "updated_at"
   end
 
-  add_index "checksum_audit_logs", ["file_set_id", "file_id"], name: "by_generic_file_id_and_file_id"
+  add_index "checksum_audit_logs", ["file_set_id", "file_id"], name: "by_file_set_id_and_file_id"
 
   create_table "searches", force: :cascade do |t|
     t.text     "query_params"
     t.integer  "user_id"
     t.string   "user_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   add_index "searches", ["user_id"], name: "index_searches_on_user_id"
