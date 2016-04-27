@@ -27,8 +27,8 @@ describe IU::Ingest::SIP do
   end
 
   describe '#access_copy' do
-    it 'returns an IU::Models::FileSet object' do
-      expect(sip.access_copy).to be_a IU::Models::FileSet
+    it 'returns an FileSet object' do
+      expect(sip.access_copy).to be_a FileSet
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
@@ -37,8 +37,8 @@ describe IU::Ingest::SIP do
   end
 
   describe '#mezzanine_copy' do
-    it 'returns an IU::Models::FileSet object' do
-      expect(sip.mezzanine_copy).to be_a IU::Models::FileSet
+    it 'returns an FileSet object' do
+      expect(sip.mezzanine_copy).to be_a FileSet
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
@@ -70,11 +70,11 @@ describe IU::Ingest::SIP do
       end
 
       it 'has an assocaited access copy' do
-        expect(sip.work.access_copy).to be_a IU::Models::FileSet
+        expect(sip.work.access_copy).to be_a FileSet
       end
 
       it 'has an assocaited access copy' do
-        expect(sip.work.mezzanine_copy).to be_a IU::Models::FileSet
+        expect(sip.work.mezzanine_copy).to be_a FileSet
       end
 
       it 'has an associated MDPI xml file' do
