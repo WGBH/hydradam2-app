@@ -88,7 +88,7 @@ class CatalogController < ApplicationController
     # This one uses all the defaults set by the solr request handler. Which
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
-    config.add_search_field('all_fields', label: 'All Fields', include_in_advanced_search: false) do |field|
+    config.add_search_field('all_fields', label: 'All Fields', include_in_advanced_search: true) do |field|
       title_name = solr_name('title', :stored_searchable, type: :string)
       label_name = solr_name('title', :stored_searchable, type: :string)
       contributor_name = solr_name('contributor', :stored_searchable, type: :string)
@@ -103,29 +103,13 @@ class CatalogController < ApplicationController
     # of Solr search fields.
     # creator, title, description, publisher, date_created,
     # subject, language, resource_type, format, identifier, based_near,
-    config.add_search_field('contributor') do |field|
+    config.add_search_field('title') do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
 
       # :solr_local_parameters will be sent using Solr LocalParams
       # syntax, as eg {! qf=$title_qf }. This is neccesary to use
       # Solr parameter de-referencing like $title_qf.
       # See: http://wiki.apache.org/solr/LocalParams
-      solr_name = solr_name('contributor', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('creator') do |field|
-      solr_name = solr_name('creator', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('title') do |field|
       solr_name = solr_name('title', :stored_searchable, type: :string)
       field.solr_local_parameters = {
         qf: solr_name,
@@ -133,105 +117,38 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('description') do |field|
-      field.label = 'Abstract or Summary'
-      solr_name = solr_name('description', :stored_searchable, type: :string)
+    config.add_search_field('filesize') do |field|
+      solr_name = solr_name('filesize', :stored_searchable, type: :long)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-    config.add_search_field('publisher') do |field|
-      solr_name = solr_name('publisher', :stored_searchable, type: :string)
+    config.add_search_field('format_name') do |field|
+      solr_name = solr_name('hasFormatName', :stored_searchable, type: :string)
       field.solr_local_parameters = {
         qf: solr_name,
         pf: solr_name
       }
     end
 
-    config.add_search_field('date_created') do |field|
-      solr_name = solr_name('created', :stored_searchable, type: :string)
+    config.add_search_field('date') do |field|
+      solr_name = uploaded_field
       field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
+          qf: solr_name,
+          pf: solr_name
       }
     end
 
-    config.add_search_field('subject') do |field|
-      solr_name = solr_name('subject', :stored_searchable, type: :string)
+    config.add_search_field('checksum') do |field|
+      solr_name = solr_name('checksum', :stored_searchable, type: :string)
       field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
+          qf: solr_name,
+          pf: solr_name
       }
     end
 
-    config.add_search_field('language') do |field|
-      solr_name = solr_name('language', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('human_readable_type') do |field|
-      solr_name = solr_name('human_readable_type', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('format') do |field|
-      field.include_in_advanced_search = false
-      solr_name = solr_name('format', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('identifier') do |field|
-      field.include_in_advanced_search = false
-      solr_name = solr_name('id', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('based_near') do |field|
-      field.label = 'Location'
-      solr_name = solr_name('based_near', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('tag') do |field|
-      solr_name = solr_name('tag', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('depositor') do |field|
-      solr_name = solr_name('depositor', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
-    config.add_search_field('rights') do |field|
-      solr_name = solr_name('rights', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the SOLR field to sort by and
@@ -243,6 +160,17 @@ class CatalogController < ApplicationController
     config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
     config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
     config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
+    config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} desc", label: "duration \u25BC"
+    config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} asc", label: "duration \u25B2"
+    config.add_sort_field "#{solr_name('bitRate', :stored_searchable, type: :string)} desc", label: "bit rate \u25BC"
+    config.add_sort_field "#{solr_name('bitRate', :stored_searchable, type: :string)} asc", label: "bit rate \u25B2"
+    config.add_sort_field "#{solr_name('sampleRate', :stored_searchable, type: :string)} desc", label: "sample rate \u25BC"
+    config.add_sort_field "#{solr_name('sampleRate', :stored_searchable, type: :string)} asc", label: "sample rate \u25B2"
+    config.add_sort_field "#{solr_name('width', :stored_searchable, type: :string)} desc", label: "video width \u25BC"
+    config.add_sort_field "#{solr_name('width', :stored_searchable, type: :string)} asc", label: "video width \u25B2"
+    config.add_sort_field "#{solr_name('height', :stored_searchable, type: :string)} desc", label: "video height \u25BC"
+    config.add_sort_field "#{solr_name('height', :stored_searchable, type: :string)} asc", label: "video height \u25B2"
+
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
