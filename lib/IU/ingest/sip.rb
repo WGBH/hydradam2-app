@@ -1,6 +1,3 @@
-require 'IU/models/work'
-require 'IU/models/file_set'
-
 require 'pry'
 
 module IU
@@ -105,7 +102,7 @@ module IU
       def create_file_set!(opts={})
         raise ArgumentError, "Invalid ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe])
 
-        IU::Models::FileSet.new.tap do |file_set|
+        FileSet.new.tap do |file_set|
           file_set.apply_depositor_metadata depositor
           file_set.quality_level = opts[:quality_level]
           file_set.save!
