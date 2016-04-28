@@ -18,3 +18,6 @@
 
 /jetty
 /fcrepo4-data
+
+.fcrepo_wrapper.test
+.solr_wrapper.test
