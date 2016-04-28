@@ -4,7 +4,13 @@
     <%
       counter = document_counter_with_offset(document_counter)
       # TODO: is there a better way to get the filename? This seems very clunky.
-      filename = File.basename(document[Solrizer.solr_name('filename', :stored_searchable)].first)
+      # Also, the try(:first) is only becuase the filename might be nil in cases of botched ingests.
+      filename = File.basename(document[Solrizer.solr_name('filename', :stored_searchable)].try(:first).to_s)
+
+      # TODO: the case of the missing filename is usually due to a botched ingest. So eventually, we should get
+      # rid of this, and handle botched ingests better. In the meantime, I dont' want the front-end to bork
+      # if we have some bad records.
+      filename = "(unknown)" if filename.empty?
     %>
     <%= link_to_document document, filename, counter: counter %>
   </h4>
