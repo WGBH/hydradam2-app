@@ -1,11 +1,11 @@
 <% # header bar for doc items in index view -%>
 <div class="documentHeader">
   <h4 class="index_title">
-    <% counter = document_counter_with_offset(document_counter) %>
-    <!--
-      TODO: remove hardcoded field name. The _tesim suffix is subject to
-      change, which would break this.
-    -->
-    <%= link_to_document document, document['filename_tesim'].first, counter: counter %>
+    <%
+      counter = document_counter_with_offset(document_counter)
+      # TODO: is there a better way to get the filename? This seems very clunky.
+      filename = File.basename(document[Solrizer.solr_name('filename', :stored_searchable)].first)
+    %>
+    <%= link_to_document document, filename, counter: counter %>
   </h4>
 </div>
