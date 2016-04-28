@@ -9,6 +9,8 @@ module HydraDAM
         # Ensure class dependencies
         include DependsOn
         depends_on(ActiveFedora::Base)
+
+        property :file_format, predicate: RDF::Vocab::EBUCore.hasFileFormat
  
         # Ensure module dependencies
         include Hydra::Works::FileSetBehavior
@@ -21,6 +23,7 @@ module HydraDAM
          noko = ffprobe.noko.dup
          noko.remove_namespaces!
          self.filename = noko.xpath('//ffprobe/format/@filename').text
+         self.file_format += [noko.xpath('//ffprobe/format/@format_long_name').text]
        end
      end
   end
