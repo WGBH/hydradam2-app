@@ -5,23 +5,16 @@ module HydraDAM
     module HasFfprobe
       extend ActiveSupport::Concern
  
-      included do
- 
+      included do 
         # Ensure class dependencies
         include DependsOn
         depends_on(ActiveFedora::Base)
-
-        property :filename, predicate: RDF::Vocab::EBUCore.filename, multiple: false do |index|
-          index.as :stored_searchable
-        end
  
         # Ensure module dependencies
         include Hydra::Works::FileSetBehavior
  
          # TODO: replace bogus predicate with legit one.
         directly_contains_one :ffprobe, through: :files, type: ::RDF::URI('http://example.org/TODO-replace-with-actual-predicate'), class_name: 'XMLFile'
- 
-        apply_schema Hydra::Works::Characterization::BaseSchema, Hydra::Works::Characterization::AlreadyThereStrategy
       end
  
       def assign_properties_from_ffprobe
