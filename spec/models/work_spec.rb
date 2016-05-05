@@ -1,12 +1,10 @@
-# Generated via
-#  `rails generate curation_concerns:work Work`
 require 'rails_helper'
 
 describe Work do
-  subject do
-    Work.new
-  end
-  it "has loaded IU behavior" do
-    expect(subject).to respond_to :mdpi_xml
+  describe '#do_fixity_check' do
+    it 'calls #do_md5_checksum' do
+      expect(subject).to receive(:do_md5_checksum).exactly(1).times
+      subject.do_fixity_check
+    end
   end
 end
