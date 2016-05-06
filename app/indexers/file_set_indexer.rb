@@ -5,8 +5,8 @@ class FileSetIndexer < CurationConcerns::FileSetIndexer
       solr_doc[Solrizer.solr_name('filename')] = object.filename
 
       solr_doc.delete Solrizer.solr_name(:file_size, STORED_INTEGER)
-      solr_doc[Solrizer.solr_name(:file_size, Solrizer::Descriptor.new(:long, :stored, :indexed))] = object.file_size[0].to_i
-      solr_doc[Solrizer.solr_name(:file_size_mb, Solrizer::Descriptor.new(:long, :stored, :indexed))] = object.file_size[0].to_i / 1000000
+      solr_doc[Solrizer.solr_name(:file_size, Solrizer::Descriptor.new(:long, :stored, :indexed))] = object.file_size[0].to_i / 1000000
+      solr_doc[Solrizer.solr_name(:file_size_bytes, Solrizer::Descriptor.new(:long, :stored, :indexed))] = object.file_size[0].to_i
 
       searchable_file_format = Solrizer.solr_name('file_format', :stored_searchable)
       solr_doc[searchable_file_format] ||= []

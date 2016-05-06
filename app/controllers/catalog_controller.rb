@@ -1,4 +1,6 @@
 class CatalogController < ApplicationController
+
+  include BlacklightRangeLimit::ControllerOverride
   include BlacklightAdvancedSearch::Controller
   include CurationConcerns::CatalogController
   configure_blacklight do |config|
@@ -48,6 +50,8 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('publisher', :facetable), limit: 5
     config.add_facet_field solr_name('file_format', :symbol), limit: 5
     config.add_facet_field solr_name('depositor', :symbol), limit: 5
+    config.add_facet_field 'file_size_ltsi', label: 'File Size (MB)', limit: 5, range: true
+
 
     config.add_facet_field 'generic_type_sim', show: false, single: true
 
