@@ -11,9 +11,9 @@ module HydraDAM
         depends_on(ActiveFedora::Base)
 
         property :file_format, predicate: RDF::Vocab::EBUCore.hasFileFormat
- 
-        # Ensure module dependencies
-        include Hydra::Works::FileSetBehavior
+
+        # Include module dependencies
+        include ::CurationConcerns::FileSetBehavior
  
          # TODO: replace bogus predicate with legit one.
         directly_contains_one :ffprobe, through: :files, type: ::RDF::URI('http://example.org/TODO-replace-with-actual-predicate'), class_name: 'XMLFile'
