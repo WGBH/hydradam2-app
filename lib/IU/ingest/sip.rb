@@ -16,6 +16,7 @@ module IU
       # extracted form the tarball.
       def ingest!
         work.mdpi_xml = mdpi_xml
+        work.title << mdpi_title
         work.members << access_copy
         work.members << mezzanine_copy
         work.save!
@@ -39,6 +40,14 @@ module IU
           XMLFile.new.tap do |xml_file|
             xml_file.content = File.read(mdpi_xml_path)  
           end
+        end
+      end
+
+      def mdpi_title
+        @mdpi_title ||= begin
+          noko = mdpi_xml.noko.dup
+          noko.remove_namespaces!
+          noko.xpath('/IU/Carrier/Barcode').text
         end
       end
 
