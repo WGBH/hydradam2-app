@@ -11,7 +11,7 @@ describe IU::Ingest::SIP do
     )
   end
 
-  let(:tarball) { './spec/fixtures/IU/MDPI-SIP-package2.tar' }
+  let(:tarball) { './spec/fixtures/IU/40000000300048_20160213-082926.tar' }
 
   let(:sip) { IU::Ingest::SIP.new(depositor: depositor, tarball: tarball) }
 
@@ -27,12 +27,16 @@ describe IU::Ingest::SIP do
   end
 
   describe '#access_copy' do
-    it 'returns an FileSet object' do
+    it 'returns a FileSet object' do
       expect(sip.access_copy).to be_a FileSet
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
-      expect(sip.access_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000000788093.downloading/data/MDPI_40000000788093_01_access.mp4'
+      expect(sip.access_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_access.mp4'
+    end
+
+    it 'gets its value for #original_checksum from the SIP checksum manifest' do
+      expect(sip.access_copy.original_checksum).to eq ['2e779723fdf58b5b2a60d2f71e7f2fe7']
     end
   end
 
@@ -42,7 +46,11 @@ describe IU::Ingest::SIP do
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
-      expect(sip.mezzanine_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000000788093.downloading/data/MDPI_40000000788093_01_mezz.mov'
+      expect(sip.mezzanine_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_mezz.mov'
+    end
+
+    it 'gets its value for #original_checksum from the SIP checksum manifest' do
+      expect(sip.mezzanine_copy.original_checksum).to eq ['e5059f5b149f1688d39d0cf4c3d2a143']
     end
   end
 
