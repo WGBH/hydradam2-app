@@ -1,12 +1,12 @@
 require 'rails_helper'
-require 'IU/models/concerns/file_set_behavior'
+#require 'IU/models/concerns/file_set_behavior'
 
 
-describe IU::Models::Concerns::FileSetBehavior do
+describe Concerns::FileSetBehavior do
 
   before do
     class TestClass < ActiveFedora::Base
-      include IU::Models::Concerns::FileSetBehavior
+      include Concerns::FileSetBehavior
     end
   end
 
