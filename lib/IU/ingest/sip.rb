@@ -109,8 +109,7 @@ module IU
       end
 
       def create_file_set!(opts={})
-        raise ArgumentError, "Invalid ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe])
-
+        raise ArgumentError, "Invalid ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe].to_s)
         FileSet.new.tap do |file_set|
           file_set.apply_depositor_metadata depositor
           file_set.quality_level = opts[:quality_level]
@@ -119,12 +118,39 @@ module IU
             Hydra::Works::AddFileToFileSet.call(file_set, ffprobe_file, :ffprobe)
           end
           file_set.assign_properties_from_ffprobe
+          file_set.original_checksum += [md5_for(file_set.filename)]
           file_set.save!
         end
       end
 
       def delete_extracted_files!
         FileUtils.remove_entry_secure(root_dir)
+      end
+
+      def md5_for(filename)
+        # The filename and the relative filepath from the manifest will not be the same.
+        # But comparing their basenames should be good enough.
+        # The .first.try(:last) returns the selected md5, or nil if not found.
+        md5_checksums.select { |filepath, md5| File.basename(filepath) == File.basename(filename) }.first.try(:last)
+      end
+
+      # Returns a hash of md5 md5_checksums, keyed by file path, from the md5
+      # manifest file.
+      def md5_checksums
+        @md5_checksums ||= begin
+          # Parses the md5 manifest into an array of 2-element
+          # arrays, where the first element is the md5, and the 2nd element is
+          # the file path.
+          entries = File.readlines(md5_manifest_path).map(&:chomp).map{ |entry| entry.split(/\s+/) }
+          md5_values = entries.map(&:first)
+          file_paths = entries.map(&:last)
+          Hash[file_paths.zip(md5_values)]
+        end
+      end
+
+      # Returns the path to the md5 manfiest file.
+      def md5_manifest_path
+        filenames.select { |filename| File.basename(filename) == 'manifest-md5.txt' }.first
       end
     end
 
