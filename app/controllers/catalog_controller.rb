@@ -58,7 +58,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field 'generic_type_sim', show: false, single: true
 
-    config.add_facet_field 'date_range', label: 'Date range', limit: 5, range: true
+    config.add_facet_field solr_name('date_range', :facetable), label: 'Date range', limit: 5, range: true
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
