@@ -64,3 +64,4 @@ group :development, :test do
 end
 
 gem 'archive-tar-minitar', '~> 0.5.2'
+gem 'blacklight_range_limit'
