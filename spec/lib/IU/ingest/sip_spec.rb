@@ -39,6 +39,10 @@ describe IU::Ingest::SIP do
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
       expect(sip.access_copy.original_checksum).to eq ['2e779723fdf58b5b2a60d2f71e7f2fe7']
     end
+
+    it 'stores its quality level' do
+      expect(sip.access_copy.quality_level.to_s).to eq 'access'
+    end
   end
 
   describe '#mezzanine_copy' do
@@ -53,6 +57,10 @@ describe IU::Ingest::SIP do
 
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
       expect(sip.mezzanine_copy.original_checksum).to eq ['e5059f5b149f1688d39d0cf4c3d2a143']
+    end
+
+    it 'stores its quality level' do
+      expect(sip.mezzanine_copy.quality_level.to_s).to eq 'mezzanine'
     end
   end
 

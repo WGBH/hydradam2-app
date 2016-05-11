@@ -18,10 +18,12 @@ class CatalogController < ApplicationController
              solr_name('description', :stored_searchable),
              solr_name('filename', :stored_searchable),
              solr_name('file_format', :stored_searchable),
+             solr_name('quality_level', :stored_searchable),
              solr_name('lto_path', :stored_searchable),
              solr_name('artesia_uoi_id', :stored_searchable),
              solr_name('creator', :stored_searchable),
-             solr_name('original_checksum', :stored_searchable)
+             solr_name('original_checksum', :symbol),
+             'file_size_ltsi', 'file_size_mb_ltsi'
       ],
       qt: 'search',
       rows: 10
@@ -48,8 +50,9 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('language', :facetable), limit: 5
     config.add_facet_field solr_name('based_near', :facetable), limit: 5
     config.add_facet_field solr_name('publisher', :facetable), limit: 5
-    config.add_facet_field solr_name('file_format', :symbol), limit: 5
-    config.add_facet_field solr_name('depositor', :symbol), limit: 5
+    config.add_facet_field solr_name('file_format', :symbol), label: 'File Format', limit: 5
+    config.add_facet_field solr_name('depositor', :symbol),label: 'Depositor', limit: 5
+    config.add_facet_field solr_name('quality_level', :stored_searchable), label: 'Quality Level', limit: 5
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
 
 
@@ -100,7 +103,7 @@ class CatalogController < ApplicationController
       label_name = solr_name('title', :stored_searchable, type: :string)
       contributor_name = solr_name('contributor', :stored_searchable, type: :string)
       field.solr_parameters = {
-        qf: "#{title_name} #{label_name} file_format_tesim #{contributor_name} file_size_ltsi",
+        #qf: "#{title_name} #{label_name} file_format_tesim #{contributor_name} file_size_ltsi",
         pf: title_name.to_s
       }
     end

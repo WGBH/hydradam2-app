@@ -19,6 +19,11 @@ class FileSetIndexer < CurationConcerns::FileSetIndexer
       facetable_file_format = Solrizer.solr_name('file_format', :facetable)
       solr_doc[facetable_file_format] ||= []
       solr_doc[facetable_file_format] += object.file_format
+
+      solr_doc[Solrizer.solr_name(:quality_level, :stored_searchable)] = object.quality_level
+      solr_doc[Solrizer.solr_name(:original_checksum, :symbol)] = object.original_checksum
+
+
     end
   end
 end
