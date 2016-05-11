@@ -6,6 +6,8 @@ module Concerns
     extend ActiveSupport::Concern
     included do
       contains :mdpi_xml, class_name: "XMLFile"
+
+      property :date, predicate: RDF::Vocab::EBUCore.dateCreated
     end
 
     def access_copy

@@ -51,10 +51,19 @@ module IU
         end
       end
 
+      def mdpi_date
+        @mdpi_date ||= begin
+          noko = mdpi_xml.noko.dup
+          noko.remove_namespaces!
+          noko.xpath('/IU/Carrier/Parts/Part/Ingest/Date').text
+        end
+      end
+
       # Returns the Work object
       def work
         @work ||= Work.new.tap do |work|
           work.apply_depositor_metadata depositor
+          work.date += [DateTime.parse(mdpi_date)]
         end
       end
 
