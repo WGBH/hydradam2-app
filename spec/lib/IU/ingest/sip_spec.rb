@@ -33,6 +33,7 @@ describe IU::Ingest::SIP do
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
       expect(sip.access_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_access.mp4'
+      expect(sip.access_copy.file_size).to eq [1240942508]
     end
 
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
@@ -47,6 +48,7 @@ describe IU::Ingest::SIP do
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
       expect(sip.mezzanine_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_mezz.mov'
+      expect(sip.mezzanine_copy.file_size).to eq [20716987011]
     end
 
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
