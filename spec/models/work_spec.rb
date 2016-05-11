@@ -8,3 +8,20 @@ describe Work do
     end
   end
 end
+
+describe '#check for rfc3339 format ' do
+    context 'when the date is not of rfc3339 format' do
+      it 'checks for iso8601format ' do
+        expect { sip_with_invalid_date }.to eq ['mm/dd/yyyy hh:mm:ss']
+      end
+    end
+end
+  
+describe '#check for iso8601 format ' do
+    context 'when the date is not of iso8601 format' do
+      it 'returns invalid date ' do
+        expect { sip_with_invalid_date }.to eq ['yyyy-mm-dd']
+      end
+    end
+end
+  
