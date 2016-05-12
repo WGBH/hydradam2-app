@@ -15,8 +15,6 @@ module IU
       # Establish relationships between all the objects created from SIP files
       # extracted form the tarball.
       def ingest!
-        work.mdpi_xml = mdpi_xml
-        work.title << mdpi_title
         work.members << access_copy
         work.members << mezzanine_copy
         work.save!
@@ -34,27 +32,12 @@ module IU
         @mezzanine_copy ||= create_file_set!(ffprobe: mezzanine_copy_ffprobe_path, quality_level: :mezzanine)
       end
 
-      # Returns an XMLFile object containing the MDPI xml.
-      def mdpi_xml
-        @mdpi_xml_file ||= begin
-          XMLFile.new.tap do |xml_file|
-            xml_file.content = File.read(mdpi_xml_path)  
-          end
-        end
-      end
-
-      def mdpi_title
-        @mdpi_title ||= begin
-          noko = mdpi_xml.noko.dup
-          noko.remove_namespaces!
-          noko.xpath('/IU/Carrier/Barcode').text
-        end
-      end
-
       # Returns the Work object
       def work
         @work ||= Work.new.tap do |work|
           work.apply_depositor_metadata depositor
+          work.mdpi_xml.content = File.read(mdpi_xml_path)
+          work.assign_properties_from_mdpi_xml
         end
       end
 
@@ -161,7 +144,7 @@ module IU
       end
     end
 
-    class MissingRequireOption < StandardError
+    class MissingRequiredOption < StandardError
       def initialize(opt)
         super("Missing required option :#{opt}")
       end

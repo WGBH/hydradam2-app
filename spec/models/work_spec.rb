@@ -7,4 +7,4 @@ describe Work do
       subject.do_fixity_check
     end
   end
-end
+end  

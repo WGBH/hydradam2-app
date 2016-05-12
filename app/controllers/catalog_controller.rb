@@ -54,9 +54,10 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('depositor', :symbol),label: 'Depositor', limit: 5
     config.add_facet_field solr_name('quality_level', :stored_searchable), label: 'Quality Level', limit: 5
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
-
-
     config.add_facet_field 'generic_type_sim', show: false, single: true
+    config.add_facet_field 'mdpi_timestamp_isi', label: 'MDPI Date', range: true
+
+
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request

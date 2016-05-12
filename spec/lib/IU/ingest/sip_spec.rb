@@ -73,10 +73,6 @@ describe IU::Ingest::SIP do
       it 'does not have an associated mezzanine copy' do
         expect(sip.work.mezzanine_copy).to be nil
       end
-
-      it 'does not have any MDPI xml attached' do
-        expect(sip.work.mdpi_xml.content).to be nil
-      end
     end
 
     context 'after running #ingest!' do
@@ -97,6 +93,10 @@ describe IU::Ingest::SIP do
 
       it 'has an associated MDPI xml file' do
         expect(sip.work.mdpi_xml).to be_a XMLFile
+      end
+
+      it 'has date values from MDPI xml file' do
+        expect(sip.work.mdpi_date).to eq DateTime.parse('2015-11-17')
       end
     end
   end
