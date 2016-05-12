@@ -26,7 +26,7 @@ module Concerns
       noko = mdpi_xml.noko.dup
       noko.remove_namespaces!
       self.title += [noko.xpath('/IU/Carrier/Barcode').text]
-      self.mdpi_date = DateTime.parse(noko.xpath('/IU/Carrier/Parts/Part/Ingest/Date').text).to_i
+      self.mdpi_date = DateTime.parse(noko.xpath('/IU/Carrier/Parts/Part/Ingest/Date').text)
     end
   end
 end
