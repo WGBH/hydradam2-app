@@ -15,4 +15,10 @@ class Work < ActiveFedora::Base
   def do_fixity_check
     do_md5_checksum if Work::FIXITY_TYPE == :md5
   end
+
+  class << self
+    def indexer
+      ::WorkIndexer
+    end
+  end
 end
