@@ -28,11 +28,11 @@ module CurationConcerns
 
 
     def page_title
-      Array(solr_document['label_tesim']).first
+      Array.wrap(solr_document['label_tesim']).first
     end
 
     def link_name
-      current_ability.can?(:read, id) ? Array(solr_document['label_tesim']).first : 'File'
+      current_ability.can?(:read, id) ? Array.wrap(solr_document['label_tesim']).first : 'File'
     end
   end
 end

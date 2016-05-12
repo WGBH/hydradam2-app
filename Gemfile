@@ -48,20 +48,17 @@ group :development do
   gem 'spring'
 end
 
-gem 'curation_concerns'
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
-end
-
-gem 'rsolr', '~> 1.0'
-gem 'devise'
-gem 'devise-guests', '~> 0.3'
-gem 'omniauth-cas'
-group :development, :test do
+  gem 'solr_wrapper'
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'capybara'
 end
 
+gem 'curation_concerns', '~> 0.14.0'
+gem 'rsolr', '~> 1.0'
+gem 'devise'
+gem 'devise-guests', '~> 0.3'
+gem 'omniauth-cas'
 gem 'archive-tar-minitar', '~> 0.5.2'
 gem 'blacklight_range_limit'
