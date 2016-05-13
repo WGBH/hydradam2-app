@@ -25,7 +25,7 @@ class SolrDocument
   use_extension( Hydra::ContentNegotiation )
 
   def filename
-    File.basename(fetch(Solrizer.solr_name(:filename, :stored_searchable), []).first)
+    File.basename(fetch(Solrizer.solr_name(:filename, :stored_searchable), ['Unknown']).first)
   end
 
   def file_size
