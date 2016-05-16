@@ -15,8 +15,8 @@ module IU
       # Establish relationships between all the objects created from SIP files
       # extracted form the tarball.
       def ingest!
-        work.members << access_copy
-        work.members << mezzanine_copy
+        work.ordered_members << access_copy
+        work.ordered_members << mezzanine_copy
         work.save!
         delete_extracted_files!
       end

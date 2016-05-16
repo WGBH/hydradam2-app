@@ -19,7 +19,7 @@ module Concerns
     end
 
     def members_of_quality_level(quality_level)
-      members.select { |member| member.try(:quality_level) == quality_level }
+      ordered_members.to_a.select { |member| member.try(:quality_level) == quality_level }
     end
 
     def assign_properties_from_mdpi_xml
