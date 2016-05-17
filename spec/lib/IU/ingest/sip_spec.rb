@@ -93,6 +93,14 @@ describe IU::Ingest::SIP do
       it 'does not have an associated mezzanine copy' do
         expect(sip.work.mezzanine_copy).to be nil
       end
+      
+      it 'does not have an associated pres copy' do
+        expect(sip.work.pres_copy).to be nil
+      end
+      
+      it 'does not have an associated prod copy' do
+        expect(sip.work.prod_copy).to be nil
+      end
     end
 
     context 'after running #ingest!' do
