@@ -63,7 +63,27 @@ describe IU::Ingest::SIP do
       expect(sip.mezzanine_copy.quality_level.to_s).to eq 'mezzanine'
     end
   end
-
+  
+  describe '#pres_copy' do
+    it 'returns a FileSet object' do
+      expect(sip.pres_copy).to be_a FileSet
+    end
+    
+    it 'stores its quality level' do
+      expect(sip.pres_copy.quality_level.to_s).to eq 'pres'
+    end
+  end
+  
+  describe '#prod_copy' do
+    it 'returns a FileSet object' do
+      expect(sip.prod_copy).to be_a FileSet
+    end
+    
+    it 'stores its quality level' do
+      expect(sip.prod_copy.quality_level.to_s).to eq 'prod'
+    end
+  end
+  
   describe '#work,' do
     context 'before running #ingest!,' do
       it 'does not have an associated access copy' do
