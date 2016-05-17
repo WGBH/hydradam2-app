@@ -5,7 +5,7 @@ module HydraDAM
     attr_accessor :filename
 
     def status
-      # ping storage proxy for current status of @filename
+      # ping storage proxy for current status of @cache/@filename
       # set session with current status
       # redirect back to fileset
     end
@@ -42,9 +42,20 @@ module HydraDAM
 
     private
 
+    def configure
+      # TODO: Probably don't want this to happen every time, maybe once in an initializer?
+      config = YAML.load(ERB.new(IO.read(File.join(Rails.root, 'config', 'storage_proxy.yml'))).result)[Rails.env].with_indifferent_access
+      @host = config["host"]
+      @port = config["port"]
+      @store = config["store"]
+      @cache = config["cache"]
+    end
+
     def get_conn
       # Setup the connection to storage proxy
-      # Faraday.new('http://localhost:3001')
+      configure
+      connection = Faraday.new(@host + ':' + @port.to_s)
+      connection
     end
 
   end

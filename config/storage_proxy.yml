@@ -1,0 +1,15 @@
+development:
+  host: localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
+test:
+  host: localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
+production:
+  host: localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
