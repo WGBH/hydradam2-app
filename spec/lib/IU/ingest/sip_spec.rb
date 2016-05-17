@@ -69,6 +69,15 @@ describe IU::Ingest::SIP do
       expect(sip.pres_copy).to be_a FileSet
     end
     
+    it 'has properties from the pres copy ffprobe xml from the SIP' do
+       expect(sip.pres_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000054496.downloading/data/MDPI_40000000054496_01_pres.wav'
+       expect(sip.pres_copy.file_size).to eq [1352884274]
+    end
+    
+    it 'gets its value for #original_checksum from the SIP checksum manifest' do
+      expect(sip.pres_copy.original_checksum).to eq ['a0f9e4c05b1307788734229c3023f191']
+    end
+    
     it 'stores its quality level' do
       expect(sip.pres_copy.quality_level.to_s).to eq 'pres'
     end
