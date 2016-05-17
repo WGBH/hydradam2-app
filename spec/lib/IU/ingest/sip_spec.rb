@@ -115,8 +115,16 @@ describe IU::Ingest::SIP do
         expect(sip.work.access_copy).to be_a FileSet
       end
 
-      it 'has an assocaited access copy' do
+      it 'has an assocaited mezzanine copy' do
         expect(sip.work.mezzanine_copy).to be_a FileSet
+      end
+      
+      it 'has an assocaited pres copy' do
+        expect(sip.work.pres_copy).to be_a FileSet
+      end
+      
+      it 'has an assocaited prod copy' do
+        expect(sip.work.prod_copy).to be_a FileSet
       end
 
       it 'has an associated MDPI xml file' do
