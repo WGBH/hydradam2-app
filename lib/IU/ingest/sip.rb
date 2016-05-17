@@ -31,6 +31,11 @@ module IU
       def mezzanine_copy
         @mezzanine_copy ||= create_file_set!(ffprobe: mezzanine_copy_ffprobe_path, quality_level: :mezzanine)
       end
+      
+      # Returns FileSet object representing the prod copy.
+      def prod_copy
+        @prod_copy ||= create_file_set!(ffprobe: prod_copy_ffprobe_path, quality_level: :prod)
+      end
 
       # Returns the Work object
       def work
@@ -85,6 +90,10 @@ module IU
 
       def mezzanine_copy_ffprobe_path
         filenames.select { |filename| filename =~ /_mezz_ffprobe\.xml$/}.first
+      end
+      
+      def prod_copy_ffprobe_path
+        filenames.select { |filename| filename =~ /_prod_ffprobe\.xml$/}.first
       end
 
       def mdpi_xml_path
