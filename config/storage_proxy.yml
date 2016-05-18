@@ -1,11 +1,11 @@
 development:
-  host: localhost
-  port: 3001
+  host: http://helium.dlib.indiana.edu
+  port: 8200
   store: SDA
   cache: SDADisk
 test:
-  host: localhost
-  port: 3001
+  host: http://helium.dlib.indiana.edu
+  port: 8200
   store: SDA
   cache: SDADisk
 production:

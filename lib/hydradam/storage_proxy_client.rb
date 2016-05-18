@@ -1,11 +1,18 @@
 require 'pry'
 
 module HydraDAM
-  class StorageProxy
-    attr_accessor :filename
+  class StorageProxyClient
+    attr_accessor :filename, :host, :port, :store, :cache
+
+    def initialize
+      configure
+      get_conn
+    end
 
     def status
       # ping storage proxy for current status of @cache/@filename
+      response = @connection.get ['/storage_api/caches', @cache, 'cache_files', @filename].join('/')
+      # response = @connection.get ['/caches', @cache, 'files', @filename].join('/')
       # set session with current status
       # redirect back to fileset
     end
@@ -40,22 +47,22 @@ module HydraDAM
       # return list of available actions, with user-friendly labels
     end
 
-    private
+    #private
 
     def configure
       # TODO: Probably don't want this to happen every time, maybe once in an initializer?
       config = YAML.load(ERB.new(IO.read(File.join(Rails.root, 'config', 'storage_proxy.yml'))).result)[Rails.env].with_indifferent_access
-      @host = config["host"]
-      @port = config["port"]
-      @store = config["store"]
-      @cache = config["cache"]
+      @host = config["host"] if @host.nil?
+      @port = config["port"] if @port.nil?
+      @store = config["store"] if @store.nil?
+      @cache = config["cache"] if @cache.nil?
     end
 
     def get_conn
       # Setup the connection to storage proxy
-      configure
-      connection = Faraday.new(@host + ':' + @port.to_s)
-      connection
+      #configure
+      @connection = Faraday.new(@host + ':' + @port.to_s)
+      @connection
     end
 
   end
