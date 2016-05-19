@@ -53,6 +53,7 @@ group :development, :test do
   gem 'fcrepo_wrapper'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'webmock'
 end
 
 gem 'curation_concerns', '~> 0.14.0'
@@ -61,6 +62,4 @@ gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'omniauth-cas'
 gem 'archive-tar-minitar', '~> 0.5.2'
-gem 'blacklight_range_limit',
-    git: 'https://github.com/projectblacklight/blacklight_range_limit.git',
-    ref: 'c509d5f04a3cfcabd2eff4d8f0b70737aa08bd07'
+gem 'blacklight_range_limit'

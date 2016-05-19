@@ -11,8 +11,7 @@ module HydraDAM
 
     def status
       # ping storage proxy for current status of @cache/@filename
-      response = @connection.get ['/storage_api/caches', @cache, 'cache_files', @filename].join('/')
-      # response = @connection.get ['/caches', @cache, 'files', @filename].join('/')
+      response = @connection.get ['/caches', @cache, 'files', @filename].join('/')
       # set session with current status
       # redirect back to fileset
     end
