@@ -3,12 +3,24 @@ require 'hydradam/file_set_behavior/has_ffprobe'
 
 describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
 
-  subject do
-    # An anonymous class that inherits from ActiveFedora::Base
-    # and includes the HydraDAM::FileSetBehavior::HasFfprobe module.
-    Class.new(ActiveFedora::Base) do
+  before :all do
+    class TestClass < ActiveFedora::Base
       include HydraDAM::FileSetBehavior::HasFfprobe
-    end.new
+    end
+  end
+
+  after :all do
+    Object.remove_const(:TestClass)
+    Object.remove_const(:DoesNotExtendActiveFedoraBase)
+  end
+
+  let(:fake_user) { User.new(email: "test_user@hydradam.org", password: "password", guest: false) }
+
+  subject do
+    TestClass.new.tap do |obj|
+      obj.apply_depositor_metadata fake_user
+      obj.save!
+    end
   end
 
   after(:all) do

@@ -23,4 +23,22 @@ class SolrDocument
   # Do content negotiation for AF models. 
 
   use_extension( Hydra::ContentNegotiation )
+
+  def filename
+    File.basename(fetch(Solrizer.solr_name(:filename, :stored_searchable), ['Unknown']).first)
+  end
+
+  def file_size
+    fetch(Solrizer.solr_name(:file_size, Solrizer::Descriptor.new(:long, :stored, :indexed)), [])
+  end
+
+  def quality_level
+    fetch(Solrizer.solr_name(:quality_level, :stored_searchable), [])
+  end
+
+  def original_checksum
+    fetch(Solrizer.solr_name(:original_checksum, :symbol), [])
+  end
+
+
 end
