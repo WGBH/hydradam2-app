@@ -2,7 +2,8 @@ require 'pry'
 
 module HydraDAM
   class StorageProxyClient
-    attr_accessor :filename, :host, :port, :store, :cache
+    attr_accessor :filename, :host, :port, :store, :cache, :api_prefix,
+                  :store_path, :store_files_path, :cache_path, :cache_files_path
 
     def initialize
       configure
@@ -11,34 +12,28 @@ module HydraDAM
 
     def status
       # ping storage proxy for current status of @cache/@filename
-      response = @connection.get ['/caches', @cache, 'files', @filename].join('/')
-      # set session with current status
-      # redirect back to fileset
+      response = @connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, @filename].join('/')
     end
 
     def stage
       # ping storage proxy for current status of @filename
+      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'stage'
       # if status is not-staged
       #   post a job to stage @filename
       # end
-      # set session with current status
-      # redirect back to fileset
     end
 
     def unstage
       # ping storage proxy for current status of @filename
+      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'unstage'
       # if status is staged
       #   post a job to unstage @filename
       # end
-      # set session with current status
-      # redirect back to fileset
     end
 
     def fixity
       # ping storage proxy for current status
-      # ?
-      # set session with current status
-      # redirect back to fileset
+      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'fixity'
     end
 
     def available_actions
@@ -55,13 +50,16 @@ module HydraDAM
       @port = config["port"] if @port.nil?
       @store = config["store"] if @store.nil?
       @cache = config["cache"] if @cache.nil?
+      @api_prefix = config["api_prefix"] if @api_prefix.nil?
+      @store_path = config["store_path"] if @store_path.nil?
+      @store_files_path = config["store_files_path"] if @store_files_path.nil?
+      @cache_path = config["cache_path"] if @cache_path.nil?
+      @cache_files_path = config["cache_files_path"] if @cache_files_path.nil?
     end
 
     def get_conn
       # Setup the connection to storage proxy
-      #configure
       @connection = Faraday.new(@host + ':' + @port.to_s)
-      @connection
     end
 
   end
