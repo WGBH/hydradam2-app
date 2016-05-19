@@ -16,7 +16,8 @@ module IU
       # extracted form the tarball.
       def ingest!
         work.ordered_members << access_copy
-        work.ordered_members << mezzanine_copy
+        work.ordered_members << production_copy
+        work.ordered_members << preservation_copy
         work.save!
         delete_extracted_files!
       end
@@ -27,9 +28,15 @@ module IU
         @access_copy ||= create_file_set!(ffprobe: access_copy_ffprobe_path, quality_level: :access)
       end
 
-      # Returns the FileSet object representing the mezzanine copy.
-      def mezzanine_copy
-        @mezzanine_copy ||= create_file_set!(ffprobe: mezzanine_copy_ffprobe_path, quality_level: :mezzanine)
+      # Returns the FileSet object representing the production copy.
+      def production_copy
+        @production_copy ||= create_file_set!(ffprobe: production_copy_ffprobe_path, quality_level: :production)
+      end
+
+      
+      # Returns FileSet object representing the pres copy.
+      def preservation_copy
+        @preservation_copy ||= create_file_set!(ffprobe: preservation_copy_ffprobe_path, quality_level: :preservation)
       end
 
       # Returns the Work object
@@ -83,8 +90,12 @@ module IU
         filenames.select { |filename| filename =~ /_access_ffprobe\.xml$/}.first
       end
 
-      def mezzanine_copy_ffprobe_path
-        filenames.select { |filename| filename =~ /_mezz_ffprobe\.xml$/}.first
+      def production_copy_ffprobe_path
+        filenames.select { |filename| filename =~ /_(mezz|prod)_ffprobe\.xml$/}.first
+      end
+      
+      def preservation_copy_ffprobe_path
+        filenames.select { |filename| filename =~ /_pres_ffprobe\.xml$/}.first
       end
 
       def mdpi_xml_path

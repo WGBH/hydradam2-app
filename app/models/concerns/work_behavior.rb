@@ -14,8 +14,12 @@ module Concerns
       members_of_quality_level(:access).first
     end
 
-    def mezzanine_copy
-      members_of_quality_level(:mezzanine).first
+    def preservation_copy
+      members_of_quality_level(:preservation).first
+    end
+
+    def production_copy
+      members_of_quality_level(:production).first
     end
 
     def members_of_quality_level(quality_level)
