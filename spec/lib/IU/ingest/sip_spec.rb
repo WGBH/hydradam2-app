@@ -11,7 +11,7 @@ describe IU::Ingest::SIP do
     )
   end
 
-  let(:tarball) { './spec/fixtures/IU/40000000300048_20160213-082926.tar' }
+  let(:tarball) { './spec/fixtures/IU/40000000542243_20160222-232108.tar' }
 
   let(:sip) { IU::Ingest::SIP.new(depositor: depositor, tarball: tarball) }
 
@@ -32,12 +32,12 @@ describe IU::Ingest::SIP do
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
-      expect(sip.access_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_access.mp4'
-      expect(sip.access_copy.file_size).to eq [1240942508]
+      expect(sip.access_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-02_prod/MDPI_40000000542243.downloading/data/MDPI_40000000542243_01_access.mp4'
+      expect(sip.access_copy.file_size).to eq [680347561]
     end
 
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
-      expect(sip.access_copy.original_checksum).to eq ['2e779723fdf58b5b2a60d2f71e7f2fe7']
+      expect(sip.access_copy.original_checksum).to eq ['d13be45c49cd966fb4a7e0bd02a757ba']
     end
 
     it 'stores its quality level' do
@@ -51,12 +51,12 @@ describe IU::Ingest::SIP do
     end
 
     it 'has properties from the access copy ffprobe xml from the SIP' do
-      expect(sip.mezzanine_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000000300048.downloading/data/MDPI_40000000300048_01_mezz.mov'
-      expect(sip.mezzanine_copy.file_size).to eq [20716987011]
+      expect(sip.mezzanine_copy.filename).to eq '/srv/scratch/transcoder_workspace_xcode-02_prod/MDPI_40000000542243.downloading/data/MDPI_40000000542243_01_mezz.mov'
+      expect(sip.mezzanine_copy.file_size).to eq [12776066312]
     end
 
     it 'gets its value for #original_checksum from the SIP checksum manifest' do
-      expect(sip.mezzanine_copy.original_checksum).to eq ['e5059f5b149f1688d39d0cf4c3d2a143']
+      expect(sip.mezzanine_copy.original_checksum).to eq ['34c57239b79ed6e16a428852af1f758b']
     end
 
     it 'stores its quality level' do
@@ -96,7 +96,7 @@ describe IU::Ingest::SIP do
       end
 
       it 'has date values from MDPI xml file' do
-        expect(sip.work.mdpi_date).to eq DateTime.parse('2015-11-17')
+        expect(sip.work.mdpi_date).to eq DateTime.parse('2016-01-15')
       end
     end
   end
