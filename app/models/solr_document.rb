@@ -36,6 +36,10 @@ class SolrDocument
     fetch(Solrizer.solr_name(:quality_level, :stored_searchable), [])
   end
 
+  def mdpi_timestamp
+    fetch('mdpi_timestamp_isi', [])
+  end
+
   def original_checksum
     fetch(Solrizer.solr_name(:original_checksum, :symbol), [])
   end

@@ -1,0 +1,31 @@
+<div class="form-group advanced-search-facet">
+  <%= label_tag "filesize", :class => "col-sm-3 control-label" do %>
+      Filesize (bytes)
+  <% end %>
+
+  <div class="col-sm-4">
+    <%= render_range_input("file_size_ltsi", :begin, 'Filesize', 16) %>
+  </div>
+  <div class="col-sm-1">
+    &nbsp;-&nbsp;
+  </div>
+  <div class="col-sm-4">
+    <%= render_range_input("file_size_ltsi", :end, 'Filesize', 16) %>
+  </div>
+</div>
+
+<div class="form-group advanced-search-facet">
+  <%= label_tag "mdpi_date", :class => "col-sm-3 control-label" do %>
+      MDPI Timestamp (yyyymmdd)
+  <% end %>
+
+  <div class="col-sm-4">
+    <%= render_range_input("mdpi_timestamp_isi", :begin, 'MDPI Date', 8) %>
+  </div>
+  <div class="col-sm-1">
+    &nbsp;-&nbsp;
+  </div>
+  <div class="col-sm-4">
+    <%= render_range_input("mdpi_timestamp_isi", :end, 'MDPI Date', 8) %>
+  </div>
+</div>

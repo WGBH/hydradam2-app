@@ -4,4 +4,5 @@
 class CurationConcerns::WorksController < ApplicationController
   include CurationConcerns::CurationConcernController
   self.curation_concern_type = Work
+  self.show_presenter = CurationConcerns::WorkPresenter
 end

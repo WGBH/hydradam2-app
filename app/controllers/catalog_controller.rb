@@ -9,7 +9,12 @@ class CatalogController < ApplicationController
     # config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= 'advanced'
     config.advanced_search[:query_parser] ||= 'dismax'
-    config.advanced_search[:form_solr_parameters] ||= {}
+    config.advanced_search[:form_solr_parameters] ||= {
+        'facet.field' => [solr_name('human_readable_type', :facetable),
+                          solr_name('file_format', :symbol),
+                          solr_name('quality_level', :stored_searchable)
+        ]
+    }
 
     # config.search_builder_class = ::SearchBuilder
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
@@ -17,13 +22,14 @@ class CatalogController < ApplicationController
       qf: [  solr_name('title', :stored_searchable),
              solr_name('description', :stored_searchable),
              solr_name('filename', :stored_searchable),
-             solr_name('file_format', :stored_searchable),
+             solr_name('file_format', :symbol),
              solr_name('quality_level', :stored_searchable),
              solr_name('lto_path', :stored_searchable),
              solr_name('artesia_uoi_id', :stored_searchable),
              solr_name('creator', :stored_searchable),
              solr_name('original_checksum', :symbol),
-             'file_size_ltsi', 'file_size_mb_ltsi'
+             'file_size_ltsi', 'file_size_mb_ltsi',
+             'mdpi_timestamp_isi'
       ],
       qt: 'search',
       rows: 10
@@ -81,6 +87,7 @@ class CatalogController < ApplicationController
     config.add_index_field solr_name('human_readable_type', :stored_searchable)
     config.add_index_field solr_name('format', :stored_searchable)
     config.add_index_field solr_name('identifier', :stored_searchable)
+    config.add_index_field solr_name('quality_level', :stored_searchable)
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -144,8 +151,8 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('date') do |field|
-      solr_name = uploaded_field
+    config.add_search_field('mdpi_date') do |field|
+      solr_name = 'mdpi_timestamp_isi'
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
@@ -169,8 +176,8 @@ class CatalogController < ApplicationController
     config.add_sort_field "score desc, #{uploaded_field} desc", label: "relevance \u25BC"
     config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
     config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
-    config.add_sort_field "#{modified_field} desc", label: "date modified \u25BC"
-    config.add_sort_field "#{modified_field} asc", label: "date modified \u25B2"
+    config.add_sort_field "mdpi_timestamp_isi desc", label: "MDPI date \u25BC"
+    config.add_sort_field "mdpi_timestamp_isi asc", label: "MDPI date \u25B2"
     config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} desc", label: "duration \u25BC"
     config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} asc", label: "duration \u25B2"
     config.add_sort_field "#{solr_name('bitRate', :stored_searchable, type: :string)} desc", label: "bit rate \u25BC"
