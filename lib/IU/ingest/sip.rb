@@ -17,7 +17,13 @@ module IU
       def ingest!
         work.ordered_members << access_copy
         work.ordered_members << production_copy
-        work.ordered_members << preservation_copy
+
+        begin
+          work.ordered_members << preservation_copy
+        rescue MissingTarball => e
+          nil # Preservation copy is not required.
+        end
+
         work.save!
         delete_extracted_files!
       end
@@ -103,7 +109,7 @@ module IU
       end
 
       def create_file_set!(opts={})
-        raise ArgumentError, "Invalid ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe].to_s)
+        raise MissingTarball, "Missing ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe].to_s)
         FileSet.new.tap do |file_set|
           file_set.apply_depositor_metadata depositor
           file_set.quality_level = opts[:quality_level]
@@ -160,5 +166,9 @@ module IU
         super("Missing required option :#{opt}")
       end
     end
+
+    class MissingTarball < ArgumentError
+    end
+
   end
 end
