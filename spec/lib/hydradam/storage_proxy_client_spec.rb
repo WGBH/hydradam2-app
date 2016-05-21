@@ -18,19 +18,19 @@ describe 'HydraDAM::StorageProxyClient' do
         with(:headers => {'Accept'=>'*/*'}).
         to_return(:status => 404, :body => "", :headers => {})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/unstaged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/unstaged_file.mp4").
         with(:body => {"type"=>"stage"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"unstaged_file.mp4","type":"stage"}',
                   :headers => {"content-type":'application/json'})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/staged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/staged_file.mp4").
         with(:body => {"type"=>"unstage"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","type":"unstage"}',
                   :headers => {"content-type":'application/json'})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/staged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/staged_file.mp4").
         with(:body => {"type"=>"fixity"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","type":"fixity"}',

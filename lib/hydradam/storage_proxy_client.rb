@@ -17,7 +17,7 @@ module HydraDAM
 
     def stage
       # ping storage proxy for current status of @filename
-      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'stage'
+      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'stage'
       # if status is not-staged
       #   post a job to stage @filename
       # end
@@ -25,7 +25,7 @@ module HydraDAM
 
     def unstage
       # ping storage proxy for current status of @filename
-      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'unstage'
+      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'unstage'
       # if status is staged
       #   post a job to unstage @filename
       # end
@@ -33,7 +33,7 @@ module HydraDAM
 
     def fixity
       # ping storage proxy for current status
-      response = @connection.post [@api_prefix,'jobs', @filename].join('/'), :type => 'fixity'
+      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'fixity'
     end
 
     def available_actions
