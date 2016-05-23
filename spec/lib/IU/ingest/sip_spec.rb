@@ -39,6 +39,10 @@ describe IU::Ingest::SIP do
     it 'stores its quality level' do
       expect(sip.access_copy.quality_level.to_s).to eq 'access'
     end
+
+    it 'is publicly visible' do
+      expect(sip.access_copy.visibility).to eq 'open'
+    end
   end
 
   describe '#production_copy' do
@@ -60,6 +64,10 @@ describe IU::Ingest::SIP do
       expect(sip.production_copy.quality_level.to_s).to eq 'production'
     end
 
+    it 'is publicly visible' do
+      expect(sip.production_copy.visibility).to eq 'open'
+    end
+
     context 'when the production file is actually suffixed with _mezz' do
       let(:sip) { IU::Ingest::SIP.new(depositor: depositor, tarball: './spec/fixtures/IU/sip_with_mezzanine.tar') }
 
@@ -78,6 +86,10 @@ describe IU::Ingest::SIP do
 
       it 'stores its quality level' do
         expect(sip.production_copy.quality_level.to_s).to eq 'production'
+      end
+
+      it 'is publicly visible' do
+        expect(sip.production_copy.visibility).to eq 'open'
       end
     end
 
@@ -99,6 +111,10 @@ describe IU::Ingest::SIP do
     
     it 'stores its quality level' do
       expect(sip.preservation_copy.quality_level.to_s).to eq 'preservation'
+    end
+
+    it 'is publicly visible' do
+      expect(sip.preservation_copy.visibility).to eq 'open'
     end
   end
   
@@ -143,6 +159,10 @@ describe IU::Ingest::SIP do
 
       it 'has date values from MDPI xml file' do
         expect(sip.work.mdpi_date).to eq DateTime.parse('2015-12-03')
+      end
+
+      it 'is publicly visible' do
+        expect(sip.work.visibility).to eq 'open'
       end
     end
   end
