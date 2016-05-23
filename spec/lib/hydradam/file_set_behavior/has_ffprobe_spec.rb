@@ -10,8 +10,9 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
   end
 
   after :all do
-    Object.remove_const(:TestClass)
-    Object.remove_const(:DoesNotExtendActiveFedoraBase)
+    Object.send :remove_const, :TestClass
+    # Unused class?
+    # Object.send :remove_const, :DoesNotExtendActiveFedoraBase
   end
 
   let(:fake_user) { User.new(email: "test_user@hydradam.org", password: "password", guest: false) }
@@ -34,7 +35,7 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
 
   describe '#ffprobe=' do
     it 'requires an XMLFile' do
-      expect{ subject.ffprobe = "this will fail" }.to raise_error
+      expect{ subject.ffprobe = "this will fail" }.to raise_error ActiveFedora::AssociationTypeMismatch
     end
 
     it 'accepts a XMLFile' do
