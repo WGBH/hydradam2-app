@@ -49,6 +49,7 @@ module IU
       def work
         @work ||= Work.new.tap do |work|
           work.apply_depositor_metadata depositor
+          work.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
           work.mdpi_xml.content = File.read(mdpi_xml_path)
           work.assign_properties_from_mdpi_xml
         end
@@ -112,6 +113,7 @@ module IU
         raise MissingTarball, "Missing ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe].to_s)
         FileSet.new.tap do |file_set|
           file_set.apply_depositor_metadata depositor
+          file_set.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
           file_set.quality_level = opts[:quality_level]
           file_set.save!
           File.open(opts[:ffprobe]) do |ffprobe_file|
