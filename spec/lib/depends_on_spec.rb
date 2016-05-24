@@ -23,7 +23,7 @@ describe DependsOn do
     end
 
     it 'does not raise an exception if the class inherits from all of the specified dependencies' do
-      expect{ ExampleDependentClass.depends_on("ExampleClassDependency", "ExampleModuleDependency") }.to_not raise_error DependsOn::MissingDependencies
+      expect{ ExampleDependentClass.depends_on("ExampleClassDependency", "ExampleModuleDependency") }.to_not raise_error
     end
   end
 

@@ -22,7 +22,7 @@ describe HydraDAM::FileSetBehavior::HasEXIF, :requires_fedora do
 
   describe '#exif=' do
     it 'requires an XMLFile' do
-      expect{ subject.exif = "this will fail" }.to raise_error
+      expect{ subject.exif = "this will fail" }.to raise_error ActiveFedora::AssociationTypeMismatch
     end
 
     it 'accepts a XMLFile' do

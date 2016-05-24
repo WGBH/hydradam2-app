@@ -22,7 +22,7 @@ describe HydraDAM::FileSetBehavior::HasFITS, :requires_fedora do
 
   describe '#fits=' do
     it 'requires an XMLFile' do
-      expect{ subject.fits = "this will fail" }.to raise_error
+      expect{ subject.fits = "this will fail" }.to raise_error ActiveFedora::AssociationTypeMismatch
     end
 
     it 'accepts a XMLFile' do
