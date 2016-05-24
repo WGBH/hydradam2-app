@@ -24,7 +24,10 @@ module CurationConcerns
              :embargo_release_date, :lease_expiration_date,
              :depositor, :tags, :title_or_label, to: :solr_document
 
-    delegate :filename, :file_format, :file_size, :original_checksum, :quality_level, to: :solr_document
+    delegate :filename, :file_format, :file_format_long_name, :file_size, :original_checksum, :quality_level,
+             :date_generated, :codec_type, :codec_name, :codec_long_name, :duration, :mdpi_timestamp,
+             :bit_rate, :unit_of_origin, :unit_of_origin_statement, :alt_unit_origin_statement,
+             to: :solr_document
 
 
     def page_title

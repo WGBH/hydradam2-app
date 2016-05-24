@@ -6,6 +6,7 @@ module Concerns
     extend ActiveSupport::Concern
     included do
       contains :mdpi_xml, class_name: "XMLFile"
+      contains :mods_xml, class_name: "XMLFile"
 
       property :mdpi_date, predicate: RDF::Vocab::EBUCore.dateCreated, multiple: false
     end
@@ -29,8 +30,14 @@ module Concerns
     def assign_properties_from_mdpi_xml
       noko = mdpi_xml.noko.dup
       noko.remove_namespaces!
-      self.title += [noko.xpath('/IU/Carrier/Barcode').text]
+      #self.title += [noko.xpath('/IU/Carrier/Barcode').text]
       self.mdpi_date = DateTime.parse(noko.xpath('/IU/Carrier/Parts/Part/Ingest/Date').text)
+    end
+
+    def assign_properties_from_mods_xml
+      noko = mods_xml.noko.dup
+      noko.remove_namespaces!
+      self.title += [noko.xpath('/mods/titleInfo/title').text]
     end
   end
 end

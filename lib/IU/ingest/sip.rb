@@ -52,6 +52,8 @@ module IU
           work.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
           work.mdpi_xml.content = File.read(mdpi_xml_path)
           work.assign_properties_from_mdpi_xml
+          work.mods_xml.content = File.read(mods_xml_path)
+          work.assign_properties_from_mods_xml
         end
       end
 
@@ -107,6 +109,10 @@ module IU
 
       def mdpi_xml_path
         filenames.select { |filename| filename =~ /MDPI_\d+\.xml/ }.first
+      end
+
+      def mods_xml_path
+        filenames.select { |filename| filename =~ /MDPI_\d+_mods\.xml/ }.first
       end
 
       def create_file_set!(opts={})
