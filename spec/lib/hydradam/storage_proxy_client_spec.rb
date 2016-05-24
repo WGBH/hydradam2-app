@@ -9,28 +9,28 @@ describe 'HydraDAM::StorageProxyClient' do
   before(:each) do
     WebMock.disable_net_connect!
 
-    WebMock.stub_request(:get, "http://localhost:3001/caches/SDADisk/files/staged_file.mp4").
+    WebMock.stub_request(:get, "http://localhost:3001/storage_api/caches/SDADisk/cache_files/staged_file.mp4").
         with(:headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","status":"staged"}',
                   :headers => {"content-type":'application/json'})
 
-    WebMock.stub_request(:get, "http://localhost:3001/caches/SDADisk/files/unstaged_file.mp4").
+    WebMock.stub_request(:get, "http://localhost:3001/storage_api/caches/SDADisk/cache_files/unstaged_file.mp4").
         with(:headers => {'Accept'=>'*/*'}).
         to_return(:status => 404, :body => "", :headers => {})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/unstaged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/storage_api/jobs/SDADisk/unstaged_file.mp4").
         with(:body => {"type"=>"stage"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"unstaged_file.mp4","type":"stage"}',
                   :headers => {"content-type":'application/json'})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/staged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/storage_api/jobs/SDADisk/staged_file.mp4").
         with(:body => {"type"=>"unstage"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","type":"unstage"}',
                   :headers => {"content-type":'application/json'})
 
-    WebMock.stub_request(:post, "http://localhost:3001/jobs/SDADisk/staged_file.mp4").
+    WebMock.stub_request(:post, "http://localhost:3001/storage_api/jobs/SDADisk/staged_file.mp4").
         with(:body => {"type"=>"fixity"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","type":"fixity"}',
@@ -71,6 +71,21 @@ describe 'HydraDAM::StorageProxyClient' do
     expect(subject).to respond_to :unstage
     expect(subject).to respond_to :fixity
     expect(subject).to respond_to :available_actions
+  end
+
+  describe 'can be enabled or disabled' do
+    context 'when the storage proxy client is enabled' do
+      it 'enabled? returns true' do
+        subject.enable
+        expect(subject.enabled?).to be_truthy
+      end
+    end
+    context 'when the storage proxy client is disabled' do
+      it 'enabled? returns false' do
+        subject.disable
+        expect(subject.enabled?).to_not be_truthy
+      end
+    end
   end
 
   describe 'provides a connection to a proxy server for interactions' do
@@ -129,10 +144,8 @@ describe 'HydraDAM::StorageProxyClient' do
   end
 
   describe "#stage" do
-    context "when a file is not a valid file in a store" do
-      it_behaves_like 'an invalid file in a store'
-      #it_behaves_like 'a successful request'
-    end
+    context "when a file is not a valid file in a store"
+      #it_behaves_like 'an invalid file in a store'
     context "when a file is not in the cache" do
       let(:response) do
         subject.filename = 'unstaged_file.mp4'
@@ -170,8 +183,7 @@ describe 'HydraDAM::StorageProxyClient' do
 
   describe "#fixity" do
     context "when a file is not a valid file in a store" do
-      it_behaves_like 'an invalid file in a store'
-      #it_behaves_like 'a successful request'
+      #it_behaves_like 'an invalid file in a store'
     end
     context "when a file is in the cache" do
       let(:response) do

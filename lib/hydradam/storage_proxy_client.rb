@@ -8,6 +8,20 @@ module HydraDAM
     def initialize
       configure
       get_conn
+      disable if @enabled == false or @enabled.nil?
+      enable if @enabled == true
+    end
+
+    def enable
+      @enabled_state = true
+    end
+
+    def disable
+      @enabled_state = false
+    end
+
+    def enabled?
+      @enabled_state
     end
 
     def status
@@ -46,6 +60,7 @@ module HydraDAM
     def configure
       # TODO: Probably don't want this to happen every time, maybe once in an initializer?
       config = YAML.load(ERB.new(IO.read(File.join(Rails.root, 'config', 'storage_proxy.yml'))).result)[Rails.env].with_indifferent_access
+      @enabled = config["enabled"]
       @host = config["host"] if @host.nil?
       @port = config["port"] if @port.nil?
       @store = config["store"] if @store.nil?

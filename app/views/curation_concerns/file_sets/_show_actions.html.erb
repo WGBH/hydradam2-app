@@ -1,5 +1,6 @@
   <div class="form-actions">
 
+    <% unless @file_status_resp.nil? or @file_status_resp == 'null'%>
     <p>
     <% if JSON.parse(@file_status_resp)['status'] == 'staged'%>
       <strong>File available in cache |
@@ -8,6 +9,8 @@
       </strong>
     <% elsif JSON.parse(@file_status_resp)['status'] == 'staging' or params[:next_action] == 'stage' %>
       <strong>File staging to cache...</strong>
+    <% elsif JSON.parse(@file_status_resp)['status'] == 'disabled' %>
+        <strong>Storage proxy client is disabled</strong>
     <% else %>
         <strong>File not in cache </strong>|
         <strong>
@@ -15,6 +18,7 @@
         </strong>
     <% end %>
     </p>
+     <% end %>
     <p>
       <%= link_to 'Refresh availability status', main_app.curation_concerns_file_set_path(presenter) + '?next_action=file_status', class: 'btn btn-default' %>
     </p>
