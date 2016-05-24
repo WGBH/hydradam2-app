@@ -62,7 +62,7 @@ class CatalogController < ApplicationController
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
     config.add_facet_field 'file_size_ltsi', label: 'File Size (bytes)', limit: 5, range: true, show: false # Needed to handle adv search
     config.add_facet_field 'generic_type_sim', show: false, single: true
-    config.add_facet_field 'mdpi_timestamp_isi', label: 'MDPI Date', range: true
+    config.add_facet_field 'mdpi_timestamp_isi', label: 'MDPI Date', range: { segments: false }
 
 
 
