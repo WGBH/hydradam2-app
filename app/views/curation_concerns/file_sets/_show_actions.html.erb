@@ -1,5 +1,24 @@
   <div class="form-actions">
-    <%= link_to "Download this File", main_app.download_path(presenter), class: 'btn btn-default' %>
+
+    <p>
+    <% if JSON.parse(@file_status_resp)['status'] == 'staged'%>
+      <strong>File available in cache |
+        <%= link_to 'Download', 'http://helium.dlib.indiana.edu:8200' + JSON.parse(@file_status_resp)['url'] %> |
+        <%= link_to 'Unstage file from cache', main_app.curation_concerns_file_set_path(presenter) + '?next_action=unstage'%>
+      </strong>
+    <% elsif JSON.parse(@file_status_resp)['status'] == 'staging' or params[:next_action] == 'stage' %>
+      <strong>File staging to cache...</strong>
+    <% else %>
+        <strong>File not in cache </strong>|
+        <strong>
+          <%= link_to 'Stage file for download', main_app.curation_concerns_file_set_path(presenter) + '?next_action=stage' %>
+        </strong>
+    <% end %>
+    </p>
+    <p>
+      <%= link_to 'Refresh availability status', main_app.curation_concerns_file_set_path(presenter) + '?next_action=file_status', class: 'btn btn-default' %>
+    </p>
+
     <% if can? :edit, presenter.id %>
       <%= link_to "Edit this File", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default'  %>
     <% end %>
