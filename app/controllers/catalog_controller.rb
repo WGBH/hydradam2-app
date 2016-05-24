@@ -22,7 +22,7 @@ class CatalogController < ApplicationController
       qf: [  solr_name('title', :stored_searchable),
              solr_name('description', :stored_searchable),
              solr_name('filename', :stored_searchable),
-             solr_name('file_format', :symbol),
+             solr_name('file_format', :stored_searchable),
              solr_name('quality_level', :stored_searchable),
              solr_name('lto_path', :stored_searchable),
              solr_name('artesia_uoi_id', :stored_searchable),
@@ -50,15 +50,11 @@ class CatalogController < ApplicationController
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name('human_readable_type', :facetable)
-    config.add_facet_field solr_name('creator', :facetable), limit: 5
-    config.add_facet_field solr_name('tag', :facetable), limit: 5
-    config.add_facet_field solr_name('subject', :facetable), limit: 5
-    config.add_facet_field solr_name('language', :facetable), limit: 5
-    config.add_facet_field solr_name('based_near', :facetable), limit: 5
-    config.add_facet_field solr_name('publisher', :facetable), limit: 5
-    config.add_facet_field solr_name('file_format', :symbol), label: 'File Format', limit: 5
-    config.add_facet_field solr_name('depositor', :symbol),label: 'Depositor', limit: 5
-    config.add_facet_field solr_name('quality_level', :stored_searchable), label: 'Quality Level', limit: 5
+    config.add_facet_field solr_name('file_format', :facetable), label: 'File Format', limit: 5
+    config.add_facet_field solr_name('codec_type', :facetable)
+    config.add_facet_field solr_name('codec_name', :facetable)
+    config.add_facet_field solr_name('depositor', :facetable),label: 'Depositor', limit: 5
+    config.add_facet_field solr_name('quality_level', :facetable), label: 'Quality Level', limit: 5
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
     config.add_facet_field 'file_size_ltsi', label: 'File Size (bytes)', limit: 5, range: true, show: false # Needed to handle adv search
     config.add_facet_field 'generic_type_sim', show: false, single: true
@@ -73,21 +69,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
-    config.add_index_field solr_name('description', :stored_searchable)
-    config.add_index_field solr_name('tag', :stored_searchable)
-    config.add_index_field solr_name('subject', :stored_searchable)
-    config.add_index_field solr_name('creator', :stored_searchable)
-    config.add_index_field solr_name('contributor', :stored_searchable)
-    config.add_index_field solr_name('publisher', :stored_searchable)
-    config.add_index_field solr_name('based_near', :stored_searchable)
-    config.add_index_field solr_name('language', :stored_searchable)
-    config.add_index_field solr_name('date_uploaded', :stored_sortable)
-    config.add_index_field solr_name('date_modified', :stored_sortable)
-    config.add_index_field solr_name('date_created', :stored_searchable)
-    config.add_index_field solr_name('rights', :stored_searchable)
     config.add_index_field solr_name('human_readable_type', :stored_searchable)
-    config.add_index_field solr_name('format', :stored_searchable)
-    config.add_index_field solr_name('identifier', :stored_searchable)
     config.add_index_field solr_name('quality_level', :stored_searchable)
 
     # "fielded" search configuration. Used by pulldown among other places.
