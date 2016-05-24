@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/WGBH/hydradam2.svg?branch=iu-demo)](https://travis-ci.org/WGBH/hydradam2)
+
 # HydraDAM
 
 A Hydra app that focuses on Digital Asset Management functions.
