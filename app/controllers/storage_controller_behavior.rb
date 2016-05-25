@@ -2,52 +2,28 @@ module StorageControllerBehavior
   extend ActiveSupport::Concern
   require 'hydradam/storage_proxy_client'
 
-  included do
-    # This SHOULD authorize all of my actions below but it doesn't
-    load_and_authorize_resource class: ::FileSet, except: :show
-  end
-
-  # TODO: Undo this ugly #show override with parameter tracking hack.
-  def show
-    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
-    @filename = File.basename(@file_set.filename)
-    @file_status_resp = get_file_status
-    if params[:next_action] == 'file_status'
-      @file_status_resp = get_file_status
-    elsif params[:next_action] == 'stage'
-      @file_status_resp = stage_file
-    elsif params[:next_action] == 'unstage'
-      @file_status_resp = unstage_file
-    end
-
-    respond_to do |wants|
-      wants.html { presenter }
-    end
-  end
-
-  # TODO: Why can I not route to file_status, stage, unstage actions?
-  # This controller behavior is meant to provide direct routable actions
-  # that redirect back to show, but they result in immediate redirect
-  # back to application root with unauthorized error
   def file_status
     @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
     @filename = File.basename(@file_set.filename)
-    @file_status_resp = get_file_status
-    redirect_to @file_set
+    session[:file_status_resp] = get_file_status
+    session[:prev_file_action] = 'file_status'
+    redirect_to [main_app, @file_set], notice: "Availability request for #{@filename} has been sent"
   end
 
   def stage
     @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
     @filename = File.basename(@file_set.filename)
-    @file_status_resp = stage_file
-    redirect_to @file_set
+    session[:file_status_resp] = stage_file
+    session[:prev_file_action] = 'stage'
+    redirect_to [main_app, @file_set], notice: "Stage request for #{@filename} has been sent"
   end
 
   def unstage
     @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
     @filename = File.basename(@file_set.filename)
-    @file_status_resp = unstage_file
-    redirect_to @file_set
+    session[:file_status_resp] = unstage_file
+    session[:prev_file_action] = 'unstage'
+    redirect_to [main_app, @file_set], notice: "Unstage request for #{@filename} has been sent"
   end
 
   private

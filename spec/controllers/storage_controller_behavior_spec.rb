@@ -43,52 +43,39 @@ describe  CurationConcerns::FileSetsController, type: :controller do
     before { sign_in depositor }
     before { sip.ingest! }
 
-    describe '#show' do
-
-      it "redirects_to :action => :show" do
-        #get :show, id: sip.access_copy.id, next_action: 'stage'
-        #expect(subject).to redirect_to :action => :show, :id => sip.access_copy.id
-      end
-      context 'params[:next_action] eq file_status' do
-        it 'stores a JSON response from the storage proxy' do
-          get :show, id: sip.access_copy.id, next_action: 'file_status'
-          expect(JSON.parse(assigns(:file_status_resp))["name"]).to eq File.basename(sip.access_copy.filename)
-        end
-      end
-      context 'params[:next_action] eq stage' do
-        it 'stores a JSON response from the storage proxy' do
-          get :show, id: sip.access_copy.id, next_action: 'stage'
-          expect(JSON.parse(assigns(:file_status_resp))["type"]).to eq 'stage'
-        end
-      end
-      context 'params[:next_action] eq unstage' do
-        it 'stores a JSON response from the storage proxy' do
-          get :show, id: sip.access_copy.id, next_action: 'unstage'
-          expect(JSON.parse(assigns(:file_status_resp))["type"]).to eq 'unstage'
-        end
-      end
-
-    end
-
     describe '#file_status' do
-
       it "redirects_to :action => :show" do
-        #get :show, id: sip.access_copy.id, next_action: 'file_status'
-        #expect(subject).to redirect_to :action => :show, :id => sip.access_copy.id
+        get :file_status, id: sip.access_copy.id
+        expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
       end
       it 'stores a JSON response from the storage proxy' do
-        #get :file_status, id: sip.access_copy.id
-        #expect(assigns(:file_status_resp)).to eq 'some valid JSON'
+        get :file_status, id: sip.access_copy.id
+        expect(JSON.parse(session['file_status_resp'])["name"]).to eq File.basename(sip.access_copy.filename)
       end
     end
 
-    describe 'GET #stage_curation_concerns_file_set' do
-
+    describe '#stage' do
+      it "redirects_to :action => :show" do
+        get :stage, id: sip.access_copy.id
+        expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
+      end
+      it 'stores a JSON response from the storage proxy' do
+        get :stage, id: sip.access_copy.id
+        expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'stage'
+      end
     end
 
-    describe 'GET #unstage_curation_concerns_file_set' do
-
+    describe '#unstage' do
+      it "redirects_to :action => :show" do
+        get :unstage, id: sip.access_copy.id
+        expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
+      end
+      it 'stores a JSON response from the storage proxy' do
+        get :unstage, id: sip.access_copy.id
+        expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'unstage'
+      end
     end
+
   end
 
 end

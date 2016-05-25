@@ -1,26 +1,29 @@
   <div class="form-actions">
 
-    <% unless @file_status_resp.nil? or @file_status_resp == 'null'%>
+    <%
+       @file_status_resp = session[:file_status_resp]
+       unless @file_status_resp.nil? or @file_status_resp == 'null'
+    %>
     <p>
     <% if JSON.parse(@file_status_resp)['status'] == 'staged'%>
       <strong>File available in cache |
         <%= link_to 'Download', 'http://helium.dlib.indiana.edu:8200' + JSON.parse(@file_status_resp)['url'] %> |
-        <%= link_to 'Unstage file from cache', main_app.curation_concerns_file_set_path(presenter) + '?next_action=unstage'%>
+        <%= link_to 'Unstage file from cache', main_app.unstage_curation_concerns_file_set_path(presenter)%>
       </strong>
-    <% elsif JSON.parse(@file_status_resp)['status'] == 'staging' or params[:next_action] == 'stage' %>
+    <% elsif JSON.parse(@file_status_resp)['status'] == 'staging' or session[:prev_file_action] == 'stage' %>
       <strong>File staging to cache...</strong>
     <% elsif JSON.parse(@file_status_resp)['status'] == 'disabled' %>
         <strong>Storage proxy client is disabled</strong>
     <% else %>
         <strong>File not in cache </strong>|
         <strong>
-          <%= link_to 'Stage file for download', main_app.curation_concerns_file_set_path(presenter) + '?next_action=stage' %>
+          <%= link_to 'Stage file for download', main_app.stage_curation_concerns_file_set_path(presenter) %>
         </strong>
     <% end %>
     </p>
      <% end %>
     <p>
-      <%= link_to 'Refresh availability status', main_app.curation_concerns_file_set_path(presenter) + '?next_action=file_status', class: 'btn btn-default' %>
+      <%= link_to 'Refresh availability status', main_app.file_status_curation_concerns_file_set_path(presenter), class: 'btn btn-default' %>
     </p>
 
     <% if can? :edit, presenter.id %>
