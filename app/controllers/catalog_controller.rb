@@ -144,14 +144,6 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field('format_name') do |field|
-      solr_name = solr_name('hasFormatName', :stored_searchable, type: :string)
-      field.solr_local_parameters = {
-        qf: solr_name,
-        pf: solr_name
-      }
-    end
-
     config.add_search_field('mdpi_date') do |field|
       solr_name = 'mdpi_timestamp_isi'
       field.solr_local_parameters = {
