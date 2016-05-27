@@ -2,7 +2,7 @@ require 'pry'
 
 module HydraDAM
   class StorageProxyClient
-    attr_accessor :filename, :host, :port, :store, :cache, :api_prefix,
+    attr_accessor :host, :port, :store, :cache, :api_prefix,
                   :store_path, :store_files_path, :cache_path, :cache_files_path
 
     def initialize
@@ -23,30 +23,30 @@ module HydraDAM
       @enabled_state
     end
 
-    def status
+    def status(filename)
       # ping storage proxy for current status of @cache/@filename
-      connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, @filename].join('/')
+      connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, filename].join('/')
     end
 
-    def stage
+    def stage(filename)
       # ping storage proxy for current status of @filename
-      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'stage'
+      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'stage'
       # if status is not-staged
       #   post a job to stage @filename
       # end
     end
 
-    def unstage
+    def unstage(filename)
       # ping storage proxy for current status of @filename
-      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'unstage'
+      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'unstage'
       # if status is staged
       #   post a job to unstage @filename
       # end
     end
 
-    def fixity
+    def fixity(filename)
       # ping storage proxy for current status
-      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'fixity'
+      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'fixity'
     end
 
     def available_actions

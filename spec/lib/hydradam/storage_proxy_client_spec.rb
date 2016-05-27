@@ -119,13 +119,12 @@ describe 'HydraDAM::StorageProxyClient' do
   describe "#status" do
     context "when a file is in the cache" do
       let(:response) do
-        subject.filename = 'staged_file.mp4'
-        subject.status
+        subject.status 'staged_file.mp4'
       end
       it 'receives a status of staged' do
         expect(response.status).to be_in([200, 404])
         expect(response.headers["content-type"]).to include("application/json")
-        expect(JSON.parse(response.body)["name"]).to eq(subject.filename)
+        expect(JSON.parse(response.body)["name"]).to eq 'staged_file.mp4'
         expect(JSON.parse(response.body)["status"]).to eq("staged")
       end
       # TODO: Figure out where/how to use behaves_like with response from let so I can use the shared example
@@ -134,8 +133,7 @@ describe 'HydraDAM::StorageProxyClient' do
     end
     context "when a file is not in the cache" do
       let(:response) do
-        subject.filename = 'unstaged_file.mp4'
-        subject.status
+        subject.status 'unstaged_file.mp4'
       end
       it 'receives a status code of 404' do
         expect(response.status).to eq(404)
@@ -150,14 +148,13 @@ describe 'HydraDAM::StorageProxyClient' do
       #it_behaves_like 'an invalid file in a store'
     context "when a file is not in the cache" do
       let(:response) do
-        subject.filename = 'unstaged_file.mp4'
-        subject.stage
+        subject.stage 'unstaged_file.mp4'
       end
       it 'can post a job to have to it staged' do
         expect(response.status).to be_in([200, 404])
         expect(response.headers["content-type"]).to include("application/json")
-        expect(JSON.parse(response.body)["name"]).to eq(subject.filename)
-        expect(JSON.parse(response.body)["type"]).to eq("stage")
+        expect(JSON.parse(response.body)["name"]).to eq 'unstaged_file.mp4'
+        expect(JSON.parse(response.body)["type"]).to eq 'stage'
       end
       # TODO: Figure out where/how to use behaves_like with response from let so I can use the shared example
       #it_behaves_like 'a successful request', response
@@ -168,13 +165,12 @@ describe 'HydraDAM::StorageProxyClient' do
   describe "#unstage" do
     context "when a file is in the cache" do
       let(:response) do
-        subject.filename = 'staged_file.mp4'
-        subject.unstage
+        subject.unstage 'staged_file.mp4'
       end
       it 'can post a job to have to have it unstaged' do
         expect(response.status).to be_in([200, 404])
         expect(response.headers["content-type"]).to include("application/json")
-        expect(JSON.parse(response.body)["name"]).to eq(subject.filename)
+        expect(JSON.parse(response.body)["name"]).to eq 'staged_file.mp4'
         expect(JSON.parse(response.body)["type"]).to eq("unstage")
       end
       # TODO: Figure out where/how to use behaves_like with response from let so I can use the shared example
@@ -189,14 +185,13 @@ describe 'HydraDAM::StorageProxyClient' do
     end
     context "when a file is in the cache" do
       let(:response) do
-        subject.filename = 'staged_file.mp4'
-        subject.fixity
+        subject.fixity 'staged_file.mp4'
       end
       it 'can post a job to have to run fixity' do
         expect(response.status).to be_in([200, 404])
         expect(response.headers["content-type"]).to include("application/json")
-        expect(JSON.parse(response.body)["name"]).to eq(subject.filename)
-        expect(JSON.parse(response.body)["type"]).to eq("fixity")
+        expect(JSON.parse(response.body)["name"]).to eq 'staged_file.mp4'
+        expect(JSON.parse(response.body)["type"]).to eq "fixity"
       end
       # TODO: Figure out where/how to use behaves_like with response from let so I can use the shared example
       #it_behaves_like 'a successful request', response
