@@ -93,7 +93,8 @@ describe 'HydraDAM::StorageProxyClient' do
       let(:response) do
         subject.host = 'http://foo'
         subject.configure
-        conn = subject.get_conn
+        # use #send to call private method
+        conn = subject.send(:connection)
         conn.get '/bar'
       end
       it 'raises Faraday::ConnectionFailed error' do
@@ -105,7 +106,8 @@ describe 'HydraDAM::StorageProxyClient' do
     end
     context 'when valid connection to the proxy server exists' do
       let(:response) do
-        conn = subject.get_conn
+        # use #send to call private method
+        conn = subject.send(:connection)
         conn.get '/bar'
       end
       it 'returns valid connection status' do

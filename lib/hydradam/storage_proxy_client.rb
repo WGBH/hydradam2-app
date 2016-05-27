@@ -7,7 +7,6 @@ module HydraDAM
 
     def initialize
       configure
-      get_conn
       disable if @enabled == false or @enabled.nil?
       enable if @enabled == true
     end
@@ -26,12 +25,12 @@ module HydraDAM
 
     def status
       # ping storage proxy for current status of @cache/@filename
-      response = @connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, @filename].join('/')
+      connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, @filename].join('/')
     end
 
     def stage
       # ping storage proxy for current status of @filename
-      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'stage'
+      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'stage'
       # if status is not-staged
       #   post a job to stage @filename
       # end
@@ -39,7 +38,7 @@ module HydraDAM
 
     def unstage
       # ping storage proxy for current status of @filename
-      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'unstage'
+      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'unstage'
       # if status is staged
       #   post a job to unstage @filename
       # end
@@ -47,7 +46,7 @@ module HydraDAM
 
     def fixity
       # ping storage proxy for current status
-      response = @connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'fixity'
+      connection.post [@api_prefix,'jobs', @cache, @filename].join('/'), :type => 'fixity'
     end
 
     def available_actions
@@ -72,10 +71,10 @@ module HydraDAM
       @cache_files_path = config["cache_files_path"] if @cache_files_path.nil?
     end
 
-    def get_conn
-      # Setup the connection to storage proxy
-      @connection = Faraday.new(@host + ':' + @port.to_s)
+    def connection
+      @connection ||= Faraday.new(@host + ':' + @port.to_s)
     end
+
 
   end
 end
