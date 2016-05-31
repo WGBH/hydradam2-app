@@ -33,7 +33,7 @@ describe  CurationConcerns::FileSetsController, type: :controller do
 
     describe 'configures a StorageProxyClient' do
       it 'can get StorageProxyClient connection' do
-        expect(subject.send(:get_proxy_client)).to be_kind_of(HydraDAM::StorageProxyClient)
+        expect(subject.send(:storage_proxy)).to be_kind_of(HydraDAM::StorageProxyClient)
       end
     end
 

@@ -29,11 +29,9 @@ module StorageControllerBehavior
   private
 
   def get_file_status
-    get_proxy_client
-    @sp_client.filename = @filename
     default_resp = {"name" => @filename, "status" => 'disabled'}
-    if @sp_client.enabled?
-      response = @sp_client.status
+    if storage_proxy.enabled?
+      response = storage_proxy.status @filename
       response.body
     else
       default_resp.to_json
@@ -41,11 +39,9 @@ module StorageControllerBehavior
   end
 
   def stage_file
-    get_proxy_client
-    @sp_client.filename = @filename
     default_resp = {"name" => @filename, "type" => 'stage', "status" => 'disabled'}
-    if @sp_client.enabled?
-      response = @sp_client.stage
+    if storage_proxy.enabled?
+      response = storage_proxy.stage @filename
       response.body
     else
       default_resp.to_json
@@ -53,23 +49,17 @@ module StorageControllerBehavior
   end
 
   def unstage_file
-    get_proxy_client
-    @sp_client.filename = @filename
     default_resp = {"name" => @filename, "type" => 'unstage', "status" => 'disabled'}
-    if @sp_client.enabled?
-      response = @sp_client.unstage
+    if storage_proxy.enabled?
+      response = storage_proxy.unstage @filename
       response.body
     else
       default_resp.to_json
     end
   end
 
-  def get_proxy_client
-    begin
-      @sp_client = HydraDAM::StorageProxyClient.new
-    rescue
-      puts "Getting a connection to the Storage Proxy failed"
-    end
+  def storage_proxy
+    @storage_proxy ||= HydraDAM::StorageProxyClient.new
   end
 
 end
