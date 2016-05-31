@@ -7,7 +7,7 @@ module StorageControllerBehavior
     @filename = File.basename(@file_set.filename)
     session[:file_status_resp] = get_file_status
     session[:prev_file_action] = 'file_status'
-    redirect_to [main_app, @file_set], notice: "Availability request for #{@filename} has been sent"
+    redirect_to main_app.url_for(@file_set), notice: "Availability request for #{@filename} has been sent"
   end
 
   def stage
@@ -15,7 +15,7 @@ module StorageControllerBehavior
     @filename = File.basename(@file_set.filename)
     session[:file_status_resp] = stage_file
     session[:prev_file_action] = 'stage'
-    redirect_to [main_app, @file_set], notice: "Stage request for #{@filename} has been sent"
+    redirect_to main_app.url_for(@file_set), notice: "Stage request for #{@filename} has been sent"
   end
 
   def unstage
@@ -23,7 +23,7 @@ module StorageControllerBehavior
     @filename = File.basename(@file_set.filename)
     session[:file_status_resp] = unstage_file
     session[:prev_file_action] = 'unstage'
-    redirect_to [main_app, @file_set], notice: "Unstage request for #{@filename} has been sent"
+    redirect_to main_app.url_for(@file_set), notice: "Unstage request for #{@filename} has been sent"
   end
 
   private
