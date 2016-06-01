@@ -26,6 +26,15 @@ module StorageControllerBehavior
     redirect_to main_app.url_for(@file_set), notice: "Unstage request for #{@filename} has been sent"
   end
 
+  def fixity
+    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
+    @filename = File.basename(@file_set.filename)
+    fixity_type = params[:fixity_type].nil? ? nil : params[:fixity_type]
+    session[:file_status_resp] = check_fixity(fixity_type)
+    session[:prev_file_action] = 'fixity'
+    redirect_to main_app.url_for(@file_set), notice: "Fixity check request for #{@filename} has been sent"
+  end
+
   private
 
   def get_file_status
@@ -52,6 +61,16 @@ module StorageControllerBehavior
     default_resp = {"name" => @filename, "type" => 'unstage', "status" => 'disabled'}
     if storage_proxy.enabled?
       response = storage_proxy.unstage @filename
+      response.body
+    else
+      default_resp.to_json
+    end
+  end
+
+  def check_fixity(fixity_type = 'md5')
+    default_resp = {"name" => @filename, "type" => 'fixity', "fixity_type" => fixity_type, "status" => 'disabled'}
+    if storage_proxy.enabled?
+      response = storage_proxy.fixity @filename
       response.body
     else
       default_resp.to_json

@@ -31,7 +31,7 @@ describe 'HydraDAM::StorageProxyClient' do
                   :headers => {"content-type":'application/json'})
 
     WebMock.stub_request(:post, "http://localhost:3001/storage_api/jobs/SDADisk/staged_file.mp4").
-        with(:body => {"type"=>"fixity"},
+        with(:body => {"type"=>"fixity", "fixity_type"=>"md5"},
              :headers => {'Accept'=>'*/*'}).
         to_return(:status => 200, :body => '{"id":1,"name":"staged_file.mp4","type":"fixity"}',
                   :headers => {"content-type":'application/json'})

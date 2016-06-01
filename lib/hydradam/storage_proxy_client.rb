@@ -44,9 +44,9 @@ module HydraDAM
       # end
     end
 
-    def fixity(filename)
-      # ping storage proxy for current status
-      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'fixity'
+    def fixity(filename, fixity_type = 'md5')
+      # POST a job to initiate a fixity check on filename. fixity_type optional but defaults to md5
+      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'fixity', :fixity_type => fixity_type
     end
 
     def available_actions

@@ -29,6 +29,10 @@ describe  CurationConcerns::FileSetsController, type: :controller do
         expect(:get => "/concern/file_sets/bar/unstage").
             to route_to(:controller => "curation_concerns/file_sets", :action => "unstage", :id => "bar")
       end
+      it "routes get fixity" do
+        expect(:get => "/concern/file_sets/bar/fixity").
+            to route_to(:controller => "curation_concerns/file_sets", :action => "fixity", :id => "bar")
+      end
     end
 
     describe 'configures a StorageProxyClient' do
@@ -73,6 +77,21 @@ describe  CurationConcerns::FileSetsController, type: :controller do
       it 'stores a JSON response from the storage proxy' do
         get :unstage, id: sip.access_copy.id
         expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'unstage'
+      end
+    end
+
+    describe '#fixity' do
+      it "redirects_to :action => :show" do
+        get :fixity, id: sip.access_copy.id
+        expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
+      end
+      it 'stores a JSON response from the storage proxy' do
+        get :fixity, id: sip.access_copy.id
+        expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'fixity'
+      end
+      it 'can set an optional type of checksum to request' do
+        get :fixity, id: sip.access_copy.id, fixity_type: 'sha-1'
+        expect(JSON.parse(session['file_status_resp'])["fixity_type"]).to eq 'sha-1'
       end
     end
 

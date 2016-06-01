@@ -6,7 +6,7 @@ class Ability
 
   # Define any customized permissions here.
   def custom_permissions
-    can [:file_status, :stage, :unstage], ActiveFedora::Base
+    can [:file_status, :stage, :unstage, :fixity], ActiveFedora::Base
 
     # Limits deleting objects to a the admin user
     #
