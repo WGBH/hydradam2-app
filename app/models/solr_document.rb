@@ -44,5 +44,49 @@ class SolrDocument
     fetch(Solrizer.solr_name(:original_checksum, :symbol), [])
   end
 
+  def date_generated
+    fetch(Solrizer.solr_name(:original_checksum, :stored_searchable), [])
+  end
+
+  def file_format_long_name
+    fetch(Solrizer.solr_name(:file_format_long_name, :symbol), [])
+  end
+
+  def codec_type
+    fetch(Solrizer.solr_name(:codec_type, :stored_searchable), [])
+  end
+
+  def codec_name
+    fetch(Solrizer.solr_name(:codec_name, :stored_searchable), [])
+  end
+
+  def codec_long_name
+    fetch(Solrizer.solr_name(:codec_long_name, :stored_searchable), [])
+  end
+
+  def duration
+    fetch(Solrizer.solr_name(:duration, :stored_searchable), [])
+  end
+
+  def bit_rate
+    fetch(Solrizer.solr_name(:bit_rate, :stored_searchable), [])
+  end
+
+  def unit_of_origin
+    fetch(Solrizer.solr_name(:unit_of_origin, :stored_searchable), [])
+  end
+
+  def mdpi_barcode
+    fetch(Solrizer.solr_name(:mdpi_barcode, :stored_searchable), [])
+  end
+
+  def recording_standard
+    fetch(Solrizer.solr_name(:recording_standard, :stored_searchable), [])
+  end
+
+  def original_format
+    fetch(Solrizer.solr_name(:original_format, :stored_searchable), [])
+  end
+
 
 end

@@ -1,6 +1,6 @@
 module CurationConcerns
   class WorkPresenter < CurationConcerns::WorkShowPresenter
-    delegate :mdpi_timestamp, to: :solr_document
+    delegate :mdpi_timestamp, :mdpi_barcode, :original_format, :recording_standard,  to: :solr_document
 
 
   end

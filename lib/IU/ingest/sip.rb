@@ -15,34 +15,44 @@ module IU
       # Establish relationships between all the objects created from SIP files
       # extracted form the tarball.
       def ingest!
-        work.ordered_members << access_copy
-        work.ordered_members << production_copy
+        work.save!
+        access_copy.save!
+        production_copy.save!
 
         begin
-          work.ordered_members << preservation_copy
+          preservation_copy.save!
         rescue MissingTarball => e
           nil # Preservation copy is not required.
         end
 
         work.save!
+
+        fix_blank_title! work.access_copy # Access ffprobe does not contain title
+
         delete_extracted_files!
       end
 
 
       # Returns the FileSet object representing the access copy.
       def access_copy
-        @access_copy ||= create_file_set!(ffprobe: access_copy_ffprobe_path, quality_level: :access)
+        @access_copy ||= create_file_set!(parent: work,
+                                          ffprobe: access_copy_ffprobe_path,
+                                          quality_level: :access)
       end
 
       # Returns the FileSet object representing the production copy.
       def production_copy
-        @production_copy ||= create_file_set!(ffprobe: production_copy_ffprobe_path, quality_level: :production)
+        @production_copy ||= create_file_set!(parent: work,
+                                              ffprobe: production_copy_ffprobe_path,
+                                              quality_level: :production)
       end
 
       
       # Returns FileSet object representing the pres copy.
       def preservation_copy
-        @preservation_copy ||= create_file_set!(ffprobe: preservation_copy_ffprobe_path, quality_level: :preservation)
+        @preservation_copy ||= create_file_set!(parent: work,
+                                                ffprobe: preservation_copy_ffprobe_path,
+                                                quality_level: :preservation)
       end
 
       # Returns the Work object
@@ -50,8 +60,15 @@ module IU
         @work ||= Work.new.tap do |work|
           work.apply_depositor_metadata depositor
           work.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+
           work.mdpi_xml.content = File.read(mdpi_xml_path)
           work.assign_properties_from_mdpi_xml
+
+          work.mods_xml.content = File.read(mods_xml_path)
+          work.assign_properties_from_mods_xml
+
+          work.pod_xml.content = File.read(pod_xml_path)
+          work.assign_properties_from_pod_xml
         end
       end
 
@@ -109,16 +126,30 @@ module IU
         filenames.select { |filename| filename =~ /MDPI_\d+\.xml/ }.first
       end
 
+      def mods_xml_path
+        filenames.select { |filename| filename =~ /MDPI_\d+_mods\.xml/ }.first
+      end
+
+      def pod_xml_path
+        filenames.select { |filename| filename =~ /MDPI_\d+_pod\.xml/ }.first
+      end
+
       def create_file_set!(opts={})
         raise MissingTarball, "Missing ffprobe file '#{opts[:ffprobe]}'" unless File.exists?(opts[:ffprobe].to_s)
+        parent = opts[:parent]
         FileSet.new.tap do |file_set|
           file_set.apply_depositor_metadata depositor
           file_set.visibility = Hydra::AccessControls::AccessRight::VISIBILITY_TEXT_VALUE_PUBLIC
+          parent.ordered_members << file_set
+          parent.save!
           file_set.quality_level = opts[:quality_level]
           file_set.save!
-          File.open(opts[:ffprobe]) do |ffprobe_file|
-            Hydra::Works::AddFileToFileSet.call(file_set, ffprobe_file, :ffprobe)
+          File.open(opts[:ffprobe]) do |f|
+            Hydra::Works::AddFileToFileSet.call(file_set, f, :ffprobe)
           end
+          file_set.assign_properties_from_mods
+          file_set.assign_properties_from_mdpi
+          file_set.assign_properties_from_pod
           file_set.assign_properties_from_ffprobe
           file_set.original_checksum += [md5_for(file_set.filename)]
           file_set.save!
@@ -153,6 +184,12 @@ module IU
       # Returns the path to the md5 manfiest file.
       def md5_manifest_path
         filenames.select { |filename| File.basename(filename) == 'manifest-md5.txt' }.first
+      end
+
+      # Sets a FileSet's blank title to its parent's title.
+      def fix_blank_title!(obj)
+        obj.title = obj.parent.title if obj.title.blank? || obj.title == ['']
+        obj.save!
       end
     end
 
