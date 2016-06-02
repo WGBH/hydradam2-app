@@ -47,23 +47,12 @@ describe  CurationConcerns::FileSetsController, type: :controller do
     before { sign_in depositor }
     before { sip.ingest! }
 
-    describe '#file_status' do
-      it "redirects_to :action => :show" do
-        get :file_status, id: sip.access_copy.id
-        expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
-      end
-      it 'stores a JSON response from the storage proxy' do
-        get :file_status, id: sip.access_copy.id
-        expect(JSON.parse(session['file_status_resp'])["name"]).to eq File.basename(sip.access_copy.filename)
-      end
-    end
-
     describe '#stage' do
       it "redirects_to :action => :show" do
         get :stage, id: sip.access_copy.id
         expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
       end
-      it 'stores a JSON response from the storage proxy' do
+      xit 'stores a JSON response from the storage proxy' do
         get :stage, id: sip.access_copy.id
         expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'stage'
       end
@@ -74,7 +63,7 @@ describe  CurationConcerns::FileSetsController, type: :controller do
         get :unstage, id: sip.access_copy.id
         expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
       end
-      it 'stores a JSON response from the storage proxy' do
+      xit 'stores a JSON response from the storage proxy' do
         get :unstage, id: sip.access_copy.id
         expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'unstage'
       end
@@ -85,11 +74,11 @@ describe  CurationConcerns::FileSetsController, type: :controller do
         get :fixity, id: sip.access_copy.id
         expect(subject).to redirect_to("/concern/file_sets/#{sip.access_copy.id}")
       end
-      it 'stores a JSON response from the storage proxy' do
+      xit 'stores a JSON response from the storage proxy' do
         get :fixity, id: sip.access_copy.id
         expect(JSON.parse(session['file_status_resp'])["type"]).to eq 'fixity'
       end
-      it 'can set an optional type of checksum to request' do
+      xit 'can set an optional type of checksum to request' do
         get :fixity, id: sip.access_copy.id, fixity_type: 'sha-1'
         expect(JSON.parse(session['file_status_resp'])["fixity_type"]).to eq 'sha-1'
       end
