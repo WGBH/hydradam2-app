@@ -1,0 +1,33 @@
+development:
+  enabled: false
+  host: http://localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
+  api_prefix: storage_api
+  store_path: stores
+  store_files_path: store_files
+  cache_path: caches
+  cache_files_path: cache_files
+test:
+  enabled: false
+  host: http://localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
+  api_prefix: storage_api
+  store_path: stores
+  store_files_path: store_files
+  cache_path: caches
+  cache_files_path: cache_files
+production:
+  enabled: false
+  host: http://localhost
+  port: 3001
+  store: SDA
+  cache: SDADisk
+  api_prefix: storage_api
+  store_path: stores
+  store_files_path: store_files
+  cache_path: caches
+  cache_files_path: cache_files
