@@ -1,29 +1,23 @@
+require 'hydradam/presenters/storage_proxy_presenter'
+
 module StorageControllerBehavior
   extend ActiveSupport::Concern
   require 'hydradam/storage_proxy_client'
-
-  def file_status
-    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
-    @filename = File.basename(@file_set.filename)
-    session[:file_status_resp] = get_file_status
-    session[:prev_file_action] = 'file_status'
-    redirect_to main_app.url_for(@file_set), notice: "Availability request for #{@filename} has been sent"
+  
+  def show
+    storage_proxy_response = storage_proxy.status filename
+    @storage_proxy_presenter = HydraDAM::StorageProxyPresenter.new(storage_proxy_response.body, file_set_solr_document)
+    super
   end
 
   def stage
-    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
-    @filename = File.basename(@file_set.filename)
-    session[:file_status_resp] = stage_file
-    session[:prev_file_action] = 'stage'
-    redirect_to main_app.url_for(@file_set), notice: "Stage request for #{@filename} has been sent"
+    stage_file filename
+    redirect_to main_app.url_for(file_set_solr_document), notice: "Stage request for #{filename} has been sent"
   end
 
   def unstage
-    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
-    @filename = File.basename(@file_set.filename)
-    session[:file_status_resp] = unstage_file
-    session[:prev_file_action] = 'unstage'
-    redirect_to main_app.url_for(@file_set), notice: "Unstage request for #{@filename} has been sent"
+    unstage_file filename
+    redirect_to main_app.url_for(file_set_solr_document), notice: "Unstage request for #{filename} has been sent"
   end
 
   def fixity
@@ -37,6 +31,15 @@ module StorageControllerBehavior
 
   private
 
+  def file_set_solr_document
+    # TODO: how to handle invalid ID?
+    @file_set_solr_document ||= curation_concern_type.load_instance_from_solr(params[:id])
+  end
+
+  def filename
+    @filename ||= File.basename(file_set_solr_document.filename)
+  end
+
   def get_file_status
     default_resp = {"name" => @filename, "status" => 'disabled'}
     if storage_proxy.enabled?
@@ -47,10 +50,10 @@ module StorageControllerBehavior
     end
   end
 
-  def stage_file
-    default_resp = {"name" => @filename, "type" => 'stage', "status" => 'disabled'}
+  def stage_file(filename)
+    default_resp = {"name" => filename, "type" => 'stage', "status" => 'disabled'}
     if storage_proxy.enabled?
-      response = storage_proxy.stage @filename
+      response = storage_proxy.stage filename
       response.body
     else
       default_resp.to_json

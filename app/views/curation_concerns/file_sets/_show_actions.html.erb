@@ -1,30 +1,5 @@
   <div class="form-actions">
-
-    <%
-       @file_status_resp = session[:file_status_resp]
-       unless @file_status_resp.nil? or @file_status_resp == 'null'
-    %>
-    <p>
-    <% if JSON.parse(@file_status_resp)['status'] == 'staged'%>
-      <strong>File available in cache |
-        <%= link_to 'Download', 'http://helium.dlib.indiana.edu:8200' + JSON.parse(@file_status_resp)['url'] %> |
-        <%= link_to 'Unstage file from cache', main_app.unstage_curation_concerns_file_set_path(presenter)%>
-      </strong>
-    <% elsif JSON.parse(@file_status_resp)['status'] == 'staging' or session[:prev_file_action] == 'stage' %>
-      <strong>File staging to cache...</strong>
-    <% elsif JSON.parse(@file_status_resp)['status'] == 'disabled' %>
-        <strong>Storage proxy client is disabled</strong>
-    <% else %>
-        <strong>File not in cache </strong>|
-        <strong>
-          <%= link_to 'Stage file for download', main_app.stage_curation_concerns_file_set_path(presenter) %>
-        </strong>
-    <% end %>
-    </p>
-     <% end %>
-    <p>
-      <%= link_to 'Refresh availability status', main_app.file_status_curation_concerns_file_set_path(presenter), class: 'btn btn-default' %>
-    </p>
+    <%= render partial: 'storage_proxy/actions', locals: { storage_proxy_presenter: @storage_proxy_presenter } %>
 
     <% if can? :edit, presenter.id %>
       <%= link_to "Edit this File", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default'  %>
