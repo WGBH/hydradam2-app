@@ -28,6 +28,7 @@ class CatalogController < ApplicationController
              solr_name('artesia_uoi_id', :stored_searchable),
              solr_name('creator', :stored_searchable),
              solr_name('original_checksum', :symbol),
+             solr_name('mdpi_barcode', :stored_searchable),
              'file_size_ltsi', 'file_size_mb_ltsi',
              'mdpi_timestamp_isi'
       ],

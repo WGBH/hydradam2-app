@@ -76,11 +76,17 @@ class SolrDocument
     fetch(Solrizer.solr_name(:unit_of_origin, :stored_searchable), [])
   end
 
-  def unit_of_origin_statement
-    fetch(Solrizer.solr_name(:unit_of_origin_statement, :stored_searchable), [])
+  def mdpi_barcode
+    fetch(Solrizer.solr_name(:mdpi_barcode, :stored_searchable), [])
   end
 
-  def alt_unit_of_origin_statement
-    fetch(Solrizer.solr_name(:alt_unit_of_origin_statement, :stored_searchable), [])
+  def recording_standard
+    fetch(Solrizer.solr_name(:recording_standard, :stored_searchable), [])
   end
+
+  def original_format
+    fetch(Solrizer.solr_name(:original_format, :stored_searchable), [])
+  end
+
+
 end
