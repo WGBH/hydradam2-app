@@ -10,7 +10,10 @@ module HydraDAM
         include DependsOn
         depends_on(ActiveFedora::Base)
 
-        property :file_format, predicate: RDF::Vocab::EBUCore.hasFileFormat do |index|
+        property :quality_level, predicate: RDF::Vocab::EBUCore.encodingLevel, multiple: false do |index|
+          index.as :stored_searchable, :facetable
+        end
+        property :file_format, predicate: RDF::Vocab::EBUCore.hasFormat do |index|
           index.as :stored_searchable, :facetable
         end
         property :file_format_long_name, predicate: RDF::Vocab::EBUCore.hasFileFormat do |index|
@@ -19,7 +22,7 @@ module HydraDAM
         property :codec_type, predicate: RDF::Vocab::EBUCore.hasMedium do |index|
           index.as :stored_searchable, :facetable
         end
-        property :codec_name, predicate: RDF::Vocab::EBUCore.codecName do |index|
+        property :codec_name, predicate: RDF::Vocab::EBUCore.hasCodec do |index|
           index.as :stored_searchable, :facetable
         end
         property :codec_long_name, predicate: RDF::Vocab::EBUCore.codecName do |index|
@@ -31,21 +34,6 @@ module HydraDAM
         property :bit_rate, predicate: RDF::Vocab::EBUCore.bitRate do |index|
           index.as :stored_searchable, :facetable
         end
-        property :date_generated, predicate: RDF::Vocab::EBUCore.dateDigitised do |index|
-          index.as :stored_searchable, :facetable
-        end
-        property :unit_of_origin, predicate: RDF::Vocab::EBUCore.description do |index|
-          index.as :stored_searchable, :facetable
-        end
-        property :unit_of_origin_statement, predicate: RDF::Vocab::EBUCore.description do |index|
-          index.as :stored_searchable, :facetable
-        end
-        property :alt_unit_of_origin_statement, predicate: RDF::Vocab::EBUCore.description do |index|
-          index.as :stored_searchable, :facetable
-        end
-
-
-
         # property :fileSize, predicate: RDF::Vocab::EBUCore.fileSize, multiple: false do |index|
         #   # index.as Solrizer::Descriptor.new(:long, :stored, :searchable)
         # end
@@ -61,12 +49,7 @@ module HydraDAM
       def assign_properties_from_ffprobe
         noko = ffprobe.noko.dup
         noko.remove_namespaces!
-        self.title += [noko.xpath('//ffprobe/format/tag[@key="title"]/@value').text]
-        raw_date = noko.xpath('//ffprobe/format/tag[@key="date"]/@value').text
-        self.date_generated += [Date.parse(raw_date)] unless raw_date.blank?
-        self.unit_of_origin += [noko.xpath('//ffprobe/format/tag[@key="IARL"]/@value').text]
-        self.unit_of_origin_statement += [noko.xpath('//ffprobe/format/tag[@key="comment"]/@value').text]
-        self.alt_unit_of_origin_statement += [noko.xpath('//ffprobe/format/tag[@key="description"]/@value').text]
+
         self.filename = noko.xpath('//ffprobe/format/@filename').text
         self.file_format += [noko.xpath('//ffprobe/format/@format_name').text]
         self.file_format_long_name += [noko.xpath('//ffprobe/format/@format_long_name').text]
@@ -77,6 +60,8 @@ module HydraDAM
         self.codec_long_name += noko.xpath('//ffprobe/streams/stream/@codec_long_name').collect { |i| i.text }
         self.duration += [noko.xpath('//ffprobe/format/@duration').text.to_i]
       end
-     end
+
+
+    end
   end
 end

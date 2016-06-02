@@ -7,6 +7,7 @@ module Concerns
     included do
       contains :mdpi_xml, class_name: "XMLFile"
       contains :mods_xml, class_name: "XMLFile"
+      contains :pod_xml, class_name: "XMLFile"
 
       property :mdpi_date, predicate: RDF::Vocab::EBUCore.dateCreated, multiple: false
     end
@@ -24,7 +25,7 @@ module Concerns
     end
 
     def members_of_quality_level(quality_level)
-      ordered_members.to_a.select { |member| member.try(:quality_level) == quality_level }
+      ordered_members.to_a.select { |member| member.try(:quality_level) == quality_level.to_s }
     end
 
     def assign_properties_from_mdpi_xml
@@ -38,6 +39,12 @@ module Concerns
       noko = mods_xml.noko.dup
       noko.remove_namespaces!
       self.title += [noko.xpath('/mods/titleInfo/title').text]
+    end
+
+    def assign_properties_from_pod_xml
+      noko = mods_xml.noko.dup
+      noko.remove_namespaces!
+      #self.title += [noko.xpath('/mods/titleInfo/title').text]
     end
   end
 end
