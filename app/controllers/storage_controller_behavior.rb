@@ -5,6 +5,9 @@ module StorageControllerBehavior
   require 'hydradam/storage_proxy_client'
   
   def show
+
+    # require 'pry'; binding.pry
+
     storage_proxy_response = storage_proxy.status filename
     @storage_proxy_presenter = HydraDAM::StorageProxyPresenter.new(storage_proxy_response.body, file_set_solr_document)
     super
@@ -21,12 +24,8 @@ module StorageControllerBehavior
   end
 
   def fixity
-    @file_set = curation_concern_type.load_instance_from_solr(params[:id]) unless curation_concern
-    @filename = File.basename(@file_set.filename)
-    fixity_type = params[:fixity_type].nil? ? nil : params[:fixity_type]
-    session[:file_status_resp] = check_fixity(fixity_type)
-    session[:prev_file_action] = 'fixity'
-    redirect_to main_app.url_for(@file_set), notice: "Fixity check request for #{@filename} has been sent"
+    check_fixity filename
+    redirect_to main_app.url_for(file_set_solr_document), notice: "Fixity check request for #{filename} has been sent"
   end
 
   private
@@ -60,7 +59,7 @@ module StorageControllerBehavior
     end
   end
 
-  def unstage_file
+  def unstage_file(filename)
     default_resp = {"name" => @filename, "type" => 'unstage', "status" => 'disabled'}
     if storage_proxy.enabled?
       response = storage_proxy.unstage @filename
@@ -70,7 +69,7 @@ module StorageControllerBehavior
     end
   end
 
-  def check_fixity(fixity_type = 'md5')
+  def check_fixity(filename, fixity_type = 'md5')
     default_resp = {"name" => @filename, "type" => 'fixity', "fixity_type" => fixity_type, "status" => 'disabled'}
     if storage_proxy.enabled?
       response = storage_proxy.fixity @filename

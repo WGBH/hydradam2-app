@@ -33,12 +33,32 @@ module HydraDAM
           { title: "Stage", link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
           { title: "Fixity", link: url_helpers.fixity_curation_concerns_file_set_path(@file_set_solr_document) }
         ]
+      when :calculating_checksum
+        [
+          { title: "Download", link: @storage_proxy_response["url"] },
+          { title: "Unstage", link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
+        ]
       else
         # always return an array so the view won't choke when calling #each
         []
       end
     end
 
+    def fixity_type
+      @storage_proxy_response["fixity_type"]
+    end
+
+    def fixity_date
+      DateTime.parse(@storage_proxy_response["fixity_date"]).strftime("%Y-%m-%d %H:%M:%S")
+    end
+
+    def fixity_available
+      !!@storage_proxy_response["fixity_available"]
+    end
+
+    def checksum
+      @storage_proxy_response["checksum"]
+    end
 
     def status_phrase
       status_phrases = {
