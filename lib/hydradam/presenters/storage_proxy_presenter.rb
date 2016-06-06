@@ -13,6 +13,8 @@ module HydraDAM
         :staging
       when "staged"
         :staged
+      when "unstaging"
+          :staged
       when "calculating checksum"
         :calculating_checksum
       when nil
@@ -24,19 +26,33 @@ module HydraDAM
       case status
       when :staged
         [
-          { title: "Download", link: @storage_proxy_response["url"] },
-          { title: "Fixity", link: url_helpers.fixity_curation_concerns_file_set_path(@file_set_solr_document) },
-          { title: "Unstage", link: url_helpers.unstage_curation_concerns_file_set_path(@file_set_solr_document) }
+          # Download link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.download.title"),
+            link: @storage_proxy_response["url"] },
+          # Fixity link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.fixity.title"),
+            link: url_helpers.fixity_curation_concerns_file_set_path(@file_set_solr_document) },
+          # Unstage link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.unstage.title"),
+            link: url_helpers.unstage_curation_concerns_file_set_path(@file_set_solr_document) }
         ]
       when :not_cached
         [
-          { title: "Stage", link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
-          { title: "Fixity", link: url_helpers.fixity_curation_concerns_file_set_path(@file_set_solr_document) }
+          # Stage link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.stage.title"),
+            link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
+          # Fixity link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.fixity.title"),
+            link: url_helpers.fixity_curation_concerns_file_set_path(@file_set_solr_document) }
         ]
       when :calculating_checksum
         [
-          { title: "Download", link: @storage_proxy_response["url"] },
-          { title: "Unstage", link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
+          # Download link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.download.title"),
+            link: @storage_proxy_response["url"] },
+          # Unstage link
+          { title: I18n.t("curation_concerns.storage_proxy.actions.unstage.title"),
+            link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
         ]
       else
         # always return an array so the view won't choke when calling #each
@@ -62,10 +78,11 @@ module HydraDAM
 
     def status_phrase
       status_phrases = {
-        not_cached: "Not Cached",
-        staging: "Staging",
-        staged: "Staged",
-        calculating_checksum: "Calculating Checksum"
+        not_cached: I18n.t("curation_concerns.storage_proxy.status_phrase.not_cached"),
+        staging: I18n.t("curation_concerns.storage_proxy.status_phrase.staging"),
+        staged: I18n.t("curation_concerns.storage_proxy.status_phrase.staged"),
+        unstaging: I18n.t("curation_concerns.storage_proxy.status_phrase.unstaging"),
+        calculating_checksum: I18n.t("curation_concerns.storage_proxy.status_phrase.calculating_checksum")
       }
       status_phrases[status]
     end
