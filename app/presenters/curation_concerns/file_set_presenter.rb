@@ -26,9 +26,8 @@ module CurationConcerns
 
     delegate :filename, :file_format, :file_format_long_name, :file_size, :original_checksum, :quality_level,
              :date_generated, :codec_type, :codec_name, :codec_long_name, :duration, :mdpi_timestamp,
-             :bit_rate, :unit_of_origin, :mdpi_barcode,
+             :bit_rate, :unit_of_origin, :mdpi_barcode, :system_create_dtsi, :system_modified_dtsi, 
              to: :solr_document
-
 
     def page_title
       Array.wrap(solr_document['label_tesim']).first
