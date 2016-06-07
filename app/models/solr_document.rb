@@ -51,6 +51,14 @@ class SolrDocument
   def original_checksum
     fetch(Solrizer.solr_name(:original_checksum, :symbol), [])
   end
+  
+  def system_create
+    fetch(Solrizer.solr_name(:system_create, :stored_sortable, type: :date), [])
+  end
+  
+  def system_modified
+    fetch(Solrizer.solr_name(:system_modified, :stored_sortable, type: :date), [])
+  end
 
   def extraction_workstation
     fetch(Solrizer.solr_name(:extraction_workstation, :stored_searchable), [])
