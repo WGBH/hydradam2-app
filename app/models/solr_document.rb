@@ -36,12 +36,36 @@ class SolrDocument
     fetch(Solrizer.solr_name(:quality_level, :stored_searchable), [])
   end
 
+  def digitized_by_entity
+    fetch(Solrizer.solr_name(:digitized_by_entity, :stored_searchable), [])
+  end
+
+  def digitized_by_staff
+    fetch(Solrizer.solr_name(:digitized_by_staff, :stored_searchable), [])
+  end
+
   def mdpi_timestamp
     fetch('mdpi_timestamp_isi', [])
   end
 
   def original_checksum
     fetch(Solrizer.solr_name(:original_checksum, :symbol), [])
+  end
+
+  def extraction_workstation
+    fetch(Solrizer.solr_name(:extraction_workstation, :stored_searchable), [])
+  end
+
+  def digitization_comments
+    fetch(Solrizer.solr_name(:digitization_comments, :stored_searchable), [])
+  end
+
+  def original_identifier
+    fetch(Solrizer.solr_name(:original_identifier, :symbol), [])
+  end
+
+  def definition
+    fetch(Solrizer.solr_name(:definition, :stored_searchable), [])
   end
 
   def date_generated
@@ -77,7 +101,7 @@ class SolrDocument
   end
 
   def mdpi_barcode
-    fetch(Solrizer.solr_name(:mdpi_barcode, :stored_searchable), [])
+    fetch(Solrizer.solr_name(:mdpi_barcode, :symbol), [])
   end
 
   def recording_standard
@@ -88,5 +112,7 @@ class SolrDocument
     fetch(Solrizer.solr_name(:original_format, :stored_searchable), [])
   end
 
-
+  def image_format
+    fetch(Solrizer.solr_name(:image_format, :stored_searchable), [])
+  end
 end

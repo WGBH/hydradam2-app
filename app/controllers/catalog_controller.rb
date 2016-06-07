@@ -19,6 +19,7 @@ class CatalogController < ApplicationController
     # config.search_builder_class = ::SearchBuilder
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = {
+=begin
       qf: [  solr_name('title', :stored_searchable),
              solr_name('description', :stored_searchable),
              solr_name('filename', :stored_searchable),
@@ -32,6 +33,7 @@ class CatalogController < ApplicationController
              'file_size_ltsi', 'file_size_mb_ltsi',
              'mdpi_timestamp_isi'
       ],
+=end
       qt: 'search',
       rows: 10
     }
