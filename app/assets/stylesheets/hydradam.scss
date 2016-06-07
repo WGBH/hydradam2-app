@@ -1,4 +1,3 @@
-
 /**
  * Overrides input boxes for range query facets
  */
@@ -11,5 +10,21 @@ input {
   &#range_file_size_mb_ltsi_begin,
   &#range_file_size_mb_ltsi_end {
     width: 5em;
+  }
+}
+
+
+/**
+ * Overrides File Set attributes table
+ */
+table.attributes {
+  ul.tabular {
+    // remove default padding from attribute list
+    padding-left: 0px;
+
+    li.attribute {
+      // remove default bullets from attributes
+      list-style: none;
+    }
   }
 }
