@@ -8,24 +8,41 @@ module StorageControllerBehavior
 
     # require 'pry'; binding.pry
 
-    storage_proxy_response = storage_proxy.status filename
-    @storage_proxy_presenter = HydraDAM::StorageProxyPresenter.new(storage_proxy_response.body, file_set_solr_document)
+    begin
+      storage_proxy_response = storage_proxy.status(filename).body
+    rescue Faraday::ConnectionFailed => e
+      storage_proxy_response = {"name" => @filename, "status" => 'disabled'}.to_json
+    end
+
+    @storage_proxy_presenter = HydraDAM::StorageProxyPresenter.new(storage_proxy_response, file_set_solr_document)
     super
   end
 
   def stage
-    stage_file filename
-    redirect_to main_app.url_for(file_set_solr_document), notice: "Stage request for #{filename} has been sent"
+    begin
+      stage_file filename
+      redirect_to main_app.url_for(file_set_solr_document), notice: "Stage request for #{filename} has been sent"
+    rescue Faraday::ConnectionFailed => e
+      redirect_to main_app.url_for(file_set_solr_document), alert: "ERROR: Stage request for #{filename} failed."
+    end
   end
 
   def unstage
-    unstage_file filename
-    redirect_to main_app.url_for(file_set_solr_document), notice: "Unstage request for #{filename} has been sent"
+    begin
+      unstage_file filename
+      redirect_to main_app.url_for(file_set_solr_document), notice: "Unstage request for #{filename} has been sent"
+    rescue Faraday::ConnectionFailed => e
+      redirect_to main_app.url_for(file_set_solr_document), alert: "ERROR: Unstage request for #{filename} failed."
+    end
   end
 
   def fixity
-    check_fixity filename
-    redirect_to main_app.url_for(file_set_solr_document), notice: "Fixity check request for #{filename} has been sent"
+    begin
+      check_fixity filename
+      redirect_to main_app.url_for(file_set_solr_document), notice: "Fixity check request for #{filename} has been sent"
+    rescue Faraday::ConnectionFailed => e
+      redirect_to main_app.url_for(file_set_solr_document), alert: "ERROR: Fixity check request for #{filename} failed."
+    end
   end
 
   private
