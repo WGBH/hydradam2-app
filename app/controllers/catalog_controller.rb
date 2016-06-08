@@ -56,8 +56,13 @@ class CatalogController < ApplicationController
     config.add_facet_field solr_name('file_format', :facetable), label: 'File Format', limit: 5
     config.add_facet_field solr_name('codec_type', :facetable), label: 'Codec Type', limit: 5
     config.add_facet_field solr_name('codec_name', :facetable), label: 'Codec Name', limit: 5
+    config.add_facet_field solr_name('unit_of_origin', :facetable), label: 'Unit of Origin', limit: 5
     config.add_facet_field solr_name('depositor', :facetable),label: 'Depositor', limit: 5
     config.add_facet_field solr_name('quality_level', :facetable), label: 'Quality Level', limit: 5
+    config.add_facet_field solr_name('original_format', :facetable), label: 'Original Format', limit: 5
+    config.add_facet_field solr_name('recording_standard', :facetable), label: 'Recording Standard', limit: 5
+    config.add_facet_field solr_name('definition', :facetable), label: 'Definition', limit: 5
+    config.add_facet_field solr_name('image_format', :facetable), label: 'Aspect Ratio', limit: 5
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
     config.add_facet_field 'file_size_ltsi', label: 'File Size (bytes)', limit: 5, range: true, show: false # Needed to handle adv search
     config.add_facet_field 'generic_type_sim', show: false, single: true
