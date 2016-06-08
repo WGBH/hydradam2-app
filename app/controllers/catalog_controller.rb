@@ -54,8 +54,8 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_facet_field solr_name('human_readable_type', :facetable)
     config.add_facet_field solr_name('file_format', :facetable), label: 'File Format', limit: 5
-    config.add_facet_field solr_name('codec_type', :facetable)
-    config.add_facet_field solr_name('codec_name', :facetable)
+    config.add_facet_field solr_name('codec_type', :facetable), label: 'Codec Type', limit: 5
+    config.add_facet_field solr_name('codec_name', :facetable), label: 'Codec Name', limit: 5
     config.add_facet_field solr_name('depositor', :facetable),label: 'Depositor', limit: 5
     config.add_facet_field solr_name('quality_level', :facetable), label: 'Quality Level', limit: 5
     config.add_facet_field 'file_size_mb_ltsi', label: 'File Size (MB)', limit: 5, range: true
@@ -73,7 +73,8 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field solr_name('human_readable_type', :stored_searchable)
-    config.add_index_field solr_name('quality_level', :stored_searchable)
+    config.add_index_field solr_name('quality_level', :stored_searchable), label: 'Quality Level'
+    config.add_index_field solr_name('duration', :stored_searchable, type: :integer), label: 'Duration'
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
@@ -152,20 +153,22 @@ class CatalogController < ApplicationController
     # except in the relevancy case).
     # label is key, solr field is value
     config.add_sort_field "score desc, #{uploaded_field} desc", label: "relevance \u25BC"
+    config.add_sort_field "#{solr_name('title', :sortable, type: :string)} asc, score desc", label: "title \u25BC"
+    config.add_sort_field "#{solr_name('title', :sortable, type: :string)} desc, score desc", label: "title \u25B2"
     config.add_sort_field "#{uploaded_field} desc", label: "date uploaded \u25BC"
     config.add_sort_field "#{uploaded_field} asc", label: "date uploaded \u25B2"
     config.add_sort_field "mdpi_timestamp_isi desc", label: "MDPI date \u25BC"
     config.add_sort_field "mdpi_timestamp_isi asc", label: "MDPI date \u25B2"
-    config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} desc", label: "duration \u25BC"
-    config.add_sort_field "#{solr_name('duration', :stored_searchable, type: :string)} asc", label: "duration \u25B2"
-    config.add_sort_field "#{solr_name('bitRate', :stored_searchable, type: :string)} desc", label: "bit rate \u25BC"
-    config.add_sort_field "#{solr_name('bitRate', :stored_searchable, type: :string)} asc", label: "bit rate \u25B2"
-    config.add_sort_field "#{solr_name('sampleRate', :stored_searchable, type: :string)} desc", label: "sample rate \u25BC"
-    config.add_sort_field "#{solr_name('sampleRate', :stored_searchable, type: :string)} asc", label: "sample rate \u25B2"
-    config.add_sort_field "#{solr_name('width', :stored_searchable, type: :string)} desc", label: "video width \u25BC"
-    config.add_sort_field "#{solr_name('width', :stored_searchable, type: :string)} asc", label: "video width \u25B2"
-    config.add_sort_field "#{solr_name('height', :stored_searchable, type: :string)} desc", label: "video height \u25BC"
-    config.add_sort_field "#{solr_name('height', :stored_searchable, type: :string)} asc", label: "video height \u25B2"
+    config.add_sort_field "#{solr_name('duration', :sortable, type: :integer)} desc", label: "duration \u25BC"
+    config.add_sort_field "#{solr_name('duration', :sortable, type: :integer)} asc", label: "duration \u25B2"
+    config.add_sort_field "#{solr_name('bit_rate', :sortable, type: :integer)} desc", label: "bit rate \u25BC"
+    config.add_sort_field "#{solr_name('bit_rate', :sortable, type: :integer)} asc", label: "bit rate \u25B2"
+    # config.add_sort_field "#{solr_name('sampleRate', :sortable, type: :string)} desc", label: "sample rate \u25BC"
+    # config.add_sort_field "#{solr_name('sampleRate', :sortable, type: :string)} asc", label: "sample rate \u25B2"
+    # config.add_sort_field "#{solr_name('width', :sortable, type: :string)} desc", label: "video width \u25BC"
+    # config.add_sort_field "#{solr_name('width', :sortable, type: :string)} asc", label: "video width \u25B2"
+    # config.add_sort_field "#{solr_name('height', :sortable, type: :string)} desc", label: "video height \u25BC"
+    # config.add_sort_field "#{solr_name('height', :sortable, type: :string)} asc", label: "video height \u25B2"
 
 
     # If there are more than this many search results, no spelling ("did you

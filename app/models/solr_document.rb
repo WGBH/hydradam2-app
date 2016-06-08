@@ -89,11 +89,11 @@ class SolrDocument
   end
 
   def duration
-    fetch(Solrizer.solr_name(:duration, :stored_searchable), [])
+    fetch(Solrizer.solr_name(:duration, :stored_searchable, type: :integer), [])
   end
 
   def bit_rate
-    fetch(Solrizer.solr_name(:bit_rate, :stored_searchable), [])
+    fetch(Solrizer.solr_name(:bit_rate, :stored_searchable, type: :integer), [])
   end
 
   def unit_of_origin
