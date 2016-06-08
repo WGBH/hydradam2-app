@@ -15,3 +15,5 @@
   <%= presenter.attribute_to_html(:file_size, label: 'File Size (bytes)') %>
   <%= presenter.attribute_to_html(:original_checksum, label: 'Checksum', catalog_search_link: true) %>
   <%= presenter.attribute_to_html(:digitization_comments) %>
+  <%= presenter.attribute_to_html(:system_create, label: 'Ingested date', catalog_search_link: true) %>
+  <%= presenter.attribute_to_html(:system_modified, label: 'Modified date', catalog_search_link: true) %>

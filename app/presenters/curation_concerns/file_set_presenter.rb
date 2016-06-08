@@ -29,13 +29,21 @@ module CurationConcerns
              :bit_rate, :unit_of_origin, :mdpi_barcode,
              to: :solr_document
 
-
     def page_title
       Array.wrap(solr_document['label_tesim']).first
     end
 
     def link_name
       current_ability.can?(:read, id) ? Array.wrap(solr_document['label_tesim']).first : 'File'
+    end
+
+
+    def system_create
+      DateTime.parse(solr_document.system_create).strftime("%Y-%m-%d %H:%I:%S")
+    end
+
+    def system_modified
+      DateTime.parse(solr_document.system_modified).strftime("%Y-%m-%d %H:%I:%S")
     end
   end
 end
