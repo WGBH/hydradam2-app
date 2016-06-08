@@ -11,7 +11,7 @@ module HydraDAM
         depends_on(ActiveFedora::Base)
 
         property :title, predicate: RDF::Vocab::EBUCore.title do |index|
-          index.as :stored_searchable, :facetable
+          index.as :stored_searchable, :sortable, :facetable
         end
 
         # Ensure module dependencies

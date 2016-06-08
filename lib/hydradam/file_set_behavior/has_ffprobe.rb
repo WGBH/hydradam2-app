@@ -29,10 +29,10 @@ module HydraDAM
           index.as :stored_searchable, :facetable
         end
         property :duration, predicate: RDF::Vocab::EBUCore.duration do |index|
-          index.as :stored_searchable, :facetable
+          index.as :stored_searchable, :sortable, :facetable
         end
         property :bit_rate, predicate: RDF::Vocab::EBUCore.bitRate do |index|
-          index.as :stored_searchable, :facetable
+          index.as :stored_searchable, :sortable, :facetable
         end
         # property :fileSize, predicate: RDF::Vocab::EBUCore.fileSize, multiple: false do |index|
         #   # index.as Solrizer::Descriptor.new(:long, :stored, :searchable)

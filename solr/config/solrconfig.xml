@@ -64,7 +64,7 @@
 
     <autoCommit>
       <maxTime>${solr.autoCommit.maxTime:15000}</maxTime>
-      <openSearcher>false</openSearcher>
+      <openSearcher>true</openSearcher>
     </autoCommit>
 
     <autoSoftCommit>
@@ -101,14 +101,10 @@
             http://wiki.apache.org/solr/LocalParams
        -->
         <str name="qf">
-          id
-          active_fedora_model_ssi
-          title_tesim
-          author_tesim
-          subject_tesim
+          _text_
         </str>
         <str name="pf">
-          all_text_timv^10
+          _text_^10
         </str>
 
        <str name="author_qf">
