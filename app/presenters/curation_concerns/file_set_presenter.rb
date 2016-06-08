@@ -34,7 +34,7 @@ module CurationConcerns
     end
 
     def link_name
-      current_ability.can?(:read, id) ? Array.wrap(solr_document['label_tesim']).first : 'File'
+      current_ability.can?(:read, id) ? filename : 'File'
     end
 
 
