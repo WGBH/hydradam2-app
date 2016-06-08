@@ -6,10 +6,10 @@ if Rails && !Rails.env.production?
     ENV['TRAVIS'] = '1'
 
     # TODO: get values from .fcrepo-wrapper ?
-    FcrepoWrapper.wrap(port: 8986, enable_jms: false) do |fc|
+    FcrepoWrapper.wrap(port: 8986, enable_jms: false, fcrepo_home_dir: 'tmp/fcrepo_data_test') do |fc|
       # TODO: get values from .solr-wrapper ?
       SolrWrapper.wrap(port: 8985, verbose: true) do |solr|
-        solr.with_collection name: 'hydra-test', dir: File.join(Rails.root, 'solr', 'config') do
+        solr.with_collection name: 'hydra-test', dir: File.join(Rails.root, 'solr', 'config'), instance_dir: 'tmp/solr_test' do
           Rake::Task['spec'].invoke
         end
       end
