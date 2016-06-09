@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'webmock'
+  gem 'coveralls', require: false
 end
 
 gem 'curation_concerns', '~> 0.14.0'
