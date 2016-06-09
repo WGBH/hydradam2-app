@@ -144,7 +144,7 @@ class CatalogController < ApplicationController
     end
 
     config.add_search_field('checksum') do |field|
-      solr_name = solr_name('original_checksum', :stored_searchable, type: :string)
+      solr_name = solr_name('original_checksum', :symbol, type: :string)
       field.solr_local_parameters = {
           qf: solr_name,
           pf: solr_name
