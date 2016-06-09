@@ -17,6 +17,8 @@ module HydraDAM
           :staged
       when "calculating checksum"
         :calculating_checksum
+      when "disabled"
+        :disabled
       when nil
         :not_cached
       end
@@ -54,6 +56,8 @@ module HydraDAM
           { title: I18n.t("curation_concerns.storage_proxy.actions.unstage.title"),
             link: url_helpers.stage_curation_concerns_file_set_path(@file_set_solr_document) },
         ]
+      when :disabled
+        []
       else
         # always return an array so the view won't choke when calling #each
         []
@@ -82,7 +86,8 @@ module HydraDAM
         staging: I18n.t("curation_concerns.storage_proxy.status_phrase.staging"),
         staged: I18n.t("curation_concerns.storage_proxy.status_phrase.staged"),
         unstaging: I18n.t("curation_concerns.storage_proxy.status_phrase.unstaging"),
-        calculating_checksum: I18n.t("curation_concerns.storage_proxy.status_phrase.calculating_checksum")
+        calculating_checksum: I18n.t("curation_concerns.storage_proxy.status_phrase.calculating_checksum"),
+        disabled: I18n.t("curation_concerns.storage_proxy.status_phrase.disabled")
       }
       status_phrases[status]
     end
