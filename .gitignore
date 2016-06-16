@@ -18,3 +18,8 @@
 
 /jetty
 /fcrepo4-data
+
+/coverage/
+.coveralls.yml
+
+/.idea

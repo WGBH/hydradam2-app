@@ -1,3 +1,8 @@
+if ENV['TRAVIS'] || ENV['COVERAGE']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 require 'pry'
 require 'webmock/rspec'
 
