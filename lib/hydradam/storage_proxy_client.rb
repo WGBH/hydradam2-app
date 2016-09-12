@@ -25,28 +25,34 @@ module HydraDAM
 
     def status(filename)
       # ping storage proxy for current status of @cache/@filename
+      Rails.logger.info 'Doing GET of ' + @host + ':' + @port.to_s + [@api_prefix,@cache_path, @cache, @cache_files_path, filename].join('/')
       connection.get [@api_prefix,@cache_path, @cache, @cache_files_path, filename].join('/')
+
     end
 
     def stage(filename)
-      # ping storage proxy for current status of @filename
-      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'stage'
-      # if status is not-staged
-      #   post a job to stage @filename
-      # end
+      Rails.logger.info 'Doing POST to ' + @host + ':' + @port.to_s + [@api_prefix,'jobs', @cache, filename, 'stage'].join('/')
+      connection.post do |req|
+        req.url [@api_prefix,'jobs', @cache, filename, 'stage'].join('/')
+        req.headers['Content-Type'] = 'application/json'
+      end
     end
 
     def unstage(filename)
-      # ping storage proxy for current status of @filename
-      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'unstage'
-      # if status is staged
-      #   post a job to unstage @filename
-      # end
+      Rails.logger.info 'Doing POST to ' + @host + ':' + @port.to_s + [@api_prefix,'jobs', @cache, filename, 'unstage'].join('/')
+      connection.post do |req|
+        req.url [@api_prefix,'jobs', @cache, filename, 'unstage'].join('/')
+        req.headers['Content-Type'] = 'application/json'
+      end
     end
 
     def fixity(filename, fixity_type = 'md5')
       # POST a job to initiate a fixity check on filename. fixity_type optional but defaults to md5
-      connection.post [@api_prefix,'jobs', @cache, filename].join('/'), :type => 'fixity', :fixity_type => fixity_type
+      Rails.logger.info 'Doing POST to ' + @host + ':' + @port.to_s + [@api_prefix,'jobs', @cache, filename, 'fixity'].join('/')
+      connection.post do |req|
+        req.url [@api_prefix,'jobs', @cache, filename, 'fixity'].join('/')
+        req.headers['Content-Type'] = 'application/json'
+      end
     end
 
     def available_actions
