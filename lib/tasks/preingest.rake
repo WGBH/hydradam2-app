@@ -5,7 +5,7 @@ namespace :hydradam do
     file = ARGV[1]
 
     user = User.find_by_user_key( ENV['USER'] ) if ENV['USER']
-    user = User.all.first unless user
+    user = User.first unless user
     abort "User unspecified or not found" unless user
 
     logger = Logger.new(STDOUT)
