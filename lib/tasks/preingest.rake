@@ -1,10 +1,9 @@
-namespace :pmp do
+namespace :hydradam do
   desc "Preingest one or more files of chosen type, in specified folder"
   task :preingest, [:document_type] => :environment do |task, args|
     abort "usage: rake preingest[document_type] /path/to/preingest/files" unless args.document_type
     DOCUMENT_TYPES = {
       mets: PreingestableMETS,
-      variations: VariationsDocument,
       contentdm: ContentdmExport
     }
     document_class = DOCUMENT_TYPES[args.document_type.to_sym]
