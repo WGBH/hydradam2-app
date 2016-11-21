@@ -55,17 +55,17 @@ module PreingestableDocument
 
   private
 
-    def remote_data
-      @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
-    end
+    #def remote_data
+    #  @remote_data ||= remote_metadata_factory.retrieve(source_metadata_identifier)
+    #end
 
-    def remote_metadata_factory
-      if RemoteRecord.bibdata?(source_metadata_identifier)
-        JSONLDRecord::Factory.new(resource_class)
-      else
-        RemoteRecord::Null
-      end
-    end
+    #def remote_metadata_factory
+    #  if RemoteRecord.bibdata?(source_metadata_identifier)
+    #    JSONLDRecord::Factory.new(resource_class)
+    #  else
+    #    RemoteRecord::Null
+    #  end
+    #end
 
     def local_data
       @local_data ||= IuMetadata::AttributeIngester.new(local_id, local_attributes, factory: resource_class)
