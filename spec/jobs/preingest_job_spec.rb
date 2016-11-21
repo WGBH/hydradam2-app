@@ -33,30 +33,4 @@ RSpec.describe PreingestJob do
       include_examples "successfully preingests"
     end
   end
-  describe "preingesting a Variations file" do
-    let(:variations_file_single) { Rails.root.join("spec", "fixtures", "variations_xml", "bhr9405.xml").to_s }
-    let(:variations_file_multi) { Rails.root.join("spec", "fixtures", "variations_xml", "abe9721.xml").to_s }
-    let(:yaml_file) { preingest_file.sub(/\.xml$/, '.yml') }
-    let(:document_class) { VariationsDocument }
-
-    context "with a single-volume Variations file", vcr: { cassette_name: 'bibdata-bhr9405' } do
-      let(:preingest_file) { variations_file_single }
-      include_examples "successfully preingests"
-    end
-
-    context "with a multi-volume Variations file", vcr: { cassette_name: 'bibdata-abe9721' } do
-      let(:preingest_file) { variations_file_multi }
-      include_examples "successfully preingests"
-    end
-  end
-  describe "preingest a contentDM file" do
-    let(:cdm_file_multiple) { Rails.root.join("spec", "fixtures", "contentdm_xml", "Irish_People.xml").to_s }
-    let(:yaml_file) { preingest_file.sub(/\.xml$/, '.yml') }
-    let(:document_class) { ContentdmExport }
-
-    context "with a multi-volume CDM XML export file" do
-      let(:preingest_file) { cdm_file_multiple }
-      include_examples "successfully preingests"
-    end
-  end
 end
