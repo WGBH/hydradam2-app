@@ -12,36 +12,36 @@
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
   rdfs: http://www.w3.org/2000/01/rdf-schema#
   skos: http://www.w3.org/2004/02/skos/core#
-  Title:
+  title:
     "@id": dcterms:title
-  Identifier:
+  identifier:
     "@id": ebucore:identifier
-  Unit of Origin:
+  unit_of_origin:
     "@id": bf:heldBy
-  Digitized By:
+  digitized_by_entity:
     "@id": ebucore:hasCreator
-  Digitized By Staff ID:
+  digitized_by_staff:
     "@id": ebucore:hasMetadataAttributor
-  Extraction Workstation Information:
+  extraction_workstation:
     "@id": skos:note
-  Playback Calibration:
-    "@id": skos:note
-  Digitization Comments:
+  #Playback Calibration:
+  #  "@id": skos:note
+ digitization_comments:
     "@id": ebucore:comments
-  Original Media Identifier:
+  original_identifier:
     "@id": ebucore:hasSource
-  Original Format:
+  original_format:
     "@id": dc:format
-  Recording Standard:
+  recording_standard:
     "@id": ebucore:hasStandard
-  Tape Stock Brand:
-    "@id": ebucore:medium
-  Image Format:
+  #Tape Stock Brand:
+  #  "@id": ebucore:medium
+  image_format:
     "@id": ebucore:aspectRatio
-  Definition:
+  definition:
     "@id": ebucore:hasVideoFormat
-  Original Media Damage:
-    "@id": skos:historyNote
+  #Original Media Damage:
+  #  "@id": skos:historyNote
   Original Media Preservation Problem:
     "@id": skos:scopeNote
   QC Status:
