@@ -34,14 +34,14 @@
     "@id": dc:format
   recording_standard:
     "@id": ebucore:hasStandard
-  #Tape Stock Brand:
-  #  "@id": ebucore:medium
+  Tape Stock Brand:
+    "@id": ebucore:medium
   image_format:
     "@id": ebucore:aspectRatio
   definition:
     "@id": ebucore:hasVideoFormat
-  #Original Media Damage:
-  #  "@id": skos:historyNote
+  Original Media Damage:
+    "@id": skos:historyNote
   Original Media Preservation Problem:
     "@id": skos:scopeNote
   QC Status:
@@ -72,29 +72,29 @@
     "@id": dcterms:description
   Total Parts:
     "@id": ebucore:partTotalNumber
-  Date Generated:
+  date_generated:
     "@id": ebucore:dateCreated
-  File Format:
+  file_format:
     "@id": premis:hasFormatName
-  File Format Long Name:
+  file_format_long_name:
     "@id": ebucore:hasFileFormat
-  Codec Type:
+  codec_type:
     "@id": ebucore:hasMedium
-  Codec Name:
+  codec_name:
     "@id": ebucore:hasCode
-  Codec Long Name:
+  codec_long_name:
     "@id": ebucore:codecName
-  Duration:
+  duration:
     "@id": ebucore:duration
-  Bit Rate:
+  bit_rate:
     "@id": ebucore:bitRate
-  File Name:
+  file_name:
     "@id": ebucore:filename
-  File Size:
+  file_size:
     "@id": ebucore:fileSize
-  Identifier:
+  identifier:
     "@id": ebucore:identifier
-  Unit of Origin:
+  unit_of_origin:
     "@id": ebucore:comments
   Unit of Origin Statement:
     "@id": ebucore:comments
@@ -102,7 +102,7 @@
     "@id": ebucore:comments
   Part:
     "@id": ebucore:partNumber
-  Sample Rate:
+  sample_rate:
     "@id": ebucore:sampleRate
   Video Width:
     "@id": ebucore:width
