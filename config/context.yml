@@ -1,0 +1,114 @@
+# Configures JSON-LD conversion from IuMetadata::Mods/Marc attributes
+#
+---
+"@context":
+  id: "@id"
+  dc: http://purl.org/dc/elements/1.1/
+  dcterms: http://purl.org/dc/terms/
+  iiif: http://iiif.io/api/presentation/2#
+  loc: http://id.loc.gov/vocabulary/identifiers/
+  mods: http://www.loc.gov/mods/rdf/v1#
+  pulterms: http://library.princeton.edu/terms/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  skos: http://www.w3.org/2004/02/skos/core#
+  Title:
+    "@id": dcterms:title
+  Identifier:
+    "@id": ebucore:identifier
+  Unit of Origin:
+    "@id": bf:heldBy
+  Digitized By:
+    "@id": ebucore:hasCreator
+  Digitized By Staff ID:
+    "@id": ebucore:hasMetadataAttributor
+  Extraction Workstation Information:
+    "@id": skos:note
+  Playback Calibration:
+    "@id": skos:note
+  Digitization Comments:
+    "@id": ebucore:comments
+  Original Media Identifier:
+    "@id": ebucore:hasSource
+  Original Format:
+    "@id": dc:format
+  Recording Standard:
+    "@id": ebucore:hasStandard
+  Tape Stock Brand:
+    "@id": ebucore:medium
+  Image Format:
+    "@id": ebucore:aspectRatio
+  Definition:
+    "@id": ebucore:hasVideoFormat
+  Original Media Damage:
+    "@id": skos:historyNote
+  Original Media Preservation Problem:
+    "@id": skos:scopeNote
+  QC Status:
+    "@id": skos:changeNote
+  Manual QC Check:
+    "@id": skos:changeNote
+  Encoder Manufacturer:
+    "@id": premis:hasHardwareOtherInformation
+  Encoder Model:
+    "@id": premis:hasHardwareOtherInformation
+  Encoder Serial Number:
+    "@id": premis:hasHardwareOtherInformation
+  AD Manufacturer:
+    "@id": premis:hasHardwareName
+  AD Model:
+    "@id": premis:hasHardwareName
+  AD Serial Number:
+    "@id": premis:hasHardwareName
+  Speed Used:
+    "@id": ebucore:playbackSpeed
+  TBC Manufacturer:
+    "@id": premis:hasHardwareName
+  TBC Model:
+    "@id": premis:hasHardwareName
+  TBC Serial Number:
+    "@id": premis:hasHardwareName
+  Tape Thickness:
+    "@id": dcterms:description
+  Total Parts:
+    "@id": ebucore:partTotalNumber
+  Date Generated:
+    "@id": ebucore:dateCreated
+  File Format:
+    "@id": premis:hasFormatName
+  File Format Long Name:
+    "@id": ebucore:hasFileFormat
+  Codec Type:
+    "@id": ebucore:hasMedium
+  Codec Name:
+    "@id": ebucore:hasCode
+  Codec Long Name:
+    "@id": ebucore:codecName
+  Duration:
+    "@id": ebucore:duration
+  Bit Rate:
+    "@id": ebucore:bitRate
+  File Name:
+    "@id": ebucore:filename
+  File Size:
+    "@id": ebucore:fileSize
+  Identifier:
+    "@id": ebucore:identifier
+  Unit of Origin:
+    "@id": ebucore:comments
+  Unit of Origin Statement:
+    "@id": ebucore:comments
+  Alternative Unit of Origin Statement:
+    "@id": ebucore:comments
+  Part:
+    "@id": ebucore:partNumber
+  Sample Rate:
+    "@id": ebucore:sampleRate
+  Video Width:
+    "@id": ebucore:width
+  Video Height:
+    "@id": ebucore:height
+  MD5 Checksum:
+    "@id": nfo:hashValue
+  
+
