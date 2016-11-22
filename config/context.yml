@@ -26,7 +26,7 @@
     "@id": skos:note
   #Playback Calibration:
   #  "@id": skos:note
- digitization_comments:
+  digitization_comments:
     "@id": ebucore:comments
   original_identifier:
     "@id": ebucore:hasSource
@@ -34,43 +34,43 @@
     "@id": dc:format
   recording_standard:
     "@id": ebucore:hasStandard
-  Tape Stock Brand:
+  tape_stock_brand:
     "@id": ebucore:medium
   image_format:
     "@id": ebucore:aspectRatio
   definition:
     "@id": ebucore:hasVideoFormat
-  Original Media Damage:
+  original_media_damage:
     "@id": skos:historyNote
-  Original Media Preservation Problem:
+  original_media_preservation_problem:
     "@id": skos:scopeNote
-  QC Status:
+  qc_status:
     "@id": skos:changeNote
-  Manual QC Check:
+  manual_qc_check:
     "@id": skos:changeNote
-  Encoder Manufacturer:
+  encoder_manufacturer:
     "@id": premis:hasHardwareOtherInformation
-  Encoder Model:
+  encoder_model:
     "@id": premis:hasHardwareOtherInformation
-  Encoder Serial Number:
+  encoder_serial_number:
     "@id": premis:hasHardwareOtherInformation
-  AD Manufacturer:
+  ad_manufacturer:
     "@id": premis:hasHardwareName
-  AD Model:
+  ad_model:
     "@id": premis:hasHardwareName
-  AD Serial Number:
+  ad_serial_number:
     "@id": premis:hasHardwareName
-  Speed Used:
+  speed_used:
     "@id": ebucore:playbackSpeed
-  TBC Manufacturer:
+  tbc_manufacturer:
     "@id": premis:hasHardwareName
-  TBC Model:
+  tbc_model:
     "@id": premis:hasHardwareName
-  TBC Serial Number:
+  tbc_serial_number:
     "@id": premis:hasHardwareName
-  Tape Thickness:
+  tape_thickness:
     "@id": dcterms:description
-  Total Parts:
+  total_parts:
     "@id": ebucore:partTotalNumber
   date_generated:
     "@id": ebucore:dateCreated
@@ -96,19 +96,17 @@
     "@id": ebucore:identifier
   unit_of_origin:
     "@id": ebucore:comments
-  Unit of Origin Statement:
+  unit_of_origin_statement:
     "@id": ebucore:comments
-  Alternative Unit of Origin Statement:
+  alternative_unit_of_origin_statement:
     "@id": ebucore:comments
-  Part:
+  part:
     "@id": ebucore:partNumber
   sample_rate:
     "@id": ebucore:sampleRate
-  Video Width:
+  video_width:
     "@id": ebucore:width
-  Video Height:
+  video_height:
     "@id": ebucore:height
-  MD5 Checksum:
+  md5_checksum:
     "@id": nfo:hashValue
-  
-
