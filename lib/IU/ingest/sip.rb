@@ -2,6 +2,96 @@ require 'pry'
 
 module IU
   module Ingest
+    class FileReader
+      def initialize(filename)
+        @filename = filename
+        @reader = reader_class.new(filename, File.read(filename))
+      end
+      attr_reader :filename, :reader
+
+      delegate :id, :attributes, to: :reader
+
+      def reader_class
+        case @filename
+        when /pod\.xml$/
+          PodReader
+        when /mods\.xml$/
+          ModsReader
+        when /4\d{3}\.xml$/
+          BarcodeReader
+        else
+          NullReader # raise exception?
+        end
+      end
+
+      def type
+        { PodReader => :pod,
+          ModsReader => :mods,
+          BarcodeReader => :mdpi
+        }[reader_class]
+      end
+    end
+    class NullReader
+      def initialize(id, source)
+        @id = id
+        @source = source
+      end
+      attr_reader :id, :source
+      
+      def attributes
+        {}
+      end
+    end
+    class XmlReader
+      def initialize(id, source)
+        @id = id
+        @source = source
+        @xml = Nokogiri::XML(source).remove_namespaces!
+        parse
+      end
+      attr_reader :id, :source, :xml
+
+      def parse
+      end
+
+      def attributes
+        begin
+          att_lookups = self.class.const_get(:ATT_LOOKUPS)
+        rescue
+          att_lookups = {}
+        end
+        att_lookups.inject({}) do |h, (k,v)|
+          h[k] = xml.xpath(v).map(&:text)
+          h
+        end
+      end
+    end
+    class PodReader < XmlReader
+      ATT_LOOKUPS = {
+        mdpi_barcode: '//details/mdpi_barcode',
+        unit_of_origin: '//assignment/unit'
+      }
+      def attributes
+        result = super
+        result[:mdpi_barcode] = result[:mdpi_barcode].first
+        result
+      end
+    end
+    class ModsReader < XmlReader
+      ATT_LOOKUPS = {
+        title: '/mods/titleInfo/title'
+      }
+    end
+    class BarcodeReader < XmlReader
+      ATT_LOOKUPS = {
+        mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date'
+      }
+      def attributes
+        result = super
+        result[:mdpi_date] = DateTime.parse(result[:mdpi_date].first)
+        result
+      end
+    end
     class SIP
       attr_reader :tarball, :depositor
 

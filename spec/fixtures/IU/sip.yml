@@ -1,6 +1,15 @@
 ---
 :resource: Work
-:attributes: {}
+:attributes:
+  :pod:
+    :mdpi_barcode: '40000000542243'
+    :unit_of_origin:
+    - B-IULMIA
+  :mods:
+    :title:
+    - '"Brain" Cam 1 Tape 1'
+  :mdpi:
+    :mdpi_date: !ruby/object:DateTime 2015-12-03 00:00:00.000000000 Z
 :source_metadata: 
 :files:
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"

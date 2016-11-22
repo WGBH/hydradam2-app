@@ -59,5 +59,10 @@ class PreingestJob < ActiveJob::Base
       file_hash = {}
       file_hash[:filename] = filename
       @yaml_hash[:files] << file_hash 
+
+      file_reader = IU::Ingest::FileReader.new(filename)
+      unless file_reader.type.nil?
+        @yaml_hash[:attributes][file_reader.type] = file_reader.attributes
+      end
     end
 end
