@@ -69,7 +69,11 @@ module IU
     class PodReader < XmlReader
       ATT_LOOKUPS = {
         mdpi_barcode: '//details/mdpi_barcode',
-        unit_of_origin: '//assignment/unit'
+        unit_of_origin: '//assignment/unit',
+        original_format: '//technical_metadata/format',
+        recording_standard: '//technical_metadata/recording_standard',
+        tape_stock_brand: 'tape_stock_brand',
+        image_format: '//technical_metadata/image_format'
       }
       def attributes
         result = super
