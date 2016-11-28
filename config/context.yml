@@ -24,8 +24,8 @@
     "@id": ebucore:hasMetadataAttributor
   extraction_workstation:
     "@id": skos:note
-  #Playback Calibration:
-  #  "@id": skos:note
+  tape_playback_calibration_used:
+    "@id": skos:note
   digitization_comments:
     "@id": ebucore:comments
   original_identifier:
