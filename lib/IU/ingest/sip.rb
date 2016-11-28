@@ -88,7 +88,25 @@ module IU
     end
     class BarcodeReader < XmlReader
       ATT_LOOKUPS = {
-        mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date'
+        mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date',
+        part: '/IU/Carrier/Parts/Part@Side',
+        digitized_by_entity: '/IU/Carrier/Parts/DigitizingEntity',
+        digitized_by_staff: '/IU/Carrier/Parts/Part/Ingest/Created_by',
+        extraction_workstation: '/IU/Carrier/Parts/Part/Ingest/Extraction_workstation/Manufacturer',
+        tape_playback_calibration_used: 'tape_playback_calibration_used',
+        digitization_comments: '//Comments',
+        original_identifier: '/IU/Carrier/Identifier',
+        definition: '/IU/Carrier/Definition',
+        original_media_damage: 'PhysicalCondition/Damage',
+        original_media_preservation_problem: 'PhysicalCondition/PreservationProblem',
+        qc_status: 'QCStatus',
+        manual_qc_check: 'ManualCheck',
+        encoder_manufacturer: 'Encoder/Manufacturer',
+        ad_manufacturer: 'AdDevices/Manufacturer',
+        speed_used: 'Speed_used',
+        tbc_manufacturer: 'TbcDevices/Manufacturer',
+        tape_thickness: 'Thickness',
+        total_parts: 'count(//Part)'
       }
       def attributes
         result = super
