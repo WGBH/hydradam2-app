@@ -63,9 +63,9 @@ class PreingestJob < ActiveJob::Base
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
         # FIXME: missing required Model RDF mappings for AttributeIngester
-        # ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes)
-        # @yaml_hash[:attributes][file_reader.type] = ai.attributes
-        @yaml_hash[:attributes][file_reader.type] = file_reader.attributes
+        ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes)
+        @yaml_hash[:attributes][file_reader.type] = ai.raw_attributes
+        # @yaml_hash[:attributes][file_reader.type] = file_reader.attributes
       end
     end
 end

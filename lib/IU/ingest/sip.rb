@@ -323,7 +323,8 @@ module IU
 
     class AttributeIngester
       def initialize(source_id, source_attributes, factory: Work, context: CONTEXT)
-        @source_id = source_id
+        # FIXME: do this right
+        @source_id = 'file://' + source_id
         @source_attributes = source_attributes
         @factory = factory
         @context = context

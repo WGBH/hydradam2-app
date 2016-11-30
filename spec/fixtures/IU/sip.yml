@@ -1,44 +1,11 @@
 ---
 :resource: Work
 :attributes:
-  :pod:
-    :mdpi_barcode: '40000000542243'
-    :unit_of_origin:
-    - B-IULMIA
-    :original_format:
-    - Betacam
-    :recording_standard:
-    - NTSC
-    :tape_stock_brand: []
-    :image_format:
-    - '4:3'
+  :pod: {}
   :mods:
-    :title:
+    title:
     - '"Brain" Cam 1 Tape 1'
-  :mdpi:
-    :mdpi_date: !ruby/object:DateTime 2015-12-03 00:00:00.000000000 Z
-    :part:
-    - '1'
-    :digitized_by_entity:
-    - Memnon Archiving Services Inc
-    :digitized_by_staff:
-    - comadder
-    :extraction_workstation: []
-    :tape_playback_calibration_used: []
-    :digitization_comments: []
-    :original_identifier:
-    - DAT .I3972 96-3-21
-    :definition: []
-    :original_media_damage: []
-    :original_media_preservation_problem: []
-    :qc_status: []
-    :manual_qc_check: []
-    :encoder_manufacturer: []
-    :ad_manufacturer: []
-    :speed_used: []
-    :tbc_manufacturer: []
-    :tape_thickness: []
-    :total_parts: 1
+  :mdpi: {}
 :source_metadata: 
 :files:
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"
