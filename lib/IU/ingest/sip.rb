@@ -89,7 +89,7 @@ module IU
     class BarcodeReader < XmlReader
       ATT_LOOKUPS = {
         mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date',
-        part: '/IU/Carrier/Parts/Part@Side',
+        part: '/IU/Carrier/Parts/Part/@Side',
         digitized_by_entity: '/IU/Carrier/Parts/DigitizingEntity',
         digitized_by_staff: '/IU/Carrier/Parts/Part/Ingest/Created_by',
         extraction_workstation: '/IU/Carrier/Parts/Part/Ingest/Extraction_workstation/Manufacturer',
@@ -106,11 +106,11 @@ module IU
         speed_used: 'Speed_used',
         tbc_manufacturer: 'TbcDevices/Manufacturer',
         tape_thickness: 'Thickness',
-        total_parts: 'count(//Part)'
       }
       def attributes
         result = super
         result[:mdpi_date] = DateTime.parse(result[:mdpi_date].first)
+        result[:total_parts] = xml.xpath('count(//Part)').to_i
         result
       end
     end
