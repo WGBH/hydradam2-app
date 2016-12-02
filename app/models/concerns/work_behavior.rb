@@ -45,8 +45,14 @@ module Concerns
       property :definition, predicate: RDF::Vocab::EBUCore.hasVideoFormat do |index|
         index.as :stored_searchable, :facetable
       end
-
-
+      
+      property :original_media_damage: RDF::Vocab::Note::SKOS::HistoryNote do |index|
+        index.as :stored_sortable, :facetable
+      end
+      
+      property :original_media_preservation_problem: RDF::Vocab::Note::SKOS::ScopeNote do |index|
+        index.as :stored_sortable, :facetable
+      end
 
       # From mods_xml
       # :title property included in core behaviors
