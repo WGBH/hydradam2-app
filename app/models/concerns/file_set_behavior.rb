@@ -25,6 +25,19 @@ module Concerns
     
    property :codec_type: RDF::Vocab::EBUCore:hasMedium do |index|
       index.as :stored_sortable, :facetable
-   end    
+   end
+    
+   property :codec_name: RDF::Vocab::EBUCore:hasCode do |index|
+      index.as :stored_sortable, :facetable
+   end
+    
+   property :codec_long_name: RDF::Vocab::EBUCore:codecName 
+   #do |index|
+   #   index.as :stored_sortable, :facetable
+   #end
+    
+   property :duration: RDF::Vocab::EBUCore:duration do |index|
+      index.as :stored_sortable, :facetable
+   end 
   end
 end
