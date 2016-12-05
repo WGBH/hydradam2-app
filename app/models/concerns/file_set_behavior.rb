@@ -48,5 +48,15 @@ module Concerns
     
    property :file_size: RDF::Vocab::EBUCore:fileSize 
     
+   property :identifier: RDF::Vocab::EBUCore:identifier do |index|
+      index.as :stored_searchable
+   end 
+    
+   property :unit_of_origin: RDF::Vocab::EBUCore:comments do |index|
+      index.as :stored_searchable, :facetable, :stored_sortable
+   end 
+   
+   property :part: RDF::Vocab::EBUCore:partNumber
+  
   end
 end
