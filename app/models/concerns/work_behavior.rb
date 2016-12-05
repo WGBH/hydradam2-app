@@ -73,7 +73,17 @@ module Concerns
       property :speed_used: RDF::Vocab::EBUCore:playbackSpeed do |index|
         index.as :stored_searchable
       end
-
+      
+      property :tbc_manufacturer: RDF::Vocab::PREMIS.hasHardwareName do |index|
+        index.as :stored_searchable
+      end
+      
+      property :tape_thickness: RDF::Vocab::DCTERMS:description do |index|
+        index.as :stored_searchable
+      end
+      
+      property :total_parts: RDF::Vocab::EBUCore:partTotalNumber 
+     
       # From mods_xml
       # :title property included in core behaviors
 
