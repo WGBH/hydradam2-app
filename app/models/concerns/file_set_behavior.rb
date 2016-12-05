@@ -10,5 +10,9 @@ module Concerns
     include HydraDAM::FileSetBehavior::HasMDPI
     include HydraDAM::FileSetBehavior::HasPod
     include HydraDAM::FileSetBehavior::HasFfprobe
+    
+   property :date_generated: RDF::Vocab::EBUCore:dateCreated do |index|
+      index.as :stored_searchable
+   end
   end
 end
