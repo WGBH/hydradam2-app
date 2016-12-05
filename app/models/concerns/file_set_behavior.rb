@@ -39,5 +39,14 @@ module Concerns
    property :duration: RDF::Vocab::EBUCore:duration do |index|
       index.as :stored_sortable, :facetable
    end 
+    
+   property :bit_rate: RDF::Vocab::EBUCore:bitRate 
+   
+   property :file_name: RDF::Vocab::EBUCore:filename do |index|
+      index.as :stored_searchable
+   end 
+    
+   property :file_size: RDF::Vocab::EBUCore:fileSize 
+    
   end
 end
