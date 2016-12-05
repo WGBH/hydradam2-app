@@ -53,6 +53,14 @@ module Concerns
       property :original_media_preservation_problem: RDF::Vocab::Note::SKOS::ScopeNote do |index|
         index.as :stored_sortable, :facetable
       end
+      
+      property :qc_status: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+        index.as :stored_sortable, :facetable, :stored_searchable
+      end
+      
+      property :manual_qc_check: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+        index.as :stored_sortable, :facetable, :stored_searchable
+      end
 
       # From mods_xml
       # :title property included in core behaviors
