@@ -61,6 +61,18 @@ module Concerns
       property :manual_qc_check: RDF::Vocab::Note::SKOS::ChangeNote do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
+      
+      property :encoder_manufacturer: RDF::Vocab::PREMIS.hasHardwareOtherInformation do |index|
+        index.as :stored_searchable
+      end
+      
+      property :ad_manufacturer: RDF::Vocab::PREMIS.hasHardwareName do |index|
+        index.as :stored_searchable
+      end
+      
+      property :speed_used: RDF::Vocab::EBUCore:playbackSpeed do |index|
+        index.as :stored_searchable
+      end
 
       # From mods_xml
       # :title property included in core behaviors
