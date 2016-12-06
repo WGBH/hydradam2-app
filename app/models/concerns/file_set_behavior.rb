@@ -57,6 +57,16 @@ module Concerns
    end 
    
    property :part: RDF::Vocab::EBUCore:partNumber
-  
+    
+   property :sample_rate: RDF::Vocab::EBUCore:sampleRate 
+    
+   property :video_width: RDF::Vocab::EBUCore:width 
+    
+   property :video_height: RDF::Vocab::EBUCore:height
+    
+   property :md5_checksum: RDF::Vocab::NFO:hashValue do |index|
+      index.as :stored_searchable
+   end 
+    
   end
 end
