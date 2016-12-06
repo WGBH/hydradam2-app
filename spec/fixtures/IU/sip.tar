@@ -206,6 +206,9 @@ A=PCM, F=44100, W=16, M=stereo, T=NoaMediaButler Lib;1.0.0.41;D/D
           <tape_playback_calibration_used>tape_playback_calibration_used TEST</tape_playback_calibration_used>
           <qc_status>qc_status TEST</qc_status>
           <manual_qc_check>manual_qc_check TEST</manual_qc_check>
+          <encoder_manufacturer>encoder_manufacturer TEST</encoder_manufacturer>
+          <ad_manufacturer>ad_manufacturer TEST</ad_manufacturer>
+          <speed_used>speed_used TEST</speed_used>
           <BLER>
             <Channel>
               <ID>1</ID>
