@@ -192,6 +192,8 @@ A=PCM, F=44100, W=16, M=stereo, T=NoaMediaButler Lib;1.0.0.41;D/D
       <digitized_by_entity>Memnon Archiving Services Inc</digitized_by_entity>
       <digitized_by_staff> digitized_by_staff TEST</digitized_by_staff>
       <digitization_comments>digitization_comments TEST</digitization_comments>
+      <original_media_damage>original_media_damage TEST</original_media_damage>
+      <original_media_preservation_problem>original_media_preservation_problem TEST</original_media_preservation_problem>
       <Part Side="1">
         <Ingest xsi:type="DatIngest">
           <Date>2015-12-03</Date>
