@@ -183,7 +183,9 @@ A=PCM, F=44100, W=16, M=stereo, T=NoaMediaButler Lib;1.0.0.41;D/D
 <IU xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Carrier xsi:type="DATCarrier" type="DAT">
     <Identifier>DAT .I3972 96-3-21</Identifier>
+    <original_identifier>DAT .I3972 96-3-21</original_identifier> 
     <Barcode>40000000054496</Barcode>
+    <definition>definition TEST</definition>
     <PhysicalCondition />
     <Parts>
       <DigitizingEntity>Memnon Archiving Services Inc</DigitizingEntity>
