@@ -70,7 +70,7 @@ module Concerns
         index.as :stored_searchable
       end
       
-      property :speed_used, predicate: RDF::Vocab::EBUCore:playbackSpeed do |index|
+      property :speed_used, predicate: RDF::Vocab::EBUCore.playbackSpeed do |index|
         index.as :stored_searchable
       end
       
@@ -78,11 +78,11 @@ module Concerns
         index.as :stored_searchable
       end
       
-      property :tape_thickness, predicate: RDF::Vocab::DCTERMS:description do |index|
+      property :tape_thickness, predicate: RDF::Vocab::DCTERMS.description do |index|
         index.as :stored_searchable
       end
       
-      property :total_parts, predicate: RDF::Vocab::EBUCore:partTotalNumber 
+      property :total_parts, predicate: RDF::Vocab::EBUCore.partTotalNumber 
      
       # From mods_xml
       # :title property included in core behaviors
