@@ -1,5 +1,6 @@
 require 'hydradam/file_set_behavior/has_ffprobe'
-
+require 'rubygems'
+require 'rdf'
 
 module Concerns
   module WorkBehavior
@@ -46,19 +47,19 @@ module Concerns
         index.as :stored_searchable, :facetable
       end
       
-      property :original_media_damage, predicate: RDF::Vocab::Note::SKOS::HistoryNote do |index|
+      property :original_media_damage, predicate: RDF::SKOS.historyNote do |index|
         index.as :stored_sortable, :facetable
       end
       
-      property :original_media_preservation_problem, predicate: RDF::Vocab::Note::SKOS::ScopeNote do |index|
+      property :original_media_preservation_problem, predicate: RDF::SKOS.scopeNote  do |index|
         index.as :stored_sortable, :facetable
       end
       
-      property :qc_status, predicate: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+      property :qc_status, predicate: RDF::SKOS.changeNote  do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       
-      property :manual_qc_check, predicate: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+      property :manual_qc_check, predicate: RDF::SKOS.changeNote do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       
@@ -78,9 +79,9 @@ module Concerns
         index.as :stored_searchable
       end
       
-      property :tape_thickness, predicate: RDF::Vocab::DCTERMS.description do |index|
-        index.as :stored_searchable
-      end
+      #property :tape_thickness, predicate: RDF::Vocab::DCTERMS.description do |index|
+      #  index.as :stored_searchable
+      #end
       
       property :total_parts, predicate: RDF::Vocab::EBUCore.partTotalNumber 
      
