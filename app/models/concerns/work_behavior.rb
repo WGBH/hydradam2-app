@@ -46,43 +46,43 @@ module Concerns
         index.as :stored_searchable, :facetable
       end
       
-      property :original_media_damage: RDF::Vocab::Note::SKOS:HistoryNote do |index|
+      property :original_media_damage, predicate: RDF::Vocab::Note::SKOS::HistoryNote do |index|
         index.as :stored_sortable, :facetable
       end
       
-      property :original_media_preservation_problem: RDF::Vocab::Note::SKOS::ScopeNote do |index|
+      property :original_media_preservation_problem, predicate: RDF::Vocab::Note::SKOS::ScopeNote do |index|
         index.as :stored_sortable, :facetable
       end
       
-      property :qc_status: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+      property :qc_status, predicate: RDF::Vocab::Note::SKOS::ChangeNote do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       
-      property :manual_qc_check: RDF::Vocab::Note::SKOS::ChangeNote do |index|
+      property :manual_qc_check, predicate: RDF::Vocab::Note::SKOS::ChangeNote do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       
-      property :encoder_manufacturer: RDF::Vocab::PREMIS.hasHardwareOtherInformation do |index|
+      property :encoder_manufacturer, predicate: RDF::Vocab::PREMIS.hasHardwareOtherInformation do |index|
         index.as :stored_searchable
       end
       
-      property :ad_manufacturer: RDF::Vocab::PREMIS.hasHardwareName do |index|
+      property :ad_manufacturer, predicate: RDF::Vocab::PREMIS.hasHardwareName do |index|
         index.as :stored_searchable
       end
       
-      property :speed_used: RDF::Vocab::EBUCore:playbackSpeed do |index|
+      property :speed_used, predicate: RDF::Vocab::EBUCore:playbackSpeed do |index|
         index.as :stored_searchable
       end
       
-      property :tbc_manufacturer: RDF::Vocab::PREMIS.hasHardwareName do |index|
+      property :tbc_manufacturer, predicate: RDF::Vocab::PREMIS.hasHardwareName do |index|
         index.as :stored_searchable
       end
       
-      property :tape_thickness: RDF::Vocab::DCTERMS:description do |index|
+      property :tape_thickness, predicate: RDF::Vocab::DCTERMS:description do |index|
         index.as :stored_searchable
       end
       
-      property :total_parts: RDF::Vocab::EBUCore:partTotalNumber 
+      property :total_parts, predicate: RDF::Vocab::EBUCore:partTotalNumber 
      
       # From mods_xml
       # :title property included in core behaviors
