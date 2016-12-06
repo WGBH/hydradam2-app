@@ -194,6 +194,7 @@ A=PCM, F=44100, W=16, M=stereo, T=NoaMediaButler Lib;1.0.0.41;D/D
       <digitization_comments>digitization_comments TEST</digitization_comments>
       <original_media_damage>original_media_damage TEST</original_media_damage>
       <original_media_preservation_problem>original_media_preservation_problem TEST</original_media_preservation_problem>
+      <total_parts>total_parts TEST</total_parts>
       <Part Side="1">
         <Ingest xsi:type="DatIngest">
           <Date>2015-12-03</Date>
@@ -209,6 +210,8 @@ A=PCM, F=44100, W=16, M=stereo, T=NoaMediaButler Lib;1.0.0.41;D/D
           <encoder_manufacturer>encoder_manufacturer TEST</encoder_manufacturer>
           <ad_manufacturer>ad_manufacturer TEST</ad_manufacturer>
           <speed_used>speed_used TEST</speed_used>
+          <tbc_manufacturer>tbc_manufacturer TEST</tbc_manufacturer>
+          <tape_thickness>tape_thickness TEST</tape_thickness>
           <BLER>
             <Channel>
               <ID>1</ID>
