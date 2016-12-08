@@ -9,7 +9,7 @@ module IU
       end
       attr_reader :filename, :reader
 
-      delegate :id, :attributes, to: :reader
+      delegate :id, :attributes, :file_attributes, :file_properties, to: :reader
 
       def reader_class
         case @filename
@@ -54,26 +54,47 @@ module IU
       def parse
       end
 
-      def attributes
+      def get_attributes_set(atts_const)
         begin
-          att_lookups = self.class.const_get(:ATT_LOOKUPS)
+          att_lookups = self.class.const_get(atts_const)
         rescue
-          att_lookups = {}
+          return {}
         end
         att_lookups.inject({}) do |h, (k,v)|
           h[k] = xml.xpath(v).map(&:text)
           h
         end
       end
+
+      # for Work metadata
+      def attributes
+        get_attributes_set(:WORK_ATT_LOOKUPS)
+      end
+
+      # for fileset metadata run through AttributeIngester
+      def file_attributes
+        get_attributes_set(:FILE_ATT_LOOKUPS)
+      end
+
+      # for file properties, outside normal metadata handled specially in ingest
+      def file_properties
+        { mime_type: 'application/xml',
+          path: id,
+          file_opts: {},
+        }
+      end
     end
     class PodReader < XmlReader
-      ATT_LOOKUPS = {
+      WORK_ATT_LOOKUPS = {
         mdpi_barcode: '//details/mdpi_barcode',
         unit_of_origin: '//assignment/unit',
         original_format: '//technical_metadata/format',
         recording_standard: '//technical_metadata/recording_standard',
         tape_stock_brand: 'tape_stock_brand',
         image_format: '//technical_metadata/image_format'
+      }
+      FILE_ATT_LOOKUPS = {
+        unit_of_origin: '//assignment/unit',
       }
       def attributes
         result = super
@@ -82,12 +103,13 @@ module IU
       end
     end
     class ModsReader < XmlReader
-      ATT_LOOKUPS = {
+      WORK_ATT_LOOKUPS = {
         title: '/mods/titleInfo/title'
       }
+      FILE_ATT_LOOKUPS = {} # No FileSet attributes from Mods
     end
     class BarcodeReader < XmlReader
-      ATT_LOOKUPS = {
+      WORK_ATT_LOOKUPS = {
         mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date',
         part: '/IU/Carrier/Parts/Part/@Side',
         digitized_by_entity: '/IU/Carrier/Parts/DigitizingEntity',
@@ -106,6 +128,9 @@ module IU
         speed_used: 'Speed_used',
         tbc_manufacturer: 'TbcDevices/Manufacturer',
         tape_thickness: 'Thickness',
+      }
+      FILE_ATT_LOOKUPS = {
+        part: '/IU/Carrier/Parts/Part/@Side',
       }
       def attributes
         result = super

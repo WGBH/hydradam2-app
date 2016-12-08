@@ -56,16 +56,18 @@ class PreingestJob < ActiveJob::Base
     end
 
     def process_file(filename)
-      file_hash = {}
-      file_hash[:filename] = filename
-      @yaml_hash[:files] << file_hash 
-
+      file_hash = { filename: filename }
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
-        # FIXME: missing required Model RDF mappings for AttributeIngester
         ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes)
-        @yaml_hash[:attributes][file_reader.type] = ai.raw_attributes
-        # @yaml_hash[:attributes][file_reader.type] = file_reader.attributes
+        # FIXME: write better logic/config for Work vs FileSet attribute handling?
+        if file_reader.type.in? [:pod, :mods, :mdpi]
+          @yaml_hash[:attributes][file_reader.type] = ai.raw_attributes
+        end
+        fai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.file_attributes, factory: FileSet)
+        file_hash.merge!(file_reader.file_properties)
+        file_hash[:attributes] = fai.raw_attributes
       end
+      @yaml_hash[:files] << file_hash 
     end
 end
