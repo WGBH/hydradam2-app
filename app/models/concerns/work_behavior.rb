@@ -47,7 +47,7 @@ module Concerns
         index.as :stored_searchable, :facetable
       end
       
-      property :original_media_damage, predicate: RDF::SKOS.historyNote do |index|
+      property :original_media_damage, predicate: RDF::Vocab::SKOS.historyNote do |index|
         index.as :stored_sortable, :facetable
       end
       
