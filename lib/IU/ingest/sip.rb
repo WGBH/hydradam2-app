@@ -19,8 +19,12 @@ module IU
           ModsReader
         when /4\d{3}\.xml$/
           BarcodeReader
-        when /ffprobe\.xml$/
-          FFprobeReader
+        when /_pres_ffprobe\.xml$/
+          PresFFprobeReader
+        when /_(mezz|prod)_ffprobe\.xml$/
+          MezzFFprobeReader
+        when /_access_ffprobe\.xml$/
+          AccessFFprobeReader
         else
           NullReader # raise exception?
         end
@@ -30,7 +34,9 @@ module IU
         { PodReader => :pod,
           ModsReader => :mods,
           BarcodeReader => :mdpi,
-          FFprobeReader => :ffprobe
+          PresFFprobeReader => :pres_ffprobe
+          MezzFFprobeReader => :mezz_ffprobe
+          AccessFFprobeReader => :access_ffprobe
         }[reader_class]
       end
     end
