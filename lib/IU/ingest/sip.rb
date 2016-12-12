@@ -151,6 +151,9 @@ module IU
         file_format: '//ffprobe/format/@format_name',
         file_format_long_name: '//ffprobe/format/@format_long_name',
         codec_type: '//ffprobe/streams/stream/@codec_type',
+        codec_name: '//ffprobe/streams/stream/@codec_name',
+        codec_long_name: '//ffprobe/streams/stream/@codec_long_name',
+        duration: '//ffprobe/format/@duration',
       }
       def attributes
         result = super
