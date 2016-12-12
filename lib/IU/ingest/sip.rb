@@ -144,6 +144,19 @@ module IU
         result
       end
     end
+    
+    class FFprobeReader < XmlReader
+      WORK_ATT_LOOKUPS = {} # No WORK attributes from FFprobe
+      FILE_ATT_LOOKUPS = {
+        file_format: '//ffprobe/format/@format_name',
+        file_format_long_name: '//ffprobe/format/@format_long_name',
+        codec_type: '//ffprobe/streams/stream/@codec_type',
+      }
+      def attributes
+        result = super
+        result
+      end
+    end
     class SIP
       attr_reader :tarball, :depositor
 
