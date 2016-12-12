@@ -141,6 +141,7 @@ module IU
       }
       FILE_ATT_LOOKUPS = {
         part: '/IU/Carrier/Parts/Part/@Side',
+        date_generated: '/IU/Carrier/Parts/Part/Ingest/Date'
       }
       def attributes
         result = super
