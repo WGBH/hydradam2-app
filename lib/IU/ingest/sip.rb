@@ -19,6 +19,8 @@ module IU
           ModsReader
         when /4\d{3}\.xml$/
           BarcodeReader
+        when /ffprobe\.xml$/
+          FFprobeReader
         else
           NullReader # raise exception?
         end
@@ -27,7 +29,8 @@ module IU
       def type
         { PodReader => :pod,
           ModsReader => :mods,
-          BarcodeReader => :mdpi
+          BarcodeReader => :mdpi,
+          FFprobeReader => :ffprobe
         }[reader_class]
       end
     end
