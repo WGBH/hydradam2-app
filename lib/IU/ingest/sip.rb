@@ -104,6 +104,7 @@ module IU
       }
       FILE_ATT_LOOKUPS = {
         unit_of_origin: '//assignment/unit',
+        identifier: '//details/mdpi_barcode'
       }
       def attributes
         result = super
