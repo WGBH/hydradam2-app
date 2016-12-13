@@ -13,7 +13,7 @@
     - They're doing my time
 :source_metadata: 
 :files:
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_mezz_ffprobe.xml"
+- :filename: MDPI_40000002050658_01_mezz_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_mezz_ffprobe.xml"
   :file_opts: {}
@@ -43,7 +43,9 @@
     - '48000'
     width:
     - '720'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_pod.xml"
+  :md5sum: 4a36d4f26c2b150740ab27a188a623f5
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002050658/20160606-150516/MDPI_40000002050658_01_mezz.mov
+- :filename: MDPI_40000002050658_pod.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_pod.xml"
   :file_opts: {}
@@ -52,7 +54,8 @@
     - B-WELLS
     identifier:
     - '40000002050658'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_pres_ffprobe.xml"
+  :md5sum: f636caa11100977cbff07df11cb80148
+- :filename: MDPI_40000002050658_01_pres_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_pres_ffprobe.xml"
   :file_opts: {}
@@ -82,16 +85,26 @@
     - '48000'
     width:
     - '720'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_mods.xml"
+  :md5sum: 1068efbd12caf82d6e8017449d3a464b
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002050658/20160606-150516/MDPI_40000002050658_01_pres.mkv
+- :filename: MDPI_40000002050658_mods.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_mods.xml"
   :file_opts: {}
   :attributes: {}
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/manifest-md5.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658.xml"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/README.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_cc.vtt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_access_ffprobe.xml"
+  :md5sum: 488ff6e7a4f0640f54b2b2b535228171
+- :filename: manifest-md5.txt
+  :mime_type: text/plain
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/manifest-md5.txt"
+  :file_opts: {}
+  :attributes: {}
+- :filename: MDPI_40000002050658.xml
+  :md5sum: 7b15571febb2eb5fe63ba5ed18a926f8
+- :filename: README.txt
+  :md5sum: d124261e88738ba6bf7a425193051fd8
+- :filename: MDPI_40000002050658_01_cc.vtt
+  :md5sum: e5f87f38206a0381b99149757001f95d
+- :filename: MDPI_40000002050658_01_access_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_01_access_ffprobe.xml"
   :file_opts: {}
@@ -118,6 +131,12 @@
     - '48000'
     width:
     - '720'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/tagmanifest-md5.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_purl.yaml"
+  :md5sum: 9df0be199759d9f3feeaebd42cbebe36
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002050658/20160606-150516/MDPI_40000002050658_01_access.mp4
+- :filename: tagmanifest-md5.txt
+- :filename: MDPI_40000002050658_purl.yaml
+  :mime_type: application/x-yaml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002050658_20160606-150933/MDPI_40000002050658_purl.yaml"
+  :file_opts: {}
+  :attributes: {}
 :sources: []

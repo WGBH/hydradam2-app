@@ -20,6 +20,7 @@ class PreingestJob < ActiveJob::Base
       @yaml_hash[:sources] = []
 
       filenames.each { |filename| process_file(filename) }
+      postprocess
       delete_extracted_files!
 
       output_file = @preingest_file.gsub(/\..{3,4}/, '.yml')
@@ -56,18 +57,38 @@ class PreingestJob < ActiveJob::Base
     end
 
     def process_file(filename)
-      file_hash = { filename: filename }
+      file_hash = { filename: filename.sub(/.*\//, '') }
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
         ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes)
         # FIXME: write better logic/config for Work vs FileSet attribute handling?
         if file_reader.type.in? [:pod, :mods, :mdpi]
           @yaml_hash[:attributes][file_reader.type] = ai.raw_attributes
+        elsif file_reader.type.in? [:purl, :md5]
+          @purls_map = file_reader.reader.purls_map if file_reader.type == :purl
+          @md5sums_map = file_reader.reader.md5sums_map if file_reader.type == :md5
         end
         fai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.file_attributes, factory: FileSet)
         file_hash.merge!(file_reader.file_properties)
         file_hash[:attributes] = fai.raw_attributes
       end
       @yaml_hash[:files] << file_hash 
+    end
+
+    def md5sums_map
+      @md5sums_map ||= {}
+    end
+
+    def purls_map
+      @purls_map ||= {}
+    end
+
+    def postprocess
+      @yaml_hash[:files].each do |file_hash|
+        if filename = file_hash[:filename]
+          file_hash[:md5sum] = md5sums_map[filename] if md5sums_map[filename]
+          file_hash[:purl] = purls_map[filename] if purls_map[filename]
+        end
+      end
     end
 end

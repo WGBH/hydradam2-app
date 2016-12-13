@@ -13,7 +13,7 @@
     - Miami of Ohio 1st Half 08/31/02
 :source_metadata: 
 :files:
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_pod.xml"
+- :filename: MDPI_40000000363855_pod.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_pod.xml"
   :file_opts: {}
@@ -22,7 +22,8 @@
     - B-ATHFHOCKEY
     identifier:
     - '40000000363855'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_access_ffprobe.xml"
+  :md5sum: 0d6f156e60bc2e4aa4275af414dcd52e
+- :filename: MDPI_40000000363855_01_access_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_access_ffprobe.xml"
   :file_opts: {}
@@ -49,15 +50,23 @@
     - '48000'
     width:
     - '720'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/manifest-md5.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_mods.xml"
+  :md5sum: c96c020e93366afe906bee32ee0c81ea
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_access.mp4
+- :filename: manifest-md5.txt
+  :mime_type: text/plain
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/manifest-md5.txt"
+  :file_opts: {}
+  :attributes: {}
+- :filename: MDPI_40000000363855_mods.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_mods.xml"
   :file_opts: {}
   :attributes: {}
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/README.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/tagmanifest-md5.txt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_pres_ffprobe.xml"
+  :md5sum: 2d40a3630b83dc3078344e3e989657a1
+- :filename: README.txt
+  :md5sum: df167cfd7d091dfe127bcc8262a048cc
+- :filename: tagmanifest-md5.txt
+- :filename: MDPI_40000000363855_01_pres_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_pres_ffprobe.xml"
   :file_opts: {}
@@ -84,10 +93,18 @@
     - '48000'
     width:
     - '720'
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855.xml"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_purl.yaml"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_cc.vtt"
-- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_mezz_ffprobe.xml"
+  :md5sum: 707a3ecbdf6c49e808bd45ce10ccad4f
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_pres.mkv
+- :filename: MDPI_40000000363855.xml
+  :md5sum: 4f26d410febdaea9928dd30db9890235
+- :filename: MDPI_40000000363855_purl.yaml
+  :mime_type: application/x-yaml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_purl.yaml"
+  :file_opts: {}
+  :attributes: {}
+- :filename: MDPI_40000000363855_01_cc.vtt
+  :md5sum: e5f87f38206a0381b99149757001f95d
+- :filename: MDPI_40000000363855_01_mezz_ffprobe.xml
   :mime_type: application/xml
   :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_mezz_ffprobe.xml"
   :file_opts: {}
@@ -114,4 +131,6 @@
     - '48000'
     width:
     - '720'
+  :md5sum: eed21580ba271cb40c5a6dc8fdc41470
+  :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_mezz.mov
 :sources: []

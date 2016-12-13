@@ -9,7 +9,7 @@ module IU
       end
       attr_reader :filename, :reader
 
-      delegate :id, :attributes, :file_attributes, :file_properties, to: :reader
+      delegate :id, :attributes, :file_attributes, :file_properties, :type, to: :reader
 
       def reader_class
         case @filename
@@ -20,18 +20,14 @@ module IU
         when /4\d{3}\.xml$/
           BarcodeReader
         when /ffprobe\.xml$/
-          FFprobeReader
+          FFProbeReader
+	when /purl.*ya?ml$/
+          PurlReader
+	when /\/manifest-md5\.txt$/
+	  Md5Reader
         else
           NullReader # raise exception?
         end
-      end
-
-      def type
-        { PodReader => :pod,
-          ModsReader => :mods,
-          BarcodeReader => :mdpi,
-          FFprobeReader => :ffprobe
-        }[reader_class]
       end
     end
     class NullReader
@@ -40,6 +36,10 @@ module IU
         @source = source
       end
       attr_reader :id, :source
+
+      def type
+        nil
+      end
       
       def attributes
         {}
@@ -53,6 +53,10 @@ module IU
         parse
       end
       attr_reader :id, :source, :xml
+
+      def type
+        :xml
+      end
 
       def parse
       end
@@ -100,6 +104,11 @@ module IU
         unit_of_origin: '//assignment/unit',
         identifier: '//details/mdpi_barcode'
       }
+
+      def type
+        :pod
+      end
+
       def attributes
         result = super
         result[:mdpi_barcode] = result[:mdpi_barcode].first
@@ -111,6 +120,9 @@ module IU
         title: '/mods/titleInfo/title'
       }
       FILE_ATT_LOOKUPS = {} # No FileSet attributes from Mods
+      def type
+        :mods
+      end
     end
     class BarcodeReader < XmlReader
       WORK_ATT_LOOKUPS = {
@@ -137,6 +149,11 @@ module IU
         part: '/IU/Carrier/Parts/Part/@Side',
         date_generated: '/IU/Carrier/Parts/Part/Ingest/Date'
       }
+
+      def type
+        :mdpi
+      end
+
       def attributes
         result = super
         result[:mdpi_date] = DateTime.parse(result[:mdpi_date].first)
@@ -145,8 +162,8 @@ module IU
       end
     end
     
-    class FFprobeReader < XmlReader
-      WORK_ATT_LOOKUPS = {} # No WORK attributes from FFprobe
+    class FFProbeReader < XmlReader
+      WORK_ATT_LOOKUPS = {} # No WORK attributes from FFProbe
       FILE_ATT_LOOKUPS = {
         file_format: '//ffprobe/format/@format_name',
         file_format_long_name: '//ffprobe/format/@format_long_name',
@@ -161,11 +178,102 @@ module IU
         video_width: '//ffprobe/streams/stream/@width',
         video_height: '//ffprobe/streams/stream/@height'
       }
+
+      def type
+        :ffprobe
+      end
+
       def attributes
         result = super
         result
       end
     end
+
+    class YamlReader
+      def initialize(id, source)
+        @id = id
+        @source = source
+        @yaml = Psych.load(@source)
+        parse
+      end
+      attr_reader :id, :source, :yaml
+
+      def parse
+      end
+
+      # for Work metadata
+      def attributes
+        {}
+      end
+
+      # for fileset metadata run through AttributeIngester
+      def file_attributes
+        {}
+      end
+
+      # for file properties, outside normal metadata handled specially in ingest
+      def file_properties
+        { mime_type: 'application/x-yaml',
+          path: id,
+          file_opts: {},
+        }
+      end
+    end
+
+    class PurlReader < YamlReader
+      attr_reader :purls_map
+      def type
+        :purl
+      end
+      def parse
+        @purls_map = {}
+        @yaml.each do |media, values|
+          @purls_map[values['ffprobe']] = values['purl']
+        end
+      end
+    end
+
+    class TextReader
+      def initialize(id, source)
+        @id = id
+        @source = source
+        parse
+      end
+      attr_reader :id, :source
+
+      def parse
+      end
+
+      # for Work metadata
+      def attributes
+        {}
+      end
+
+      # for fileset metadata run through AttributeIngester
+      def file_attributes
+        {}
+      end
+
+      # for file properties, outside normal metadata handled specially in ingest
+      def file_properties
+        { mime_type: 'text/plain',
+          path: id,
+          file_opts: {},
+        }
+      end
+
+    end
+
+    class Md5Reader < TextReader
+      attr_reader :md5sums_map
+      def type
+        :md5
+      end
+      def parse
+        @md5sums_map = source.split("\n").map { |line| line.split(/\s+/).reverse }.map { |pair| pair[0] = pair[0].sub(/.*\//, ''); pair }.to_h
+      end
+    end
+
     class SIP
       attr_reader :tarball, :depositor
 
