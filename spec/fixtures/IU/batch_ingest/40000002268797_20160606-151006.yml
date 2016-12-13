@@ -1,0 +1,123 @@
+---
+:resource: Work
+:attributes:
+  :mods:
+    title:
+    - Indiana vs U of Florida Hoosier Classic Tape 2
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-ATHVIDEO
+    recording_standard:
+    - NTSC
+:source_metadata: 
+:files:
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_purl.yaml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_mods.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_mods.xml"
+  :file_opts: {}
+  :attributes: {}
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_pres_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_pres_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '98874762'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3754.417000'
+    file_size:
+    - '46402136052'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002268797_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_pod.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_pod.xml"
+  :file_opts: {}
+  :attributes:
+    unit_of_origin:
+    - B-ATHVIDEO
+    identifier:
+    - '40000002268797'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797.xml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/manifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/README.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_cc.vtt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/tagmanifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_access_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_access_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '3113181'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '3754.460000'
+    file_size:
+    - '1461039494'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002268797.downloading/data/MDPI_40000002268797_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_mezz_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002268797_20160606-151006/MDPI_40000002268797_01_mezz_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '52320480'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3754.418000'
+    file_size:
+    - '24554119355'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002268797.downloading/data/MDPI_40000002268797_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+:sources: []

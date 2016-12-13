@@ -2,54 +2,115 @@
 :resource: Work
 :attributes:
   :pod:
-    :mdpi_barcode: '40000000542243'
-    :unit_of_origin:
-    - B-IULMIA
-    :original_format:
-    - Betacam
-    :recording_standard:
-    - NTSC
-    :tape_stock_brand: []
-    :image_format:
+    image_format:
     - '4:3'
+    digitization_comments:
+    - B-IULMIA
+    recording_standard:
+    - NTSC
   :mods:
-    :title:
+    title:
     - '"Brain" Cam 1 Tape 1'
   :mdpi:
-    :mdpi_date: !ruby/object:DateTime 2015-12-03 00:00:00.000000000 Z
-    :part:
-    - '1'
-    :digitized_by_entity:
+    digitized_by_entity:
     - Memnon Archiving Services Inc
-    :digitized_by_staff:
+    digitized_by_staff:
     - comadder
-    :extraction_workstation: []
-    :tape_playback_calibration_used: []
-    :digitization_comments: []
-    :original_identifier:
+    original_identifier:
     - DAT .I3972 96-3-21
-    :definition: []
-    :original_media_damage: []
-    :original_media_preservation_problem: []
-    :qc_status: []
-    :manual_qc_check: []
-    :encoder_manufacturer: []
-    :ad_manufacturer: []
-    :speed_used: []
-    :tbc_manufacturer: []
-    :tape_thickness: []
-    :total_parts: 1
+    total_parts:
+    - '1'
 :source_metadata: 
 :files:
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '1422874'
+    codec_long_name:
+    - PCM signed 16-bit little-endian
+    duration:
+    - '7606.485624'
+    file_size:
+    - '1352884274'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000054496.downloading/data/MDPI_40000000054496_01_prod.wav"
+    file_format_long_name:
+    - WAV / WAVE (Waveform Audio)
+    codec_type:
+    - audio
+    sample_rate:
+    - '44100'
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/manifest-md5.txt"
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_purl.yaml"
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_pod.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_pod.xml"
+  :file_opts: {}
+  :attributes:
+    unit_of_origin:
+    - B-IULMIA
+    identifier:
+    - '40000000542243'
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/README.txt"
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_mods.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_mods.xml"
+  :file_opts: {}
+  :attributes: {}
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/tagmanifest-md5.txt"
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_group.txt"
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_access_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_access_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '193380'
+    codec_long_name:
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '7606.533000'
+    file_size:
+    - '183868943'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000054496.downloading/data/MDPI_40000000054496_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - audio
+    sample_rate:
+    - '44100'
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496.xml"
+  :file_opts: {}
+  :attributes:
+    date_created:
+    - '2015-12-03'
+    part:
+    - '1'
 - :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_pres_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_pres_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '1422874'
+    codec_long_name:
+    - PCM signed 16-bit little-endian
+    duration:
+    - '7606.485624'
+    file_size:
+    - '1352884274'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000054496.downloading/data/MDPI_40000000054496_01_pres.wav"
+    file_format_long_name:
+    - WAV / WAVE (Waveform Audio)
+    codec_type:
+    - audio
+    sample_rate:
+    - '44100'
 :sources: []

@@ -1,0 +1,149 @@
+---
+:resource: Work
+:attributes:
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-WELLS
+    recording_standard:
+    - NTSC
+  :mdpi:
+    digitization_comments:
+    - Tape - Errors at end or beginning of tape or both - program OK;
+    digitized_by_entity:
+    - Memnon Archiving Services Inc
+    digitized_by_staff:
+    - jbronnen
+    original_identifier:
+    - PA3827.A2 H37 1983 pt.3b
+    definition:
+    - SD
+    total_parts:
+    - '1'
+  :mods:
+    title:
+    - Oresteia
+    - Agamemnon
+    - Libation bearers
+    - Furies
+    - Choephori
+    - Eumenides
+:source_metadata: 
+:files:
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_purl.yaml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_pres_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_pres_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '76930655'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1942.874000'
+    file_size:
+    - '18683321278'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002054742_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_access_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_access_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '3155173'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '1942.917000'
+    file_size:
+    - '766279950'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-02_prod/MDPI_40000002054742.downloading/data/MDPI_40000002054742_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_pod.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_pod.xml"
+  :file_opts: {}
+  :attributes:
+    unit_of_origin:
+    - B-WELLS
+    identifier:
+    - '40000002054742'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/manifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_mezz_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_mezz_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '52320474'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1942.875000'
+    file_size:
+    - '12706517782'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-02_prod/MDPI_40000002054742.downloading/data/MDPI_40000002054742_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/README.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_01_cc.vtt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/tagmanifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742.xml"
+  :file_opts: {}
+  :attributes:
+    date_created:
+    - '2016-05-25'
+    part:
+    - '1'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_mods.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054742_20160606-150921/MDPI_40000002054742_mods.xml"
+  :file_opts: {}
+  :attributes: {}
+:sources: []

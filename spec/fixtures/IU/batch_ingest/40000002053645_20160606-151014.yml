@@ -1,0 +1,123 @@
+---
+:resource: Work
+:attributes:
+  :mods:
+    title:
+    - Kaddish
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-WELLS
+    recording_standard:
+    - NTSC
+:source_metadata: 
+:files:
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_pres_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_pres_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '54666875'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3747.677000'
+    file_size:
+    - '25609223921'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002053645_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645.xml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_mezz_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_mezz_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '52320863'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3747.678000'
+    file_size:
+    - '24510218634'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000002053645.downloading/data/MDPI_40000002053645_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/manifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_purl.yaml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_access_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_access_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '2071879'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '3747.720000'
+    file_size:
+    - '970603232'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000002053645.downloading/data/MDPI_40000002053645_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_01_cc.vtt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/README.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/tagmanifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_mods.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_mods.xml"
+  :file_opts: {}
+  :attributes: {}
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_pod.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053645_20160606-151014/MDPI_40000002053645_pod.xml"
+  :file_opts: {}
+  :attributes:
+    unit_of_origin:
+    - B-WELLS
+    identifier:
+    - '40000002053645'
+:sources: []

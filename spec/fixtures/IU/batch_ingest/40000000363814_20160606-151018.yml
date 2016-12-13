@@ -1,0 +1,117 @@
+---
+:resource: Work
+:attributes:
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-ATHFHOCKEY
+    recording_standard:
+    - NTSC
+  :mods:
+    title:
+    - IU v N/Western 2nd Half 10/17/03
+:source_metadata: 
+:files:
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_access_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_access_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '3119623'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '2224.089000'
+    file_size:
+    - '867290015'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000363814.downloading/data/MDPI_40000000363814_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_pod.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_pod.xml"
+  :file_opts: {}
+  :attributes:
+    unit_of_origin:
+    - B-ATHFHOCKEY
+    identifier:
+    - '40000000363814'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814.xml"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/manifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_mods.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_mods.xml"
+  :file_opts: {}
+  :attributes: {}
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_mezz_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_mezz_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '52314308'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    duration:
+    - '2224.089000'
+    file_size:
+    - '14543959648'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000363814.downloading/data/MDPI_40000000363814_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_pres_ffprobe.xml"
+  :mime_type: application/xml
+  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_pres_ffprobe.xml"
+  :file_opts: {}
+  :attributes:
+    bit_rate:
+    - '83155752'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    duration:
+    - '2224.088000'
+    file_size:
+    - '23118213856'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000000363814_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_01_cc.vtt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/README.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/tagmanifest-md5.txt"
+- :filename: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363814_20160606-151018/MDPI_40000000363814_purl.yaml"
+:sources: []
