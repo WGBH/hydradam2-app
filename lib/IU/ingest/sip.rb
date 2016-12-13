@@ -157,6 +157,9 @@ module IU
         bit_rate: '//ffprobe/format/@bit_rate',
         file_name: '//ffprobe/format/@filename',
         file_size: '//ffprobe/format/@size',
+        sample_rate: '//ffprobe/streams/stream/@sample_rate',
+        video_width: '//ffprobe/streams/stream/@width',
+        video_height: '//ffprobe/streams/stream/@height'
       }
       def attributes
         result = super
