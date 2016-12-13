@@ -1,6 +1,6 @@
 ---
 :resource: Work
-:attributes:
+:work_attributes:
   :pod:
     image_format:
     - '4:3'
@@ -19,6 +19,18 @@
     original_identifier:
     - DAT .I3972 96-3-21
     total_parts:
+    - '1'
+:file_set_attributes:
+  :pod:
+    unit_of_origin:
+    - B-IULMIA
+    identifier:
+    - '40000000542243'
+  :mods: {}
+  :mdpi:
+    date_created:
+    - '2015-12-03'
+    part:
     - '1'
 :source_metadata: 
 :files:
@@ -46,31 +58,11 @@
   :md5sum: 2a2d82dc3ab0d027f8886df4e0930d39
   :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_prod.wav
 - :filename: manifest-md5.txt
-  :mime_type: text/plain
-  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/manifest-md5.txt"
-  :file_opts: {}
-  :attributes: {}
 - :filename: MDPI_40000000054496_purl.yaml
-  :mime_type: application/x-yaml
-  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_purl.yaml"
-  :file_opts: {}
-  :attributes: {}
 - :filename: MDPI_40000000542243_pod.xml
-  :mime_type: application/xml
-  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_pod.xml"
-  :file_opts: {}
-  :attributes:
-    unit_of_origin:
-    - B-IULMIA
-    identifier:
-    - '40000000542243'
 - :filename: README.txt
   :md5sum: 274e2608f4791eba5768e2890846e42a
 - :filename: MDPI_40000000542243_mods.xml
-  :mime_type: application/xml
-  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000542243_mods.xml"
-  :file_opts: {}
-  :attributes: {}
 - :filename: tagmanifest-md5.txt
 - :filename: MDPI_40000000054496_group.txt
   :md5sum: 24af985acef660e2a1e2f2d42919b77b
@@ -98,14 +90,6 @@
   :md5sum: fa40a4bc057567044fa68bfbc6eee2df
   :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_access.mp4
 - :filename: MDPI_40000000054496.xml
-  :mime_type: application/xml
-  :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496.xml"
-  :file_opts: {}
-  :attributes:
-    date_created:
-    - '2015-12-03'
-    part:
-    - '1'
   :md5sum: 22b37d76c597ed5c9a7a643da4359d9b
 - :filename: MDPI_40000000054496_01_pres_ffprobe.xml
   :mime_type: application/xml

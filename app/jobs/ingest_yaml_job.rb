@@ -15,8 +15,8 @@ class IngestYAMLJob < ActiveJob::Base
 
     def ingest
       resource = Work.new
-      if @yaml[:attributes].present?
-        @yaml[:attributes].each { |_set_name, attributes| resource.attributes = attributes }
+      if @yaml[:work_attributes].present?
+        @yaml[:work_attributes].each { |_set_name, attributes| resource.attributes = attributes }
       end
       resource.source_metadata = @yaml[:source_metadata] if @yaml[:source_metadata].present?
       resource.apply_depositor_metadata @user

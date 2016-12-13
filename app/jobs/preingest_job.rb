@@ -14,7 +14,8 @@ class PreingestJob < ActiveJob::Base
     def preingest
       @yaml_hash = {}
       @yaml_hash[:resource] = Work.to_s
-      @yaml_hash[:attributes] = {}
+      @yaml_hash[:work_attributes] = {}
+      @yaml_hash[:file_set_attributes] = {}
       @yaml_hash[:source_metadata] = nil
       @yaml_hash[:files] = []
       @yaml_hash[:sources] = []
@@ -60,17 +61,18 @@ class PreingestJob < ActiveJob::Base
       file_hash = { filename: filename.sub(/.*\//, '') }
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
-        ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes)
-        # FIXME: write better logic/config for Work vs FileSet attribute handling?
+        work_ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes, factory: @yaml_hash[:resource].constantize)
+        file_set_ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.file_attributes, factory: FileSet)
         if file_reader.type.in? [:pod, :mods, :mdpi]
-          @yaml_hash[:attributes][file_reader.type] = ai.raw_attributes
+          @yaml_hash[:work_attributes][file_reader.type] = work_ai.raw_attributes
+          @yaml_hash[:file_set_attributes][file_reader.type] = file_set_ai.raw_attributes
         elsif file_reader.type.in? [:purl, :md5]
           @purls_map = file_reader.reader.purls_map if file_reader.type == :purl
           @md5sums_map = file_reader.reader.md5sums_map if file_reader.type == :md5
+        else
+          file_hash.merge!(file_reader.file_properties)
+          file_hash[:attributes] = file_set_ai.raw_attributes
         end
-        fai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.file_attributes, factory: FileSet)
-        file_hash.merge!(file_reader.file_properties)
-        file_hash[:attributes] = fai.raw_attributes
       end
       @yaml_hash[:files] << file_hash 
     end
