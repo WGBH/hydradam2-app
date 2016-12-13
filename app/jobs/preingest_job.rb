@@ -17,7 +17,7 @@ class PreingestJob < ActiveJob::Base
       @yaml_hash[:work_attributes] = {}
       @yaml_hash[:file_set_attributes] = {}
       @yaml_hash[:source_metadata] = nil
-      @yaml_hash[:files] = []
+      @yaml_hash[:file_sets] = []
       @yaml_hash[:sources] = []
 
       filenames.each { |filename| process_file(filename) }
@@ -58,7 +58,9 @@ class PreingestJob < ActiveJob::Base
     end
 
     def process_file(filename)
-      file_hash = { filename: filename.sub(/.*\//, '') }
+      # FIXME
+      # file_hash = { filename: filename.sub(/.*\//, '') }
+      file_hash = {}
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
         work_ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes, factory: @yaml_hash[:resource].constantize)
@@ -66,15 +68,17 @@ class PreingestJob < ActiveJob::Base
         if file_reader.type.in? [:pod, :mods, :mdpi]
           @yaml_hash[:work_attributes][file_reader.type] = work_ai.raw_attributes
           @yaml_hash[:file_set_attributes][file_reader.type] = file_set_ai.raw_attributes
+          file_hash[:files] = file_reader.files
         elsif file_reader.type.in? [:purl, :md5]
           @purls_map = file_reader.reader.purls_map if file_reader.type == :purl
           @md5sums_map = file_reader.reader.md5sums_map if file_reader.type == :md5
+          file_hash[:files] = file_reader.files
         else
-          file_hash.merge!(file_reader.file_properties)
           file_hash[:attributes] = file_set_ai.raw_attributes
+          file_hash[:files] = file_reader.files
         end
       end
-      @yaml_hash[:files] << file_hash 
+      @yaml_hash[:file_sets] << file_hash if file_hash.present?
     end
 
     def md5sums_map
@@ -86,10 +90,14 @@ class PreingestJob < ActiveJob::Base
     end
 
     def postprocess
-      @yaml_hash[:files].each do |file_hash|
-        if filename = file_hash[:filename]
-          file_hash[:md5sum] = md5sums_map[filename] if md5sums_map[filename]
-          file_hash[:purl] = purls_map[filename] if purls_map[filename]
+      @yaml_hash[:file_sets].each do |file_set|
+        if file_set[:files].present?
+          file_set[:files].each do |file_hash|
+            if filename = file_hash[:filename]
+              file_hash[:md5sum] = md5sums_map[filename] if md5sums_map[filename]
+              file_hash[:purl] = purls_map[filename] if purls_map[filename]
+            end
+          end
         end
       end
     end

@@ -14,7 +14,7 @@ class IngestYAMLJob < ActiveJob::Base
   private
 
     def ingest
-      resource = Work.new
+      resource = @yaml[:resource].constantize.new
       if @yaml[:work_attributes].present?
         @yaml[:work_attributes].each { |_set_name, attributes| resource.attributes = attributes }
       end

@@ -9,7 +9,7 @@ module IU
       end
       attr_reader :filename, :reader
 
-      delegate :id, :attributes, :file_attributes, :file_properties, :type, to: :reader
+      delegate :id, :attributes, :file_attributes, :files, :type, to: :reader
 
       def reader_class
         case @filename
@@ -45,14 +45,51 @@ module IU
         {}
       end
     end
-    class XmlReader
+    class AbstractReader
       def initialize(id, source)
         @id = id
         @source = source
+        @mime_type = 'application/octet-stream'
+      end
+      attr_reader :id, :source, :mime_type
+
+      def parse
+      end
+
+      # for Work metadata
+      def attributes
+        {}
+      end
+
+      # for fileset metadata run through AttributeIngester
+      def file_attributes
+        {}
+      end
+
+      def files
+         file_list = [metadata_file]
+         file_list << media_file if media_file
+         file_list
+      end
+      def metadata_file
+        { mime_type: mime_type,
+          path: id,
+          filename: id.to_s.sub(/.*\//, ''),
+          file_opts: {},
+        }
+      end
+      def media_file
+      end
+    end
+    class XmlReader < AbstractReader
+      def initialize(id, source)
+        @id = id
+        @source = source
+        @mime_type = 'application/xml'
         @xml = Nokogiri::XML(source).remove_namespaces!
         parse
       end
-      attr_reader :id, :source, :xml
+      attr_reader :xml
 
       def type
         :xml
@@ -81,14 +118,6 @@ module IU
       # for fileset metadata run through AttributeIngester
       def file_attributes
         get_attributes_set(:FILE_ATT_LOOKUPS)
-      end
-
-      # for file properties, outside normal metadata handled specially in ingest
-      def file_properties
-        { mime_type: 'application/xml',
-          path: id,
-          file_opts: {},
-        }
       end
     end
     class PodReader < XmlReader
@@ -183,41 +212,23 @@ module IU
         :ffprobe
       end
 
-      def attributes
-        result = super
-        result
+      def media_file
+        { mime_type: 'FIXME',
+          filename: file_attributes[:file_name].first&.to_s.sub(/.*\//, ''),
+          file_opts: {}
+        }
       end
     end
 
-    class YamlReader
+    class YamlReader < AbstractReader
       def initialize(id, source)
         @id = id
         @source = source
+        @mime_type = 'application/x-yaml'
         @yaml = Psych.load(@source)
         parse
       end
-      attr_reader :id, :source, :yaml
-
-      def parse
-      end
-
-      # for Work metadata
-      def attributes
-        {}
-      end
-
-      # for fileset metadata run through AttributeIngester
-      def file_attributes
-        {}
-      end
-
-      # for file properties, outside normal metadata handled specially in ingest
-      def file_properties
-        { mime_type: 'application/x-yaml',
-          path: id,
-          file_opts: {},
-        }
-      end
+      attr_reader :yaml
     end
 
     class PurlReader < YamlReader
@@ -228,40 +239,18 @@ module IU
       def parse
         @purls_map = {}
         @yaml.each do |media, values|
-          @purls_map[values['ffprobe']] = values['purl']
+          @purls_map[media] = values['purl']
         end
       end
     end
 
-    class TextReader
+    class TextReader < AbstractReader
       def initialize(id, source)
         @id = id
         @source = source
+        @mime_type = 'text/plain'
         parse
       end
-      attr_reader :id, :source
-
-      def parse
-      end
-
-      # for Work metadata
-      def attributes
-        {}
-      end
-
-      # for fileset metadata run through AttributeIngester
-      def file_attributes
-        {}
-      end
-
-      # for file properties, outside normal metadata handled specially in ingest
-      def file_properties
-        { mime_type: 'text/plain',
-          path: id,
-          file_opts: {},
-        }
-      end
-
     end
 
     class Md5Reader < TextReader
