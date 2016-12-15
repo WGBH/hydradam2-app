@@ -24,8 +24,8 @@ class IngestYAMLJob < ActiveJob::Base
       logger.info "Created #{resource.class}: #{resource.id}"
 
       # attach_sources resource
-      # ingest_files(resource: resource, files: @yaml[:files])
-      # resource.save!
+      ingest_files(resource: resource, files: @yaml[:files])
+      resource.save!
     end
 
     def attach_sources(resource)
