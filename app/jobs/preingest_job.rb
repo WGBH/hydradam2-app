@@ -59,8 +59,8 @@ class PreingestJob < ActiveJob::Base
 
     def process_file(filename)
       # FIXME
-      # file_hash = { filename: filename.sub(/.*\//, '') }
-      file_hash = {}
+      file_hash = { filename: filename.sub(/.*\//, '') }
+      # file_hash = {}
       file_reader = IU::Ingest::FileReader.new(filename)
       unless file_reader&.type.nil?
         work_ai = IU::Ingest::AttributeIngester.new(file_reader.id, file_reader.attributes, factory: @yaml_hash[:resource].constantize)
