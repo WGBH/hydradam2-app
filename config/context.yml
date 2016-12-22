@@ -98,6 +98,8 @@
     "@id": ebucore:bitRate
   file_name:
     "@id": ebucore:filename
+  filename:
+    "@id": ebucore:filename
   file_size:
     "@id": ebucore:fileSize
   identifier:
@@ -114,7 +116,11 @@
     "@id": ebucore:sampleRate
   video_width:
     "@id": ebucore:width
+  width:
+    "@id": ebucore:width
   video_height:
+    "@id": ebucore:height
+  height:
     "@id": ebucore:height
   md5_checksum:
     "@id": nfo:hashValue
