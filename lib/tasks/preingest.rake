@@ -1,5 +1,6 @@
 # FIXME: configure library includes
-require './lib/hydradam/preingest/IU/sip'
+require './lib/hydradam/preingest/IU/tarball'
+require './lib/hydradam/preingest/IU/yaml'
 
 namespace :hydradam do
   desc "Preingest one or more files of chosen type, in specified folder"
