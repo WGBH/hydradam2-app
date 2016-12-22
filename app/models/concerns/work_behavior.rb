@@ -132,39 +132,5 @@ module Concerns
     def members_of_quality_level(quality_level)
       ordered_members.to_a.select { |member| member.try(:quality_level) == quality_level.to_s }
     end
-
-    def assign_properties_from_mdpi_xml
-      noko = mdpi_xml.noko.dup
-      noko.remove_namespaces!
-      #self.title += [noko.xpath('/IU/Carrier/Barcode').text]
-      self.mdpi_date = DateTime.parse(noko.xpath('/IU/Carrier/Parts/Part/Ingest/Date').text)
-      self.digitized_by_entity += [noko.xpath('/IU/Carrier/Parts/DigitizingEntity').text]
-      self.digitized_by_staff += noko.xpath('/IU/Carrier/Parts/Part/Ingest/Created_by').collect { |i| i.text }
-      workstation = [noko.xpath('/IU/Carrier/Parts/Part/Ingest/Extraction_workstation/Manufacturer').text,
-          noko.xpath('/IU/Carrier/Parts/Part/Ingest/Extraction_workstation/Model').text,
-          noko.xpath('/IU/Carrier/Parts/Part/Ingest/Extraction_workstation/SerialNumber').text].join(' ')
-      self.extraction_workstation += [workstation]
-      self.digitization_comments += [noko.xpath('//Comments').text]
-      self.original_identifier += [noko.xpath('/IU/Carrier/Identifier').text]
-      self.definition += [noko.xpath('/IU/Carrier/Definition').text]
-
-    end
-
-    def assign_properties_from_mods_xml
-      noko = mods_xml.noko.dup
-      noko.remove_namespaces!
-      self.title += [noko.xpath('/mods/titleInfo/title').text]
-    end
-
-    def assign_properties_from_pod_xml
-      noko = pod_xml.noko.dup
-      noko.remove_namespaces!
-      self.mdpi_barcode = noko.xpath('//details/mdpi_barcode').text
-      self.unit_of_origin += [noko.xpath('//assignment/unit').text]
-      self.original_format += [noko.xpath('//technical_metadata/format').text]
-      self.recording_standard += [noko.xpath('//technical_metadata/recording_standard').text]
-      self.image_format += [noko.xpath('//technical_metadata/image_format').text]
-
-    end
   end
 end
