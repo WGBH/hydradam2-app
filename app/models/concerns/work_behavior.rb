@@ -1,4 +1,3 @@
-require 'hydradam/file_set_behavior/has_ffprobe'
 require 'rubygems'
 require 'rdf'
 
@@ -6,10 +5,7 @@ module Concerns
   module WorkBehavior
     extend ActiveSupport::Concern
     included do
-      contains :mdpi_xml, class_name: "XMLFile"
-      contains :mods_xml, class_name: "XMLFile"
-      contains :pod_xml, class_name: "XMLFile"
-
+      
       # From mdpi_xml
       
       # Predicate is same as context.yml for this property
