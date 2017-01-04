@@ -5,8 +5,7 @@ class Work < ActiveFedora::Base
   FIXITY_TYPE = :md5
   include ::CurationConcerns::WorkBehavior
   include ::CurationConcerns::BasicMetadata
-  include Concerns::WorkBehavior
-  # validates :title, presence: { message: 'Your work must have a title.' }
+    # validates :title, presence: { message: 'Your work must have a title.' }
 
   def do_md5_checksum
 
