@@ -13,7 +13,7 @@ RSpec.describe PreingestJob do
     end
   end
 
-  describe "preingesting a METS file" do
+  skip "preingesting a METS file" do # FIXME: rewrite
     let(:mets_file_single) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4612596.mets").to_s }
     let(:mets_file_rtl) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0032-ns73.mets").to_s }
     let(:mets_file_multi) { Rails.root.join("spec", "fixtures", "pudl_mets", "pudl0001-4609321-s42.mets").to_s }

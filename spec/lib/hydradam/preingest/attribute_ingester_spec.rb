@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'hydradam/preingest/attribute_ingester.rb' # FIXME: improve include config to deprecate this
 
-RSpec.describe IuMetadata::AttributeIngester do
+RSpec.describe HydraDAM::Preingest::AttributeIngester do
   let(:att_ingester) { described_class.new(id, attributes) }
   let(:id) { 'file:///foo/bar' }
   let(:foo_context) { { "@context" => { "id" => "@id", "foo" => { "@id" => "http://opaquenamespace.org/ns/mods/titleForSort" } } } }
