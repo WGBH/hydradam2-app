@@ -7,6 +7,11 @@ module Concerns
   module FileSetBehavior
     extend ActiveSupport::Concern
     
+    include HydraDAM::FileSetBehavior::HasMods
+    include HydraDAM::FileSetBehavior::HasMDPI
+    include HydraDAM::FileSetBehavior::HasPod
+    include HydraDAM::FileSetBehavior::HasFfprobe
+    
     included do    
 
      property :date_generated, predicate: RDF::Vocab::EBUCore.dateCreated do |index|
