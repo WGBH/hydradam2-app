@@ -6,9 +6,9 @@ module Concerns
   module WorkBehavior
     extend ActiveSupport::Concern
     included do
-      contains :mdpi_xml, class_name: "XMLFile"
-      contains :mods_xml, class_name: "XMLFile"
-      contains :pod_xml, class_name: "XMLFile"
+      #contains :mdpi_xml, class_name: "XMLFile"
+      #contains :mods_xml, class_name: "XMLFile"
+      #contains :pod_xml, class_name: "XMLFile"
 
       # From mdpi_xml
       
@@ -51,15 +51,15 @@ module Concerns
         index.as :stored_sortable, :facetable
       end
       
-      property :original_media_preservation_problem, predicate: RDF::SKOS.scopeNote  do |index|
+      property :original_media_preservation_problem, predicate: RDF::Vocab::SKOS.scopeNote  do |index|
         index.as :stored_sortable, :facetable
       end
       
-      property :qc_status, predicate: RDF::SKOS.changeNote  do |index|
+      property :qc_status, predicate: RDF::Vocab::SKOS.changeNote  do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       
-      property :manual_qc_check, predicate: RDF::SKOS.changeNote do |index|
+      property :manual_qc_check, predicate: RDF::Vocab::SKOS.changeNote do |index|
         index.as :stored_sortable, :facetable, :stored_searchable
       end
       

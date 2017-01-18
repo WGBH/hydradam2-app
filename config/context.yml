@@ -92,7 +92,7 @@
     "@id": ebucore:hasCode
   codec_long_name:
     "@id": ebucore:codecName
-  duration:
+  format_duration:
     "@id": ebucore:duration
   bit_rate:
     "@id": ebucore:bitRate
@@ -100,7 +100,7 @@
     "@id": ebucore:filename
   filename:
     "@id": ebucore:filename
-  file_size:
+  format_file_size:
     "@id": ebucore:fileSize
   identifier:
     "@id": ebucore:identifier
@@ -112,7 +112,7 @@
     "@id": ebucore:comments
   part:
     "@id": ebucore:partNumber
-  sample_rate:
+  format_sample_rate:
     "@id": ebucore:sampleRate
   video_width:
     "@id": ebucore:width

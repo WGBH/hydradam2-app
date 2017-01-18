@@ -301,11 +301,11 @@ module HydraDAM
           codec_type: '//ffprobe/streams/stream/@codec_type',
           codec_name: '//ffprobe/streams/stream/@codec_name',
           codec_long_name: '//ffprobe/streams/stream/@codec_long_name',
-          duration: '//ffprobe/format/@duration',
+          format_duration: '//ffprobe/format/@duration',
           bit_rate: '//ffprobe/format/@bit_rate',
           file_name: '//ffprobe/format/@filename',
           file_size: '//ffprobe/format/@size',
-          sample_rate: '//ffprobe/streams/stream/@sample_rate',
+          format_sample_rate: '//ffprobe/streams/stream/@sample_rate',
           video_width: '//ffprobe/streams/stream/@width',
           video_height: '//ffprobe/streams/stream/@height'
         }

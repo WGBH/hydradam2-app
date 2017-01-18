@@ -39,7 +39,7 @@ module Concerns
      #   index.as :stored_sortable, :facetable
      #end
       
-     property :duration, predicate: RDF::Vocab::EBUCore.duration do |index|
+     property :format_duration, predicate: RDF::Vocab::EBUCore.duration do |index|
         index.as :stored_sortable, :facetable
      end 
       
@@ -49,7 +49,7 @@ module Concerns
         index.as :stored_searchable
      end 
       
-     property :file_size, predicate: RDF::Vocab::EBUCore.fileSize 
+     property :format_file_size, predicate: RDF::Vocab::EBUCore.fileSize
       
      property :identifier, predicate: RDF::Vocab::EBUCore.identifier do |index|
         index.as :stored_searchable
@@ -61,7 +61,7 @@ module Concerns
      
      property :part, predicate: RDF::Vocab::EBUCore.partNumber
       
-     property :sample_rate, predicate: RDF::Vocab::EBUCore.sampleRate 
+     property :format_sample_rate, predicate: RDF::Vocab::EBUCore.sampleRate
       
      property :video_width, predicate: RDF::Vocab::EBUCore.width 
       

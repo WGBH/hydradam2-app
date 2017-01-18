@@ -28,7 +28,7 @@ module HydraDAM
         property :codec_long_name, predicate: RDF::Vocab::EBUCore.codecName do |index|
           index.as :stored_searchable, :facetable
         end
-        property :duration, predicate: RDF::Vocab::EBUCore.duration do |index|
+        property :format_duration, predicate: RDF::Vocab::EBUCore.duration do |index|
           index.as :stored_searchable, :sortable, :facetable
         end
         property :bit_rate, predicate: RDF::Vocab::EBUCore.bitRate do |index|
@@ -58,7 +58,7 @@ module HydraDAM
         self.codec_type += noko.xpath('//ffprobe/streams/stream/@codec_type').collect { |i| i.text }
         self.codec_name += noko.xpath('//ffprobe/streams/stream/@codec_name').collect { |i| i.text }
         self.codec_long_name += noko.xpath('//ffprobe/streams/stream/@codec_long_name').collect { |i| i.text }
-        self.duration += [noko.xpath('//ffprobe/format/@duration').text.to_i]
+        self.format_duration += [noko.xpath('//ffprobe/format/@duration').text.to_i]
       end
 
 
