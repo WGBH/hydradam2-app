@@ -24,7 +24,7 @@ class IngestYAMLJob < ActiveJob::Base
       logger.info "Created #{resource.class}: #{resource.id}"
 
       # attach_sources resource
-      ingest_files(resource: resource, files: @yaml[:files])
+      ingest_files(resource: resource, files: @yaml[:file_sets])
       resource.save!
     end
 
@@ -44,13 +44,36 @@ class IngestYAMLJob < ActiveJob::Base
     end
 
     def ingest_files(parent: nil, resource: nil, files: [])
-      files.each do |f|
+      files.select { |f| f[:attributes].present? }.each do |f|
         logger.info "Ingesting file #{f[:path]}"
         file_set = FileSet.new
         file_set.attributes = f[:attributes]
         actor = FileSetActor.new(file_set, @user)
-        actor.create_metadata(resource, f[:file_opts])
-        actor.create_content(decorated_file(f))
+        # FIXME: handle all files, not just first, and set proper relations (not just original_file)
+        if f[:files].any?
+          file = f[:files].first
+          actor.create_metadata(resource, file[:file_opts])
+          actor.create_content(decorated_file(file))
+        end
+        if f[:events].present? 
+          f[:events].each do |event|
+            e = Preservation::Event.new
+            event[:attributes][:premis_event_type] = event[:attributes][:premis_event_type].map do |pet|
+              Preservation::PremisEventType.new(pet).uri
+            end
+            event[:attributes][:premis_agent] = event[:attributes][:premis_agent].map do |agent|
+              ::RDF::URI.new(agent)
+            end
+            e.attributes = event[:attributes]
+            e.premis_event_related_object = file_set
+            e.save!
+          end
+        end
       end
     end
+
+    def decorated_file(f)
+      IoDecorator.new(open(f[:path]), f[:mime_type], File.basename(f[:path]))
+    end
+
 end

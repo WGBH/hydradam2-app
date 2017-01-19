@@ -101,6 +101,16 @@ module HydraDAM
               end
             end
           end
+          # FIXME: stub code for example premis event
+          if @file_sets.any?
+            @file_sets.first[:events] = []
+            attributes = {}
+            attributes[:premis_event_type] = ['ing']
+            attributes[:premis_agent] = ['mailto:' + User.first&.email]
+            attributes[:premis_event_date_time] = [Time.now]
+            event = { attributes: attributes }
+            @file_sets.first[:events] << event           
+          end
         end
       end
 
