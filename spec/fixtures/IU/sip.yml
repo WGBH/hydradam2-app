@@ -68,7 +68,7 @@
       :premis_agent:
       - mailto:adam.ploshay@gmail.com
       :premis_event_date_time:
-      - 2017-01-18 18:56:58.798009053 -05:00
+      - 2017-01-19 16:49:27.445558435 -05:00
 - :filename: manifest-md5.txt
   :files:
   - :mime_type: text/plain
@@ -123,6 +123,14 @@
     :file_opts: {}
     :md5sum: f4c3088d835d35d8741551cf4e8977f0
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_access.mp4
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - ing
+      :premis_agent:
+      - mailto:adam.ploshay@gmail.com
+      :premis_event_date_time:
+      - 2017-01-19 16:49:27.445956076 -05:00
 - :filename: MDPI_40000000054496.xml
   :files:
   - :mime_type: application/xml
@@ -157,4 +165,12 @@
     :file_opts: {}
     :md5sum: a0f9e4c05b1307788734229c3023f191
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_pres.wav
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - ing
+      :premis_agent:
+      - mailto:adam.ploshay@gmail.com
+      :premis_event_date_time:
+      - 2017-01-19 16:49:27.446256857 -05:00
 :sources: []
