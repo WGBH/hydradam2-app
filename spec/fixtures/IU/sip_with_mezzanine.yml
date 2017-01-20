@@ -2,12 +2,12 @@
 :resource: Work
 :work_attributes:
   :pod:
-    image_format:
-    - '4:3'
     digitization_comments:
     - B-WELLS
     recording_standard:
     - NTSC
+    image_format:
+    - '4:3'
   :mods:
     title:
     - Mrs. Warren's profession
@@ -22,31 +22,29 @@
 :file_sets:
 - :filename: MDPI_40000002050831_01_mezz_ffprobe.xml
   :attributes:
-    bit_rate:
-    - '52320865'
-    codec_long_name:
-    - MPEG-2 video
-    - PCM signed 24-bit little-endian
-    - PCM signed 24-bit little-endian
-    duration:
-    - '3755.152000'
-    file_size:
-    - '24559100292'
-    filename:
-    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002050831.downloading/data/MDPI_40000002050831_01_mezz.mov"
     file_format_long_name:
     - QuickTime / MOV
     codec_type:
     - video
     - audio
     - audio
-    height:
-    - '512'
-    sample_rate:
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    format_duration:
+    - '3755.152000'
+    bit_rate:
+    - '52320865'
+    file_name:
+    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002050831.downloading/data/MDPI_40000002050831_01_mezz.mov"
+    format_sample_rate:
     - '48000'
     - '48000'
-    width:
+    video_width:
     - '720'
+    video_height:
+    - '512'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000002050831_20160606-151010/MDPI_40000002050831_01_mezz_ffprobe.xml"
@@ -58,6 +56,14 @@
     :file_opts: {}
     :md5sum: cf58f2187d247b2ea15b0a1e210244c2
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002050831/20160606-150517/MDPI_40000002050831_01_mezz.mov
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - ing
+      :premis_agent:
+      - mailto:adam.ploshay@gmail.com
+      :premis_event_date_time:
+      - 2017-01-18 19:06:13.614933801 -05:00
 - :filename: MDPI_40000002050831_purl.yaml
   :files:
   - :mime_type: application/x-yaml
@@ -72,28 +78,26 @@
     :file_opts: {}
 - :filename: MDPI_40000002050831_01_access_ffprobe.xml
   :attributes:
-    bit_rate:
-    - '3058785'
-    codec_long_name:
-    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
-    - AAC (Advanced Audio Coding)
-    duration:
-    - '3755.195000'
-    file_size:
-    - '1435791918'
-    filename:
-    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002050831.downloading/data/MDPI_40000002050831_01_access.mp4"
     file_format_long_name:
     - QuickTime / MOV
     codec_type:
     - video
     - audio
-    height:
-    - '486'
-    sample_rate:
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    format_duration:
+    - '3755.195000'
+    bit_rate:
+    - '3058785'
+    file_name:
+    - "/srv/scratch/transcoder_workspace_xcode-03_prod/MDPI_40000002050831.downloading/data/MDPI_40000002050831_01_access.mp4"
+    format_sample_rate:
     - '48000'
-    width:
+    video_width:
     - '720'
+    video_height:
+    - '486'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000002050831_20160606-151010/MDPI_40000002050831_01_access_ffprobe.xml"
@@ -114,31 +118,29 @@
     :md5sum: 36ca46477dc76964f2ab60c18ef9afbd
 - :filename: MDPI_40000002050831_01_pres_ffprobe.xml
   :attributes:
-    bit_rate:
-    - '85096366'
-    codec_long_name:
-    - 'FFmpeg video codec #1'
-    - PCM signed 24-bit little-endian
-    - PCM signed 24-bit little-endian
-    duration:
-    - '3755.151000'
-    file_size:
-    - '39943713293'
-    filename:
-    - "/srv/scratch/ffprobe_refresh/MDPI_40000002050831_01_pres.mkv"
     file_format_long_name:
     - Matroska / WebM
     codec_type:
     - video
     - audio
     - audio
-    height:
-    - '486'
-    sample_rate:
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    format_duration:
+    - '3755.151000'
+    bit_rate:
+    - '85096366'
+    file_name:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002050831_01_pres.mkv"
+    format_sample_rate:
     - '48000'
     - '48000'
-    width:
+    video_width:
     - '720'
+    video_height:
+    - '486'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000002050831_20160606-151010/MDPI_40000002050831_01_pres_ffprobe.xml"

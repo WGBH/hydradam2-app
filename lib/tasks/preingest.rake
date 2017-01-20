@@ -3,7 +3,7 @@ require './lib/hydradam/preingest/IU/tarball'
 require './lib/hydradam/preingest/IU/yaml'
 
 namespace :hydradam do
-  desc "Preingest one or more files of chosen type, in specified folder"
+  desc "Preingest one package of chosen type, at specified path"
   task :preingest, [:package_type] => :environment do |task, args|
     file = ARGV[1]
     abort "usage: rake hydradam:preingest[package_type] /path/to/preingest/file" unless args.package_type && file
