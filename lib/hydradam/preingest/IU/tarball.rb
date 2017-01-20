@@ -101,7 +101,9 @@ module HydraDAM
                 end
               end
               # FIXME: media file wins, if available?
-              file_set[:filename] = file_set[:files].last[:filename] 
+              file_set[:filename] = file_set[:files].last[:filename]
+              # FIXME: this bypasses attribute ingester...
+              file_set[:attributes][:md5_checksum] = file_set[:files].last[:md5sum] if file_set[:attributes].present?
             end
           end
           # FIXME: stub code for example premis event
