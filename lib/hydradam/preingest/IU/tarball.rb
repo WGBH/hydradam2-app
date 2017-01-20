@@ -29,7 +29,6 @@ module HydraDAM
 
           filenames.each { |filename| process_file(filename) }
           postprocess
-          delete_extracted_files!
         end
 
         def tarball_entries
@@ -47,19 +46,14 @@ module HydraDAM
         def root_dir
           @root_dir ||= begin
             root_dir_parent = File.dirname(@preingest_file)
-            Archive::Tar::Minitar.unpack(@preingest_file, root_dir_parent)
             root_dir_basename = tarball_entries.select{ |tar_entry| tar_entry.directory? }.first.name
             File.expand_path(root_dir_basename, root_dir_parent)
           end
         
-          raise ExtractionError unless File.directory?(@root_dir)
+          raise "Directory not present: #{@root_dir}" unless File.directory?(@root_dir)
           @root_dir 
         end
     
-        def delete_extracted_files!
-          FileUtils.remove_entry_secure(root_dir)
-        end
-            
         def process_file(filename)
           file_set = { filename: filename.sub(/.*\//, '') }
           file_reader = HydraDAM::Preingest::IU::FileReader.new(filename)
