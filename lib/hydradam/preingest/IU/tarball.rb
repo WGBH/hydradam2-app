@@ -103,7 +103,7 @@ module HydraDAM
               # FIXME: media file wins, if available?
               file_set[:filename] = file_set[:files].last[:filename]
               # FIXME: this bypasses attribute ingester...
-              file_set[:attributes][:md5_checksum] = file_set[:files].last[:md5sum] if file_set[:attributes].present?
+              file_set[:attributes][:md5_checksum] = Array.wrap(file_set[:files].last[:md5sum]) if file_set[:attributes].present?
             end
           end
           # FIXME: stub code for example premis event
@@ -347,7 +347,7 @@ module HydraDAM
           attributes[:premis_event_type] = ['val']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
-          attributes[:premis_event_date_time] = File.mtime(id)
+          attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
           # FIXME: the preservation gem doesn't have these attributes yet
           # attributes[:premis_event_detail] = ['foo']
           # attributes[:premis_event_outcome] = ['PASS']
