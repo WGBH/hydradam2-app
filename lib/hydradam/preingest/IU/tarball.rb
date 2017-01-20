@@ -61,7 +61,7 @@ module HydraDAM
         end
             
         def process_file(filename)
-          file_hash = { filename: filename.sub(/.*\//, '') }
+          file_set = { filename: filename.sub(/.*\//, '') }
           file_reader = HydraDAM::Preingest::IU::FileReader.new(filename)
           unless file_reader&.type.nil?
             work_ai = HydraDAM::Preingest::AttributeIngester.new(file_reader.id, file_reader.attributes, factory: resource_class)
@@ -69,17 +69,18 @@ module HydraDAM
             if file_reader.type.in? [:pod, :mods, :mdpi]
               @work_attributes[file_reader.type] = work_ai.raw_attributes
               @file_set_attributes[file_reader.type] = file_set_ai.raw_attributes
-              file_hash[:files] = file_reader.files
+              file_set[:files] = file_reader.files
             elsif file_reader.type.in? [:purl, :md5]
               @purls_map = file_reader.reader.purls_map if file_reader.type == :purl
               @md5sums_map = file_reader.reader.md5sums_map if file_reader.type == :md5
-              file_hash[:files] = file_reader.files
+              file_set[:files] = file_reader.files
             else
-              file_hash[:attributes] = file_set_ai.raw_attributes
-              file_hash[:files] = file_reader.files
+              file_set[:attributes] = file_set_ai.raw_attributes
+              file_set[:files] = file_reader.files
             end
+            file_set[:events] = file_reader.events if file_reader.events
           end
-          @file_sets << file_hash if file_hash.present?
+          @file_sets << file_set if file_set.present?
         end
     
         def md5sums_map
@@ -93,23 +94,25 @@ module HydraDAM
         def postprocess
           @file_sets.each do |file_set|
             if file_set[:files].present?
-              file_set[:files].each do |file_hash|
-                if filename = file_hash[:filename]
-                  file_hash[:md5sum] = md5sums_map[filename] if md5sums_map[filename]
-                  file_hash[:purl] = purls_map[filename] if purls_map[filename]
+              file_set[:files].each do |file|
+                if file[:filename]
+                  file[:md5sum] = md5sums_map[file[:filename]] if md5sums_map[file[:filename]]
+                  file[:purl] = purls_map[file[:filename]] if purls_map[file[:filename]]
                 end
               end
+              # FIXME: media file wins, if available?
+              file_set[:filename] = file_set[:files].last[:filename] 
             end
           end
           # FIXME: stub code for example premis event
           @file_sets.select { |fs| fs[:attributes].present? }.each do |file_set|
-            file_set[:events] = []
+            file_set[:events] ||= []
             attributes = {}
             attributes[:premis_event_type] = ['ing']
             attributes[:premis_agent] = ['mailto:' + User.first&.email]
             attributes[:premis_event_date_time] = [Time.now]
             event = { attributes: attributes }
-            file_set[:events] << event           
+            file_set[:events] << event
           end
         end
       end
@@ -121,7 +124,7 @@ module HydraDAM
         end
         attr_reader :filename, :reader
   
-        delegate :id, :attributes, :file_attributes, :files, :type, to: :reader
+        delegate :id, :attributes, :file_attributes, :files, :events, :type, to: :reader
   
         def reader_class
           case @filename
@@ -155,6 +158,10 @@ module HydraDAM
         
         def attributes
           {}
+        end
+
+        def events
+          nil
         end
       end
       class AbstractReader
@@ -191,6 +198,8 @@ module HydraDAM
           }
         end
         def media_file
+        end
+        def events
         end
       end
       class XmlReader < AbstractReader
@@ -329,6 +338,18 @@ module HydraDAM
             filename: file_attributes[:file_name].first&.to_s.sub(/.*\//, ''),
             file_opts: {}
           }
+        end
+
+        def events
+          attributes = {}
+          attributes[:premis_event_type] = ['val']
+          attributes[:premis_agent] = ['mailto:' + User.first&.email]
+          # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
+          attributes[:premis_event_date_time] = File.mtime(id)
+          # FIXME: the preservation gem doesn't have these attributes yet
+          # attributes[:premis_event_detail] = ['foo']
+          # attributes[:premis_event_outcome] = ['PASS']
+          [{ attributes: attributes }]
         end
       end
   
