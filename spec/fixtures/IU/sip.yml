@@ -70,14 +70,7 @@
       :premis_agent:
       - mailto:adam.ploshay@gmail.com
       :premis_event_date_time:
-      - 2017-01-20 13:38:00.041387006 -05:00
-  - :attributes:
-      :premis_event_type:
-      - ing
-      :premis_agent:
-      - mailto:adam.ploshay@gmail.com
-      :premis_event_date_time:
-      - 2017-01-20 13:38:00.566024155 -05:00
+      - 2017-01-20 14:38:28.646102127 -05:00
 - :filename: manifest-md5.txt
   :files:
   - :mime_type: text/plain
@@ -141,14 +134,7 @@
       :premis_agent:
       - mailto:adam.ploshay@gmail.com
       :premis_event_date_time:
-      - 2017-01-20 13:38:00.093387622 -05:00
-  - :attributes:
-      :premis_event_type:
-      - ing
-      :premis_agent:
-      - mailto:adam.ploshay@gmail.com
-      :premis_event_date_time:
-      - 2017-01-20 13:38:00.566283177 -05:00
+      - 2017-01-20 14:38:28.925105397 -05:00
 - :filename: MDPI_40000000054496.xml
   :files:
   - :mime_type: application/xml
@@ -192,12 +178,5 @@
       :premis_agent:
       - mailto:adam.ploshay@gmail.com
       :premis_event_date_time:
-      - 2017-01-20 13:38:00.080387468 -05:00
-  - :attributes:
-      :premis_event_type:
-      - ing
-      :premis_agent:
-      - mailto:adam.ploshay@gmail.com
-      :premis_event_date_time:
-      - 2017-01-20 13:38:00.566666647 -05:00
+      - 2017-01-20 14:38:28.906105174 -05:00
 :sources: []

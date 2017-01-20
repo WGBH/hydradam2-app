@@ -24,7 +24,7 @@ class IngestYAMLJob < ActiveJob::Base
       logger.info "Created #{resource.class}: #{resource.id}"
 
       # attach_sources resource
-      ingest_files(resource: resource, files: @yaml[:file_sets])
+      ingest_file_sets(resource: resource, files: @yaml[:file_sets])
       resource.save!
     end
 
@@ -43,7 +43,7 @@ class IngestYAMLJob < ActiveJob::Base
       actor.attach_content(File.open(file, 'r:UTF-8'))
     end
 
-    def ingest_files(parent: nil, resource: nil, files: [])
+    def ingest_file_sets(parent: nil, resource: nil, files: [])
       files.select { |f| f[:attributes].present? }.each do |f|
         logger.info "Ingesting file #{f[:path]}"
         file_set = FileSet.new
@@ -69,11 +69,22 @@ class IngestYAMLJob < ActiveJob::Base
             e.save!
           end
         end
+        add_ingestion_event(file_set)
       end
     end
 
     def decorated_file(f)
       IoDecorator.new(open(f[:path]), f[:mime_type], File.basename(f[:path]))
+    end
+
+    def add_ingestion_event(file_set)
+      e = Preservation::Event.new
+      e.premis_event_related_object = file_set
+      e.premis_event_type = Array.wrap(Preservation::PremisEventType.new(pet).uri)
+      e.premis_agent = Array.wrap(::RDF::URI.new(agent))
+      # e.premis_event_outcome = 'SUCCESS'
+      e.premis_event_date_time = Array.wrap(DateTime.now)
+      e.save!
     end
 
 end

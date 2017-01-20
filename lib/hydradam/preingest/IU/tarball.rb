@@ -106,16 +106,6 @@ module HydraDAM
               file_set[:attributes][:md5_checksum] = Array.wrap(file_set[:files].last[:md5sum]) if file_set[:attributes].present?
             end
           end
-          # FIXME: stub code for example premis event
-          @file_sets.select { |fs| fs[:attributes].present? }.each do |file_set|
-            file_set[:events] ||= []
-            attributes = {}
-            attributes[:premis_event_type] = ['ing']
-            attributes[:premis_agent] = ['mailto:' + User.first&.email]
-            attributes[:premis_event_date_time] = [Time.now]
-            event = { attributes: attributes }
-            file_set[:events] << event
-          end
         end
       end
 
