@@ -329,6 +329,7 @@ module HydraDAM
         def events
           attributes = {}
           attributes[:premis_event_type] = ['val']
+          attributes[:premis_event_type] = ['cre']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
