@@ -340,11 +340,12 @@ module HydraDAM
           attributes = {}
           attributes[:premis_event_type] = ['cre']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
-          # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
-          # FIXME: the preservation gem doesn't have these attributes yet
-          # attributes[:premis_event_detail] = ['foo']
-          # attributes[:premis_event_outcome] = ['PASS']
+          results << { attributes: attributes }
+	  attributes = {}
+          attributes[:premis_event_type] = ['mes']
+          attributes[:premis_agent] = ['mailto:' + User.first&.email]
+          attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
           results << { attributes: attributes }
           results
         end
