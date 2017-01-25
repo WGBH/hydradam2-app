@@ -79,6 +79,13 @@
   :events:
   - :attributes:
       :premis_event_type:
+      - val
+      :premis_agent:
+      - mailto:xyz@gmail.com
+      :premis_event_date_time:
+      - 2016-06-02 12:43:28.000000000 -04:00
+  - :attributes:
+      :premis_event_type:
       - cre
       :premis_agent:
       - mailto:xyz@gmail.com
@@ -115,6 +122,13 @@
     :md5sum: 7892355550c1105c0144d95ec7d3820f
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_prod.wav
   :events:
+  - :attributes:
+      :premis_event_type:
+      - val
+      :premis_agent:
+      - mailto:xyz@gmail.com
+      :premis_event_date_time:
+      - 2016-06-02 12:43:28.000000000 -04:00
   - :attributes:
       :premis_event_type:
       - cre
@@ -171,6 +185,13 @@
     :md5sum: f4c3088d835d35d8741551cf4e8977f0
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_access.mp4
   :events:
+  - :attributes:
+      :premis_event_type:
+      - val
+      :premis_agent:
+      - mailto:xyz@gmail.com
+      :premis_event_date_time:
+      - 2016-06-02 12:43:28.000000000 -04:00
   - :attributes:
       :premis_event_type:
       - cre
