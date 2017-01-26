@@ -94,7 +94,7 @@ class IngestYAMLJob < ActiveJob::Base
       event = {}
       event[:attributes] = {
         premis_event_type: ['ing'],
-        premis_agent: ['mailto:' + User.first&.email],
+        premis_agent: ['mailto:' + @user.email],
         premis_event_outcome: ['SUCCESS'],
         premis_event_date_time: [DateTime.now]
       }

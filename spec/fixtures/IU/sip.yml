@@ -51,7 +51,7 @@
     format_sample_rate:
     - '44100'
     :md5_checksum:
-    - 7892355550c1105c0144d95ec7d3820f
+    - 7892355550C1105C0144D95EC7D3820F
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"
@@ -63,34 +63,51 @@
     :filename: MDPI_40000000054496_01_prod.wav
     :file_opts: {}
     :use: intermediate_file
-    :md5sum: 7892355550c1105c0144d95ec7d3820f
+    :md5sum: 7892355550C1105C0144D95EC7D3820F
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_prod.wav
   :events:
   - :attributes:
       :premis_event_type:
       - val
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto:fixme@fixme.fixme
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
       :premis_event_detail:
       - FFprobe multimedia streams analyzer from FFmpeg
       :premis_event_outcome:
       - PASS
   - :attributes:
       :premis_event_type:
-      - cre
+      - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - store-admin@iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - 7892355550c1105c0144d95ec7d3820f
   - :attributes:
       :premis_event_type:
       - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto@mdpi.iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - 7892355550C1105C0144D95EC7D3820F
+  - :attributes:
+      :premis_event_type:
+      - cre
+      :premis_agent:
+      - mailto@mdpi.iu.edu
+      :premis_event_date_time:
+      - '2015-12-03T00:00:00+00:00'
+      :premis_event_detail:
+      - File created
 - :filename: manifest-md5.txt
   :files:
   - :mime_type: text/plain
@@ -113,6 +130,18 @@
     :file_opts: {}
     :use: original_file
 - :filename: README.txt
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - mes
+      :premis_agent:
+      - store-admin@iu.edu
+      :premis_event_date_time:
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - 274e2608f4791eba5768e2890846e42a
 - :filename: MDPI_40000000542243_mods.xml
   :files:
   - :mime_type: application/xml
@@ -122,6 +151,18 @@
     :use: original_file
 - :filename: tagmanifest-md5.txt
 - :filename: MDPI_40000000054496_group.txt
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - mes
+      :premis_agent:
+      - store-admin@iu.edu
+      :premis_event_date_time:
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - 24af985acef660e2a1e2f2d42919b77b
 - :filename: MDPI_40000000054496_01_access.mp4
   :attributes:
     file_format_long_name:
@@ -139,7 +180,7 @@
     format_sample_rate:
     - '44100'
     :md5_checksum:
-    - f4c3088d835d35d8741551cf4e8977f0
+    - F4C3088D835D35D8741551CF4E8977F0
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_access_ffprobe.xml"
@@ -151,34 +192,51 @@
     :filename: MDPI_40000000054496_01_access.mp4
     :file_opts: {}
     :use: service_file
-    :md5sum: f4c3088d835d35d8741551cf4e8977f0
+    :md5sum: F4C3088D835D35D8741551CF4E8977F0
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_access.mp4
   :events:
   - :attributes:
       :premis_event_type:
       - val
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto:fixme@fixme.fixme
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
       :premis_event_detail:
       - FFprobe multimedia streams analyzer from FFmpeg
       :premis_event_outcome:
       - PASS
   - :attributes:
       :premis_event_type:
-      - cre
+      - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - store-admin@iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - f4c3088d835d35d8741551cf4e8977f0
   - :attributes:
       :premis_event_type:
       - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto@mdpi.iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - F4C3088D835D35D8741551CF4E8977F0
+  - :attributes:
+      :premis_event_type:
+      - cre
+      :premis_agent:
+      - mailto@mdpi.iu.edu
+      :premis_event_date_time:
+      - '2015-12-03T00:00:00+00:00'
+      :premis_event_detail:
+      - File created
 - :filename: MDPI_40000000054496.xml
   :files:
   - :mime_type: application/xml
@@ -187,6 +245,18 @@
     :file_opts: {}
     :use: original_file
     :md5sum: 22b37d76c597ed5c9a7a643da4359d9b
+  :events:
+  - :attributes:
+      :premis_event_type:
+      - mes
+      :premis_agent:
+      - store-admin@iu.edu
+      :premis_event_date_time:
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - 22b37d76c597ed5c9a7a643da4359d9b
 - :filename: MDPI_40000000054496_01_pres.wav
   :attributes:
     file_format_long_name:
@@ -204,7 +274,7 @@
     format_sample_rate:
     - '44100'
     :md5_checksum:
-    - a0f9e4c05b1307788734229c3023f191
+    - A0F9E4C05B1307788734229C3023F191
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_pres_ffprobe.xml"
@@ -216,32 +286,49 @@
     :filename: MDPI_40000000054496_01_pres.wav
     :file_opts: {}
     :use: preservation_master_file
-    :md5sum: a0f9e4c05b1307788734229c3023f191
+    :md5sum: A0F9E4C05B1307788734229C3023F191
     :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000054496/20160213-082528/MDPI_40000000054496_01_pres.wav
   :events:
   - :attributes:
       :premis_event_type:
       - val
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto:fixme@fixme.fixme
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
       :premis_event_detail:
       - FFprobe multimedia streams analyzer from FFmpeg
       :premis_event_outcome:
       - PASS
   - :attributes:
       :premis_event_type:
-      - cre
+      - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - store-admin@iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - a0f9e4c05b1307788734229c3023f191
   - :attributes:
       :premis_event_type:
       - mes
       :premis_agent:
-      - mailto:adam.ploshay@gmail.com
+      - mailto@mdpi.iu.edu
       :premis_event_date_time:
-      - 2016-06-02 12:43:28.000000000 -04:00
+      - '2016-06-02T12:43:28-04:00'
+      :premis_event_detail:
+      - 'Program used: python, hashlib.sha256()'
+      :premis_event_outcome:
+      - A0F9E4C05B1307788734229C3023F191
+  - :attributes:
+      :premis_event_type:
+      - cre
+      :premis_agent:
+      - mailto@mdpi.iu.edu
+      :premis_event_date_time:
+      - '2015-12-03T00:00:00+00:00'
+      :premis_event_detail:
+      - File created
 :sources: []
