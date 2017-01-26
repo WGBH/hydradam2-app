@@ -348,6 +348,7 @@ module HydraDAM
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
 	  attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
 	 # FIXME: add :premis_event_outcome for this event
+	  attributes[:premis_event_outcome] = Array.wrap(File.checksum)
           results << { attributes: attributes }
           results
         end
