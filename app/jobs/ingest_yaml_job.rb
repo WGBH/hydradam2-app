@@ -45,28 +45,14 @@ class IngestYAMLJob < ActiveJob::Base
 
     def ingest_file_sets(parent: nil, resource: nil, files: [])
       files.select { |f| f[:attributes].present? }.each do |f|
-        logger.info "Ingesting FileSet #{f[:path]}"
+        logger.info "Ingesting FileSet for #{f[:filename]}"
         file_set = FileSet.new
         file_set.attributes = f[:attributes]
+        file_set.apply_depositor_metadata(@user)
+        file_set.save!
         actor = FileSetActor.new(file_set, @user)
-        # FIXME: handle all files, not just first, and set proper relations (not just original_file)
-        if f[:files].any?
-          file = f[:files].first
-          logger.info "FileSet #{file_set.id}: ingesting file: #{file[:filename]}"
-          actor.create_metadata(resource, file[:file_opts])
-          actor.create_content(decorated_file(file))
-        end
-        if f[:events].present? 
-          f[:events].each do |event|
-            event[:attributes][:premis_event_type] = event[:attributes][:premis_event_type].map do |pet|
-              Preservation::PremisEventType.new(pet).uri
-            end
-            event[:attributes][:premis_agent] = event[:attributes][:premis_agent].map do |agent|
-              ::RDF::URI.new(agent)
-            end
-            add_event(file_set, event[:attributes])
-          end
-        end
+        ingest_files(resource, file_set, actor, f[:files]) if f[:files].present?
+        ingest_events(file_set, f[:events]) if f[:events].present?
         add_ingestion_event(file_set)
       end
     end
@@ -75,22 +61,44 @@ class IngestYAMLJob < ActiveJob::Base
       IoDecorator.new(open(f[:path]), f[:mime_type], File.basename(f[:path]))
     end
 
-    def add_event(file_set, event_attributes)
-      logger.info "FileSet #{file_set.id}: adding event: #{event_attributes[:premis_event_type].map { |pet| Preservation::Event.premis_event_types.select { |t| pet.to_s.match /\/#{t.abbr}$/ }.map { |t| t.label } }.flatten.join(', ') }"
+    def ingest_files(resource, file_set, actor, files)
+      files.each_with_index do |file, i|
+        logger.info "FileSet #{file_set.id}: ingesting file: #{file[:filename]}"
+        actor.create_metadata(resource, file[:file_opts]) if i.zero? && file[:path]
+        actor.create_content(decorated_file(file), file[:use]) if file[:path] #FIXME: handle purl case
+      end
+    end
+    def ingest_events(file_set, events)
+      events.each do |event|
+        logger.info "FileSet #{file_set.id}: adding event: #{event[:attributes][:premis_event_type]&.join(', ')}"
+        add_event(file_set, event[:attributes])
+      end
+    end
+
+    def add_event(file_set, event_attributes, prep_attributes: true)
       e = Preservation::Event.new
       e.premis_event_related_object = file_set
+      if prep_attributes
+        event_attributes[:premis_event_type] = event_attributes[:premis_event_type].map do |pet|
+          Preservation::PremisEventType.new(pet).uri
+        end
+        event_attributes[:premis_agent] = event_attributes[:premis_agent].map do |agent|
+          ::RDF::URI.new(agent)
+        end
+      end
       e.attributes = event_attributes
       e.save!
     end
       
     def add_ingestion_event(file_set)
-      event_attributes = {
-        premis_event_type: Array.wrap(Preservation::PremisEventType.new('ing').uri),
-        premis_agent: Array.wrap(::RDF::URI.new('mailto:' + User.first&.email)),
-        # premis_event_outcome: 'SUCCESS',
-        premis_event_date_time: Array.wrap(DateTime.now)
+      event = {}
+      event[:attributes] = {
+        premis_event_type: ['ing'],
+        premis_agent: ['mailto:' + User.first&.email],
+        premis_event_outcome: ['SUCCESS'],
+        premis_event_date_time: [DateTime.now]
       }
-      add_event(file_set, event_attributes)
+      ingest_events(file_set, [event])
     end
 
 end

@@ -160,7 +160,7 @@ module HydraDAM
   
         def parse
         end
-  
+
         # for Work metadata
         def attributes
           {}
@@ -172,19 +172,31 @@ module HydraDAM
         end
   
         def files
-           file_list = [metadata_file]
-           file_list << media_file if media_file
-           file_list
+          file_list = [metadata_file]
+          file_list << media_file if media_file
+          file_list
         end
+
+        def filename
+          id.to_s.sub(/.*\//, '')
+        end
+
         def metadata_file
           { mime_type: mime_type,
             path: id,
             filename: id.to_s.sub(/.*\//, ''),
             file_opts: {},
+            use: use(filename).to_s
           }
         end
+
+        def use(_file_name_pattern)
+          :original_file
+        end
+
         def media_file
         end
+
         def events
         end
       end
@@ -318,12 +330,50 @@ module HydraDAM
         def type
           :ffprobe
         end
-  
+
+        def media_filename
+          file_attributes[:file_name].first&.to_s.sub(/.*\//, '')
+        end
+
         def media_file
-          { mime_type: 'FIXME',
-            filename: file_attributes[:file_name].first&.to_s.sub(/.*\//, ''),
-            file_opts: {}
+          { mime_type: mimetype(media_filename),
+            filename: media_filename,
+            file_opts: {},
+            use: use(media_filename).to_s
           }
+        end
+
+        def use(file_name_pattern)
+          case file_name_pattern
+          when /_ffprobe/
+            :extracted_text
+          when /_access/
+            :service_file
+          when /_pres/
+            :preservation_master_file
+          when /_prod/
+            :intermediate_file
+          else
+            :original_file
+          end
+        end
+
+        # FIXME: determine mimetype from codec, instead?
+        def mimetype(file_name_pattern)
+          case file_name_pattern
+          when /mp4$/
+            'video/mp4'
+          when /wav$/
+            'audio/wav'
+          when /wmf$/
+            'application/wmf'
+          when /xml$/
+            'application/xml'
+          when /yml$/
+            'application/x-yaml'
+          else
+            'application/octet-stream'
+          end
         end
 
         def events
@@ -331,7 +381,6 @@ module HydraDAM
           attributes = {}
           attributes[:premis_event_type] = ['val']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
-          # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))          
           attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
           attributes[:premis_event_outcome] = ['PASS']
@@ -340,6 +389,7 @@ module HydraDAM
           attributes[:premis_event_type] = ['cre']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
+          # FIXME
 	  # attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
           results << { attributes: attributes }
 	  attributes = {}
@@ -348,7 +398,8 @@ module HydraDAM
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
 	  # attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
 	  # FIXME: add :premis_event_outcome for this event
-	  attributes[:premis_event_outcome] = Array.wrap(File.checksum)
+	  # FIXME
+	  # attributes[:premis_event_outcome] = Array.wrap(File.checksum)
           results << { attributes: attributes }
           results
         end
