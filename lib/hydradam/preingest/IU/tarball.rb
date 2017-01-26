@@ -332,10 +332,9 @@ module HydraDAM
           attributes[:premis_event_type] = ['val']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           # FIXME: Minitar's unpack does not allow --atime-preserve argument, to maintain timestamps
-          attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
-          # FIXME: the preservation gem doesn't have these attributes yet
+          attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))          
           attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
-          # attributes[:premis_event_outcome] = ['PASS']
+          attributes[:premis_event_outcome] = ['PASS']
           results << { attributes: attributes }
           attributes = {}
           attributes[:premis_event_type] = ['cre']
@@ -348,6 +347,7 @@ module HydraDAM
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
 	  attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
+	 # FIXME: add :premis_event_outcome for this event
           results << { attributes: attributes }
           results
         end
