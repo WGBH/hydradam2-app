@@ -30,6 +30,8 @@ module HydraDAM
           @md5events_map = {}
           @creation_events_map = {}
           @purls_map = {}
+          @parts_map = {}
+          @date_generated_map = {}
 
           filenames.each { |filename| process_file(filename) }
           postprocess
@@ -71,6 +73,8 @@ module HydraDAM
               @md5sums_map.merge!(file_reader.reader.md5sums_map) if file_reader.type == :mdpi
               @md5events_map = array_merge(@md5events_map, file_reader.reader.md5events_map) if file_reader.type == :mdpi
               @creation_events_map = file_reader.reader.creation_events_map if file_reader.type == :mdpi
+              @parts_map = file_reader.reader.parts_map if file_reader.type == :mdpi
+              @date_generated_map = file_reader.reader.date_generated_map if file_reader.type == :mdpi
               file_set[:files] = file_reader.files
             elsif file_reader.type.in? [:purl, :md5]
               @purls_map = file_reader.reader.purls_map if file_reader.type == :purl
@@ -118,6 +122,12 @@ module HydraDAM
             if @creation_events_map && @creation_events_map[file_set[:filename]]
               file_set[:events] ||= []
               file_set[:events] << @creation_events_map[file_set[:filename]]
+            end
+            if @parts_map && @parts_map[file_set[:filename]]
+              file_set[:attributes][:part] = @parts_map[file_set[:filename]]
+            end
+            if @date_generated_map && @date_generated_map[file_set[:filename]]
+              file_set[:attributes][:date_generated] = @date_generated_map[file_set[:filename]]
             end
           end
         end
@@ -322,6 +332,7 @@ module HydraDAM
       end
       class BarcodeReader < XmlReader
         attr_reader :md5sums_map, :md5events_map, :creation_events_map
+        attr_reader :parts_map, :date_generated_map
         WORK_ATT_LOOKUPS = {
           mdpi_date: '/IU/Carrier/Parts/Part/Ingest/Date',
           part: '/IU/Carrier/Parts/Part/@Side',
@@ -342,10 +353,7 @@ module HydraDAM
           tbc_manufacturer: 'TbcDevices/Manufacturer',
           tape_thickness: 'Thickness',
         }
-        FILE_ATT_LOOKUPS = {
-          part: '/IU/Carrier/Parts/Part/@Side',
-          date_generated: '/IU/Carrier/Parts/Part/Ingest/Date'
-        }
+        FILE_ATT_LOOKUPS = {}
   
         def type
           :mdpi
@@ -359,6 +367,7 @@ module HydraDAM
         end
 
         def parse
+          # FIXME: unify values mapping into single block?
           @md5sums_map = {}
           xml.xpath('//Files/File').each do |file|
             @md5sums_map[file.xpath('FileName').first.text.to_s] = file.xpath('CheckSum').first.text.to_s
@@ -366,7 +375,6 @@ module HydraDAM
           @md5events_map = md5sums_map_to_events(md5sums_map)
 
           @creation_dates = {}
-#FIXME: move part, date_generated calculation into here?
           xml.xpath('//Parts/Part').each do |part|
             date = DateTime.parse(part.xpath('Ingest/Date').text.to_s).to_s
             part.xpath('Files/File').each do |file|
@@ -374,6 +382,22 @@ module HydraDAM
             end
           end
           @creation_events_map = creation_dates_to_events(@creation_dates)
+
+          @parts_map = {}
+          xml.xpath('//Parts/Part').each do |part|
+            side = part.xpath('@Side').text.to_i
+            part.xpath('Files/File').each do |file|
+              @parts_map[file.xpath('FileName').first.text.to_s] = side
+            end
+          end
+
+          @date_generated_map = {}
+          xml.xpath('//Parts/Part').each do |part|
+            date = part.xpath('Ingest/Date').text.to_s
+            part.xpath('Files/File').each do |file|
+              @date_generated_map[file.xpath('FileName').first.text.to_s] = date
+            end
+          end
         end
       end
       

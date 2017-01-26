@@ -68,6 +68,7 @@ class IngestYAMLJob < ActiveJob::Base
         actor.create_content(decorated_file(file), file[:use]) if file[:path] #FIXME: handle purl case
       end
     end
+
     def ingest_events(file_set, events)
       events.each do |event|
         logger.info "FileSet #{file_set.id}: adding event: #{event[:attributes][:premis_event_type]&.join(', ')}"
@@ -100,5 +101,4 @@ class IngestYAMLJob < ActiveJob::Base
       }
       ingest_events(file_set, [event])
     end
-
 end

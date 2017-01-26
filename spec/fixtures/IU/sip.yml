@@ -27,11 +27,7 @@
     identifier:
     - '40000000542243'
   :mods: {}
-  :mdpi:
-    part:
-    - '1'
-    date_generated:
-    - '2015-12-03'
+  :mdpi: {}
 :source_metadata: 
 :file_sets:
 - :filename: MDPI_40000000054496_01_prod.wav
@@ -52,6 +48,8 @@
     - '44100'
     :md5_checksum:
     - 7892355550C1105C0144D95EC7D3820F
+    :part: 1
+    :date_generated: '2015-12-03'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_prod_ffprobe.xml"
@@ -181,6 +179,8 @@
     - '44100'
     :md5_checksum:
     - F4C3088D835D35D8741551CF4E8977F0
+    :part: 1
+    :date_generated: '2015-12-03'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_access_ffprobe.xml"
@@ -275,6 +275,8 @@
     - '44100'
     :md5_checksum:
     - A0F9E4C05B1307788734229C3023F191
+    :part: 1
+    :date_generated: '2015-12-03'
   :files:
   - :mime_type: application/xml
     :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/40000000054496_20160213-082528/MDPI_40000000054496_01_pres_ffprobe.xml"
