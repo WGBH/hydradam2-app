@@ -340,14 +340,14 @@ module HydraDAM
           attributes[:premis_event_type] = ['cre']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
-	  attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
+	  # attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
           results << { attributes: attributes }
 	  attributes = {}
           attributes[:premis_event_type] = ['mes']
           attributes[:premis_agent] = ['mailto:' + User.first&.email]
           attributes[:premis_event_date_time] = Array.wrap(File.mtime(id))
-	  attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
-	 # FIXME: add :premis_event_outcome for this event
+	  # attributes[:premis_event_detail] = ['FFprobe multimedia streams analyzer from FFmpeg']
+	  # FIXME: add :premis_event_outcome for this event
 	  attributes[:premis_event_outcome] = Array.wrap(File.checksum)
           results << { attributes: attributes }
           results
