@@ -6,7 +6,7 @@ class Work < ActiveFedora::Base
   include ::CurationConcerns::WorkBehavior
   include ::CurationConcerns::BasicMetadata
   include Concerns::WorkBehavior
-  # validates :title, presence: { message: 'Your work must have a title.' }
+    # validates :title, presence: { message: 'Your work must have a title.' }
 
   def do_md5_checksum
 

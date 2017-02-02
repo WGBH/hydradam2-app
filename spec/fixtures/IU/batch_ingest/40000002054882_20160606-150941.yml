@@ -1,0 +1,176 @@
+---
+:resource: Work
+:work_attributes:
+  :mdpi:
+    digitized_by_entity:
+    - Memnon Archiving Services Inc
+    digitized_by_staff:
+    - chadfarm
+    original_identifier:
+    - NB237.N43 N48 1977
+    definition:
+    - SD
+    total_parts:
+    - '1'
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-WELLS
+    recording_standard:
+    - NTSC
+  :mods:
+    title:
+    - Nevelson in process
+    - Louise Nevelson in process
+:file_set_attributes:
+  :mdpi:
+    date_created:
+    - '2016-05-25'
+    part:
+    - '1'
+  :pod:
+    unit_of_origin:
+    - B-WELLS
+    identifier:
+    - '40000002054882'
+  :mods: {}
+:source_metadata: 
+:file_sets:
+- :attributes:
+    bit_rate:
+    - '52320474'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1957.890000'
+    file_size:
+    - '12804716773'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000002054882.downloading/data/MDPI_40000002054882_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_01_mezz_ffprobe.xml"
+    :filename: MDPI_40000002054882_01_mezz_ffprobe.xml
+    :file_opts: {}
+    :md5sum: 1f4357d236dfff20fed2ba763287dbbb
+  - :mime_type: FIXME
+    :filename: MDPI_40000002054882_01_mezz.mov
+    :file_opts: {}
+    :md5sum: 0f3c41c610087d6c94ae2cd401bdccd2
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002054882/20160606-150517/MDPI_40000002054882_01_mezz.mov
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882.xml"
+    :filename: MDPI_40000002054882.xml
+    :file_opts: {}
+    :md5sum: 05147376c59f5ff12b85a45b4bd2cc9e
+- :attributes:
+    bit_rate:
+    - '2943160'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '1957.932000'
+    file_size:
+    - '720313580'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000002054882.downloading/data/MDPI_40000002054882_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_01_access_ffprobe.xml"
+    :filename: MDPI_40000002054882_01_access_ffprobe.xml
+    :file_opts: {}
+    :md5sum: 7a149d22fed6444543837d518c521096
+  - :mime_type: FIXME
+    :filename: MDPI_40000002054882_01_access.mp4
+    :file_opts: {}
+    :md5sum: 405b72ac605be333c89f78019017c10e
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002054882/20160606-150517/MDPI_40000002054882_01_access.mp4
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_pod.xml"
+    :filename: MDPI_40000002054882_pod.xml
+    :file_opts: {}
+    :md5sum: 4d58766ae72778e0a0424a7458b84713
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_mods.xml"
+    :filename: MDPI_40000002054882_mods.xml
+    :file_opts: {}
+    :md5sum: 075d2ff246e666f5457408db4b3cc84f
+- :attributes:
+    bit_rate:
+    - '83664771'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1957.889000'
+    file_size:
+    - '20475792068'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002054882_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_01_pres_ffprobe.xml"
+    :filename: MDPI_40000002054882_01_pres_ffprobe.xml
+    :file_opts: {}
+    :md5sum: fcb1ca230049c2a1dbcb17cfe75ef6c2
+  - :mime_type: FIXME
+    :filename: MDPI_40000002054882_01_pres.mkv
+    :file_opts: {}
+    :md5sum: e6557855377b5746d4c8c440f74b0aa8
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002054882/20160606-150517/MDPI_40000002054882_01_pres.mkv
+- :files:
+  - :mime_type: text/plain
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/manifest-md5.txt"
+    :filename: manifest-md5.txt
+    :file_opts: {}
+- :files:
+  - :mime_type: application/x-yaml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002054882_20160606-150941/MDPI_40000002054882_purl.yaml"
+    :filename: MDPI_40000002054882_purl.yaml
+    :file_opts: {}
+:sources: []
