@@ -63,7 +63,7 @@ module HydraDAM
         def process_file(filename)
           file_set = { filename: filename.sub(/.*\//, '') }
           file_reader = HydraDAM::Preingest::IU::FileReader.new(filename)
-          unless file_reader.type.nil?
+          unless file_reader&.type.nil?
             work_ai = HydraDAM::Preingest::AttributeIngester.new(file_reader.id, file_reader.attributes, factory: resource_class)
             file_set_ai = HydraDAM::Preingest::AttributeIngester.new(file_reader.id, file_reader.file_attributes, factory: FileSet)
             if file_reader.type.in? [:pod, :mods, :mdpi]
@@ -423,7 +423,7 @@ module HydraDAM
         end
 
         def media_filename
-          file_attributes[:file_name].first.to_s.sub(/.*\//, '')
+          file_attributes[:file_name].first&.to_s.sub(/.*\//, '')
         end
 
         def media_file
