@@ -1,26 +1,15 @@
-# Generated via
-#  `rails generate curation_concerns:work Work`
 require 'rails_helper'
-include Warden::Test::Helpers
 
-feature 'Create a Work' do
-  context 'a logged in user' do
-    let(:user_attributes) do
-      { email: 'test@example.com' }
-    end
-    let(:user) do
-      User.new(user_attributes) { |u| u.save(validate: false) }
-    end
+RSpec.feature 'Creating a new Work' do
+  let(:user) { create(:user) }
 
-    before do
-      login_as user
-    end
+  before do
+    login_as user, scope: :user
+  end
 
-    scenario do
-      visit new_curation_concerns_work_path
-      fill_in 'Title', with: 'Test Work'
-      click_button 'Create Work'
-      expect(page).to have_content 'Test Work'
-    end
+  it 'creates the work' do
+    visit '/'
+    click_link "Share Your Work"
+    expect(page).to have_content "Add New Work"
   end
 end
