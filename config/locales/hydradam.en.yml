@@ -1,7 +1,26 @@
 en:
   curation_concerns:
-    product_name: "HydraDAM"
+    product_name: "HydraDAM2"
     search:
       form:
         q:
           label: "Search HydraDAM"
+    storage_proxy:
+      actions:
+        stage:
+          title: "Stage to Cache"
+        unstage:
+          title: "Unstage from Cache"
+        download:
+          title: "Download"
+        fixity:
+          title: "Fixity Check"
+        disabled:
+          title: "Disabled"
+      status_phrase:
+        not_cached: "Not Cached"
+        staging: "Staging to Cache"
+        staged: "Staged to Cache"
+        unstaging: "Unstaging from Cache"
+        calculating_checksum: "Calculating Checksum"
+        disabled: "Storage proxy disabled or not running"

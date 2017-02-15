@@ -1,0 +1,147 @@
+---
+:resource: Work
+:work_attributes:
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-ATHFHOCKEY
+    recording_standard:
+    - NTSC
+  :mods:
+    title:
+    - Miami of Ohio 1st Half 08/31/02
+:file_set_attributes:
+  :pod:
+    unit_of_origin:
+    - B-ATHFHOCKEY
+    identifier:
+    - '40000000363855'
+  :mods: {}
+:source_metadata: 
+:file_sets:
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_pod.xml"
+    :filename: MDPI_40000000363855_pod.xml
+    :file_opts: {}
+    :md5sum: 0d6f156e60bc2e4aa4275af414dcd52e
+- :attributes:
+    bit_rate:
+    - '3126242'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '3544.642000'
+    file_size:
+    - '1385176217'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000363855.downloading/data/MDPI_40000000363855_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_access_ffprobe.xml"
+    :filename: MDPI_40000000363855_01_access_ffprobe.xml
+    :file_opts: {}
+    :md5sum: c96c020e93366afe906bee32ee0c81ea
+  - :mime_type: FIXME
+    :filename: MDPI_40000000363855_01_access.mp4
+    :file_opts: {}
+    :md5sum: 635fc9c5937c35919e48fb831186a8aa
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_access.mp4
+- :files:
+  - :mime_type: text/plain
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/manifest-md5.txt"
+    :filename: manifest-md5.txt
+    :file_opts: {}
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_mods.xml"
+    :filename: MDPI_40000000363855_mods.xml
+    :file_opts: {}
+    :md5sum: 2d40a3630b83dc3078344e3e989657a1
+- :attributes:
+    bit_rate:
+    - '88863673'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3544.641000'
+    file_size:
+    - '39373727362'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000000363855_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_pres_ffprobe.xml"
+    :filename: MDPI_40000000363855_01_pres_ffprobe.xml
+    :file_opts: {}
+    :md5sum: 707a3ecbdf6c49e808bd45ce10ccad4f
+  - :mime_type: FIXME
+    :filename: MDPI_40000000363855_01_pres.mkv
+    :file_opts: {}
+    :md5sum: 8c55572c2601046957c42ef78dfd1b4a
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_pres.mkv
+- :files:
+  - :mime_type: application/x-yaml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_purl.yaml"
+    :filename: MDPI_40000000363855_purl.yaml
+    :file_opts: {}
+- :attributes:
+    bit_rate:
+    - '52315850'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    duration:
+    - '3544.642000'
+    file_size:
+    - '23180120272'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-04_prod/MDPI_40000000363855.downloading/data/MDPI_40000000363855_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000000363855_20160606-150929/MDPI_40000000363855_01_mezz_ffprobe.xml"
+    :filename: MDPI_40000000363855_01_mezz_ffprobe.xml
+    :file_opts: {}
+    :md5sum: eed21580ba271cb40c5a6dc8fdc41470
+  - :mime_type: FIXME
+    :filename: MDPI_40000000363855_01_mezz.mov
+    :file_opts: {}
+    :md5sum: a20ea95e6ca32308e8161a5e21496139
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000000363855/20160606-150516/MDPI_40000000363855_01_mezz.mov
+:sources: []

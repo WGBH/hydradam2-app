@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
+gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -48,19 +48,20 @@ group :development do
   gem 'spring'
 end
 
-gem 'curation_concerns'
 group :development, :test do
-  gem 'solr_wrapper', '>= 0.3'
+  gem 'solr_wrapper', '0.18.0'
+  gem 'fcrepo_wrapper'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'webmock'
+  gem 'coveralls', require: false
 end
 
+gem 'curation_concerns', '~> 1.6.3'
 gem 'rsolr', '~> 1.0'
 gem 'devise'
 gem 'devise-guests', '~> 0.3'
 gem 'omniauth-cas'
-group :development, :test do
-  gem 'fcrepo_wrapper'
-  gem 'rspec-rails'
-  gem 'capybara'
-end
-
 gem 'archive-tar-minitar', '~> 0.5.2'
+gem 'blacklight_range_limit', github: 'projectblacklight/blacklight_range_limit', branch: 'master'
+gem 'preservation', github: 'WGBH/hydradam-preservation', branch: 'master'

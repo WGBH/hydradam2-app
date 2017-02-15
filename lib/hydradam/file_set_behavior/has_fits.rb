@@ -15,7 +15,7 @@ module HydraDAM
           index.as :stored_searchable
         end
 
-        property :original_checksum, predicate: RDF::Vocab::NFO.hashValue do |index|
+        property :original_checksum, predicate: RDF::Vocab::EBUCore.hashValue do |index|
           index.as :stored_searchable
         end
 

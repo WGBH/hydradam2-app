@@ -1,0 +1,11 @@
+  <div class="form-actions">
+    <%= render partial: 'storage_proxy/actions', locals: { storage_proxy_presenter: @storage_proxy_presenter } %>
+
+    <% if can? :edit, presenter.id %>
+      <%= link_to "Edit this File", edit_polymorphic_path([main_app, presenter]), class: 'btn btn-default'  %>
+    <% end %>
+
+    <% if parent %>
+      <%= link_to "Back to #{parent.human_readable_type}", parent_path(parent), class: 'btn btn-default' %>
+    <% end %>
+  </div>

@@ -1,0 +1,23 @@
+<% # TODO: move inline styles to CSS %>
+<p class="storage-proxy" style="border: solid 1px gray;">
+  <h2>Storage Status: <span class="storage-proxy-status"><%= storage_proxy_presenter.status_phrase %></span></h2>
+
+  <% if storage_proxy_presenter.fixity_available %>
+    <table class="table table-striped file_set attributes">
+      <tbody>
+        <tr>
+          <th><%= storage_proxy_presenter.fixity_type %> Checksum</th>
+          <td><%= storage_proxy_presenter.checksum %></td>
+        </tr>
+        <tr>
+          <th>Fixity date</th>
+          <td><%= storage_proxy_presenter.fixity_date %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% storage_proxy_presenter.actions.each do |action| %>
+    <%= link_to action[:title], action[:link], class: "btn btn-default" %>
+  <% end %>
+</p>

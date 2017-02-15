@@ -1,10 +1,19 @@
+if ENV['TRAVIS'] || ENV['COVERAGE']
+  require 'coveralls'
+  Coveralls.wear!
+end
+
 require 'pry'
+require 'webmock/rspec'
 
 # Add spec/support to load path.
 $LOAD_PATH.unshift(File.expand_path('../support', __FILE__))
 
 RSpec.configure do |config|
 
+  # Make sure WebMock doesn't prevent other tests from running;
+  # must therefore explicitly enable/disable in test desired suite
+  WebMock.allow_net_connect!
 
   # Allow skipping tests with metadata using RSPEC_SKIP env var.
   # E.g. skip any tests tagged with :foo => "bar" OR :baz like this:

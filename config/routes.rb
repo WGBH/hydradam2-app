@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  
+
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => '/'
+  mount BlacklightAdvancedSearch::Engine => '/'
 
   concern :searchable, Blacklight::Routes::Searchable.new
 
   resource :catalog, only: [:index], as: 'catalog', path: '/catalog', controller: 'catalog' do
     concerns :searchable
+    concerns :range_searchable
   end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
@@ -29,6 +32,12 @@ Rails.application.routes.draw do
       delete 'clear'
     end
   end
+
+  # Adds routes to large file interactions provided through HydraDAM::StorageControllerBehavior
+  get '/concern/file_sets/:id/file_status' => 'curation_concerns/file_sets#file_status', as: :file_status_curation_concerns_file_set
+  get '/concern/file_sets/:id/stage' => 'curation_concerns/file_sets#stage', as: :stage_curation_concerns_file_set
+  get '/concern/file_sets/:id/unstage' => 'curation_concerns/file_sets#unstage', as: :unstage_curation_concerns_file_set
+  get '/concern/file_sets/:id/fixity' => 'curation_concerns/file_sets#fixity', as: :fixity_curation_concerns_file_set
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
