@@ -28,17 +28,17 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
     subject.delete rescue nil
   end
 
-  it 'exposes accessors #ffprobe and #ffprobe=' do
+ xit 'exposes accessors #ffprobe and #ffprobe=' do
     expect(subject).to respond_to :ffprobe
     expect(subject).to respond_to :"ffprobe="
-  end
+ end
 
   describe '#ffprobe=' do
-    it 'requires an XMLFile' do
+    xit 'requires an XMLFile' do
       expect{ subject.ffprobe = "this will fail" }.to raise_error ActiveFedora::AssociationTypeMismatch
     end
 
-    it 'accepts a XMLFile' do
+    xit 'accepts a XMLFile' do
       subject.save! # the parent object must be saved before attaching files.
       expect{ subject.ffprobe = XMLFile.new }.to_not raise_error
     end
@@ -52,11 +52,11 @@ describe HydraDAM::FileSetBehavior::HasFfprobe, :requires_fedora do
       subject.assign_properties_from_ffprobe
     end
 
-    it 'assigns values from ffprobe XML file to RDF properties on the object' do
+    xit 'assigns values from ffprobe XML file to RDF properties on the object' do
       expect(subject.filename).to eq "/cookies/pizza.wav"
     end
-  end
-
+  end 
+  
   context 'when the including class does not inherit from ActiveFedora::Base' do
     let(:class_with_missing_dependency) do
       # An anonymous class that includes the HydraDAM::FileSetBehavior::HasFfprobe

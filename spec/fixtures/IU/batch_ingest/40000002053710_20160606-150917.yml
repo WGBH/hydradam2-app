@@ -1,0 +1,153 @@
+---
+:resource: Work
+:work_attributes:
+  :mods:
+    title:
+    - Mechanical universe
+  :pod:
+    image_format:
+    - '4:3'
+    digitization_comments:
+    - B-WELLS
+    recording_standard:
+    - NTSC
+:file_set_attributes:
+  :mods: {}
+  :pod:
+    unit_of_origin:
+    - B-WELLS
+    identifier:
+    - '40000002053710'
+:source_metadata: 
+:file_sets:
+- :attributes:
+    bit_rate:
+    - '52320105'
+    codec_long_name:
+    - MPEG-2 video
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1943.742000'
+    file_size:
+    - '12712098294'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000002053710.downloading/data/MDPI_40000002053710_01_mezz.mov"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '512'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_01_mezz_ffprobe.xml"
+    :filename: MDPI_40000002053710_01_mezz_ffprobe.xml
+    :file_opts: {}
+    :md5sum: d04f638a95a63f478503bbf3a6c07343
+  - :mime_type: FIXME
+    :filename: MDPI_40000002053710_01_mezz.mov
+    :file_opts: {}
+    :md5sum: 0d640d023e6a7926effa1b2c23d16abb
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002053710/20160606-150516/MDPI_40000002053710_01_mezz.mov
+- :attributes:
+    bit_rate:
+    - '2954121'
+    codec_long_name:
+    - H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10
+    - AAC (Advanced Audio Coding)
+    duration:
+    - '1943.785000'
+    file_size:
+    - '717772253'
+    filename:
+    - "/srv/scratch/transcoder_workspace_xcode-01_prod/MDPI_40000002053710.downloading/data/MDPI_40000002053710_01_access.mp4"
+    file_format_long_name:
+    - QuickTime / MOV
+    codec_type:
+    - video
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_01_access_ffprobe.xml"
+    :filename: MDPI_40000002053710_01_access_ffprobe.xml
+    :file_opts: {}
+    :md5sum: 4562fc23716f17a385b6e03d818da097
+  - :mime_type: FIXME
+    :filename: MDPI_40000002053710_01_access.mp4
+    :file_opts: {}
+    :md5sum: 70e1b16e68435cc43a1655cc2f4e5c1a
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002053710/20160606-150516/MDPI_40000002053710_01_access.mp4
+- :attributes:
+    bit_rate:
+    - '72780702'
+    codec_long_name:
+    - 'FFmpeg video codec #1'
+    - PCM signed 24-bit little-endian
+    - PCM signed 24-bit little-endian
+    duration:
+    - '1943.741000'
+    file_size:
+    - '17683354484'
+    filename:
+    - "/srv/scratch/ffprobe_refresh/MDPI_40000002053710_01_pres.mkv"
+    file_format_long_name:
+    - Matroska / WebM
+    codec_type:
+    - video
+    - audio
+    - audio
+    height:
+    - '486'
+    sample_rate:
+    - '48000'
+    - '48000'
+    width:
+    - '720'
+  :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_01_pres_ffprobe.xml"
+    :filename: MDPI_40000002053710_01_pres_ffprobe.xml
+    :file_opts: {}
+    :md5sum: cea9bf0e24d5f045745ce41e1d5051c3
+  - :mime_type: FIXME
+    :filename: MDPI_40000002053710_01_pres.mkv
+    :file_opts: {}
+    :md5sum: 61bb4e1607666da94b6a2deb7e1680cd
+    :purl: https://purl.dlib.indiana.edu/iudl/hydradam2/MDPI/40000002053710/20160606-150516/MDPI_40000002053710_01_pres.mkv
+- :files:
+  - :mime_type: text/plain
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/manifest-md5.txt"
+    :filename: manifest-md5.txt
+    :file_opts: {}
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_mods.xml"
+    :filename: MDPI_40000002053710_mods.xml
+    :file_opts: {}
+    :md5sum: 82287012fd6fac62f3c72cc833de9bee
+- :files:
+  - :mime_type: application/x-yaml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_purl.yaml"
+    :filename: MDPI_40000002053710_purl.yaml
+    :file_opts: {}
+- :files:
+  - :mime_type: application/xml
+    :path: "/home/aploshay/Documents/iu_dev/hydradam2-app/spec/fixtures/IU/batch_ingest/40000002053710_20160606-150917/MDPI_40000002053710_pod.xml"
+    :filename: MDPI_40000002053710_pod.xml
+    :file_opts: {}
+    :md5sum: d82502a3c0d23764d9a237cfbe6eb825
+:sources: []

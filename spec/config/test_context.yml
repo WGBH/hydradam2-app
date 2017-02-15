@@ -1,0 +1,14 @@
+# Configures JSON-LD conversion from IuMetadata::Mods/Marc attributes
+#
+---
+"@context":
+  id: "@id"
+  dcterms: http://purl.org/dc/terms/
+  opaquens: http://opaquenamespace.org/ns/mods/
+  
+  # AttributeIngesterTestFactory data model properties
+  
+  title:
+    "@id": dcterms:title
+  sort_title:
+    "@id": opaquens:titleForSort
