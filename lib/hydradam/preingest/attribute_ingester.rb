@@ -41,21 +41,20 @@ module HydraDAM
       #
       # @return [Hash] Array, raw-valued attributes for target factory object
       def raw_attributes
-        @raw_attributes ||=
-          begin
-            raw_hash = {}
-            outbound_statements.each do |s|
-              target_property = outbound_predicates_to_properties[s.predicate]
-              next if target_property.nil?
-              if target_property.in? singular_fields
-                raw_hash[target_property] = s.object.value
-              else
-                raw_hash[target_property] ||= []
-                raw_hash[target_property] << s.object.value
-              end
+        @raw_attributes ||= begin
+          raw_hash = {}
+          outbound_statements.each do |s|
+            target_property = outbound_predicates_to_properties[s.predicate]
+            next if target_property.nil?
+            if target_property.in? singular_fields
+              raw_hash[target_property] = s.object.value
+            else
+              raw_hash[target_property] ||= []
+              raw_hash[target_property] << s.object.value
             end
-            raw_hash
           end
+          raw_hash
+        end
       end
   
       private
