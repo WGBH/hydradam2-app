@@ -6,4 +6,10 @@ RSpec.feature 'Creating a new Work' do
   before do
     login_as user, scope: :user
   end
+  
+  xit 'creates the work' do
+     visit '/'
+     click_link "Share Your Work"
+     expect(page).to have_content "Add New Work"
+  end
 end
